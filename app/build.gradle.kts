@@ -1,4 +1,9 @@
+import java.util.Properties
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
+val signingProperties = Properties().apply {
+    rootProject.file("signing.properties").takeIf { it.isFile }?.inputStream()?.use(::load)
+}
 
 plugins {
     alias(libs.plugins.androidApplication)
@@ -15,7 +20,7 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        applicationId = "dev.anilbeesetti.nextplayer"
+        applicationId = "meow.next.player"
         versionCode = 71
         versionName = "0.17.4"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -31,10 +36,29 @@ android {
         targetCompatibility = JavaVersion.toVersion(libs.versions.android.jvm.get().toInt())
     }
 
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("${project.rootDir}/app/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+
+        if (signingProperties.isNotEmpty()) {
+            create("release") {
+                storeFile = rootProject.file(signingProperties.getProperty("storeFile"))
+                storePassword = signingProperties.getProperty("storePassword")
+                keyAlias = signingProperties.getProperty("keyAlias")
+                keyPassword = signingProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = true
             isShrinkResources = true
+            signingConfig = signingConfigs.findByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
@@ -54,24 +78,16 @@ android {
         }
     }
 
-    signingConfigs {
-        getByName("debug") {
-            storeFile = file("${project.rootDir}/app/debug.keystore")
-            storePassword = "android"
-            keyAlias = "androiddebugkey"
-            keyPassword = "android"
-        }
-    }
-
     splits {
         abi {
             //noinspection WrongGradleMethod
             val isBuildingBundle = gradle.startParameter.taskNames.any { it.lowercase().contains("bundle") }
+            val targetAbi = providers.gradleProperty("targetAbi").orNull
 
             isEnable = !isBuildingBundle
             reset()
-            include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
-            isUniversalApk = true
+            include(*(targetAbi?.let { arrayOf(it) } ?: arrayOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")))
+            isUniversalApk = targetAbi == null
         }
     }
 

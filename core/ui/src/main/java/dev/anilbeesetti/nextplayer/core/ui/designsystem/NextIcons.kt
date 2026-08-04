@@ -48,6 +48,8 @@ import androidx.compose.material.icons.rounded.Lan
 import androidx.compose.material.icons.rounded.Cloud
 import androidx.compose.material.icons.rounded.Dns
 import androidx.compose.material.icons.rounded.Storage
+import androidx.compose.material.icons.rounded.SkipNext
+import androidx.compose.material.icons.rounded.SkipPrevious
 import androidx.compose.material.icons.rounded.Link
 import androidx.compose.material.icons.rounded.LocalMovies
 import androidx.compose.material.icons.rounded.LocationOn
@@ -168,4 +170,6 @@ object NextIcons {
     val Image = Icons.Rounded.Image
     val Frame = Icons.Rounded.FilterFrames
     val Lock = Icons.Rounded.Lock
+    val SkipNext = Icons.Rounded.SkipNext
+    val SkipPrevious = Icons.Rounded.SkipPrevious
 }

@@ -151,6 +151,45 @@ private fun PlayerPreferencesContent(
                     },
                 )
                 PreferenceSwitch(
+                    title = stringResource(id = R.string.frame_step_controls),
+                    description = stringResource(id = R.string.frame_step_controls_description),
+                    icon = NextIcons.Frame,
+                    isChecked = uiState.preferences.showFrameStepControls,
+                    onClick = { onEvent(PlayerPreferencesUiEvent.ToggleFrameStepControls) },
+                )
+                PreferenceSlider(
+                    title = stringResource(id = R.string.frame_step_count),
+                    description = stringResource(R.string.frames, uiState.preferences.frameStepCount),
+                    icon = NextIcons.SkipNext,
+                    enabled = uiState.preferences.showFrameStepControls,
+                    value = uiState.preferences.frameStepCount.toFloat(),
+                    valueRange = 1f..60f,
+                    onValueChange = { onEvent(PlayerPreferencesUiEvent.UpdateFrameStepCount(it.toInt())) },
+                    onReset = {
+                        onEvent(PlayerPreferencesUiEvent.UpdateFrameStepCount(PlayerPreferences.DEFAULT_FRAME_STEP_COUNT))
+                    },
+                    trailingContent = {
+                        FilledIconButton(
+                            enabled = uiState.preferences.showFrameStepControls,
+                            onClick = {
+                                onEvent(PlayerPreferencesUiEvent.UpdateFrameStepCount(PlayerPreferences.DEFAULT_FRAME_STEP_COUNT))
+                            },
+                        ) {
+                            Icon(
+                                imageVector = NextIcons.History,
+                                contentDescription = stringResource(id = R.string.reset_frame_step_count),
+                            )
+                        }
+                    },
+                )
+                PreferenceSwitch(
+                    title = stringResource(id = R.string.screenshot_button),
+                    description = stringResource(id = R.string.screenshot_button_description),
+                    icon = NextIcons.Image,
+                    isChecked = uiState.preferences.showScreenshotButton,
+                    onClick = { onEvent(PlayerPreferencesUiEvent.ToggleScreenshotButton) },
+                )
+                PreferenceSwitch(
                     title = stringResource(id = R.string.autoplay_settings),
                     description = stringResource(
                         id = R.string.autoplay_settings_description,

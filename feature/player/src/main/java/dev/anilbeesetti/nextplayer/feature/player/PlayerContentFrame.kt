@@ -12,6 +12,7 @@ import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.ui.compose.PlayerSurface
 import androidx.media3.ui.compose.SURFACE_TYPE_SURFACE_VIEW
+import androidx.media3.ui.compose.SURFACE_TYPE_TEXTURE_VIEW
 import androidx.media3.ui.compose.modifiers.resizeWithContentScale
 import androidx.media3.ui.compose.state.rememberPresentationState
 import dev.anilbeesetti.nextplayer.feature.player.extensions.toContentScale
@@ -38,11 +39,14 @@ fun PlayerContentFrame(
     videoZoomAndContentScaleState: VideoZoomAndContentScaleState,
     volumeAndBrightnessGestureState: VolumeAndBrightnessGestureState,
     subtitleConfiguration: SubtitleConfiguration,
+    enableScreenshotCapture: Boolean = false,
+    showSubtitles: Boolean = true,
+    onBoundsChanged: (Rect) -> Unit = {},
 ) {
     val presentationState = rememberPresentationState(player)
     PlayerSurface(
         player = player,
-        surfaceType = SURFACE_TYPE_SURFACE_VIEW,
+        surfaceType = if (enableScreenshotCapture) SURFACE_TYPE_TEXTURE_VIEW else SURFACE_TYPE_SURFACE_VIEW,
         modifier = modifier
             .resizeWithContentScale(
                 contentScale = videoZoomAndContentScaleState.videoContentScale.toContentScale(),
@@ -72,6 +76,17 @@ fun PlayerContentFrame(
     )
 
     PlayerGestures(
+        modifier = Modifier.onGloballyPositioned {
+            val bounds = it.boundsInWindow()
+            onBoundsChanged(
+                Rect(
+                    bounds.left.toInt(),
+                    bounds.top.toInt(),
+                    bounds.right.toInt(),
+                    bounds.bottom.toInt(),
+                ),
+            )
+        },
         controlsVisibilityState = controlsVisibilityState,
         tapGestureState = tapGestureState,
         pictureInPictureState = pictureInPictureState,
@@ -84,6 +99,7 @@ fun PlayerContentFrame(
         player = player,
         isInPictureInPictureMode = pictureInPictureState.isInPictureInPictureMode,
         configuration = subtitleConfiguration,
+        visible = showSubtitles,
     )
 
     if (presentationState.coverSurface) {

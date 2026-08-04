@@ -1,5 +1,7 @@
 package dev.anilbeesetti.nextplayer.feature.player
 
+import android.graphics.Rect
+import android.os.Build
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.annotation.OptIn
@@ -41,6 +43,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -67,6 +70,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LifecycleEventEffect
 import androidx.media3.common.Player
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.session.MediaController
 import dev.anilbeesetti.nextplayer.core.common.extensions.isTelevision
 import dev.anilbeesetti.nextplayer.core.model.ControlButtonsPosition
 import dev.anilbeesetti.nextplayer.core.model.PlayerPreferences
@@ -79,6 +83,7 @@ import dev.anilbeesetti.nextplayer.feature.player.buttons.PlayPauseButton
 import dev.anilbeesetti.nextplayer.feature.player.buttons.PlayerButton
 import dev.anilbeesetti.nextplayer.feature.player.buttons.PreviousButton
 import dev.anilbeesetti.nextplayer.feature.player.state.ControlsVisibilityState
+import dev.anilbeesetti.nextplayer.feature.player.service.stepFrames
 import dev.anilbeesetti.nextplayer.feature.player.state.VerticalGesture
 import dev.anilbeesetti.nextplayer.feature.player.state.rememberBrightnessState
 import dev.anilbeesetti.nextplayer.feature.player.state.rememberControlsVisibilityState
@@ -106,6 +111,7 @@ import dev.anilbeesetti.nextplayer.feature.player.ui.controls.ControlsTopView
 import kotlin.math.abs
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.milliseconds
 
 val LocalControlsVisibilityState = compositionLocalOf<ControlsVisibilityState?> { null }
@@ -195,8 +201,11 @@ fun MediaPlayerScreen(
     }
 
     var overlayView by remember { mutableStateOf<OverlayView?>(null) }
+    var playerBounds by remember { mutableStateOf<Rect?>(null) }
+    var screenshotMode by remember { mutableStateOf<ScreenshotMode?>(null) }
 
     val context = LocalContext.current
+    val coroutineScope = rememberCoroutineScope()
     val isTv = remember { context.isTelevision }
     val rootFocusRequester = remember { FocusRequester() }
     val playPauseFocusRequester = remember { FocusRequester() }
@@ -205,6 +214,29 @@ fun MediaPlayerScreen(
     var isPlayPauseFocused by remember { mutableStateOf(false) }
     var isUnlockFocused by remember { mutableStateOf(false) }
     val seekIncrementMs = playerPreferences.seekIncrement.seconds.inWholeMilliseconds
+
+    val requestScreenshot: (ScreenshotMode) -> Unit = { mode ->
+        if (screenshotMode == null) {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+                Toast.makeText(context, coreUiR.string.screenshot_requires_android_8, Toast.LENGTH_SHORT).show()
+            } else {
+                screenshotMode = mode
+                controlsVisibilityState.hideControls()
+                coroutineScope.launch {
+                    delay(400.milliseconds)
+                    val activity = context as? PlayerActivity
+                    val bounds = playerBounds
+                    val saved = activity != null && bounds != null && captureAndSaveScreenshot(activity.window, bounds)
+                    screenshotMode = null
+                    Toast.makeText(
+                        context,
+                        if (saved) coreUiR.string.screenshot_saved else coreUiR.string.screenshot_failed,
+                        Toast.LENGTH_SHORT,
+                    ).show()
+                }
+            }
+        }
+    }
 
     if (isTv) {
         LaunchedEffect(controlsVisibilityState.controlsVisible, controlsVisibilityState.controlsLocked, overlayView) {
@@ -285,6 +317,9 @@ fun MediaPlayerScreen(
                         textBold = playerPreferences.subtitleTextBold,
                         applyEmbeddedStyles = playerPreferences.applyEmbeddedStyles,
                     ),
+                    enableScreenshotCapture = playerPreferences.showScreenshotButton,
+                    showSubtitles = screenshotMode != ScreenshotMode.VIDEO_ONLY,
+                    onBoundsChanged = { playerBounds = it },
                 )
 
                 AnimatedVisibility(
@@ -426,6 +461,19 @@ fun MediaPlayerScreen(
                                     },
                                     onSeek = seekGestureState::onSeek,
                                     onSeekEnd = seekGestureState::onSeekEnd,
+                                    showFrameStepControls = playerPreferences.showFrameStepControls,
+                                    frameStepCount = playerPreferences.frameStepCount,
+                                    showScreenshotButton = playerPreferences.showScreenshotButton,
+                                    onStepBackward = {
+                                        (player as? MediaController)?.stepFrames(-playerPreferences.frameStepCount)
+                                    },
+                                    onStepForward = {
+                                        (player as? MediaController)?.stepFrames(playerPreferences.frameStepCount)
+                                    },
+                                    onScreenshotWithSubtitlesClick = {
+                                        requestScreenshot(ScreenshotMode.WITH_SUBTITLES)
+                                    },
+                                    onVideoScreenshotClick = { requestScreenshot(ScreenshotMode.VIDEO_ONLY) },
                                     onRotateClick = rotationState::rotate,
                                     onPlayInBackgroundClick = onPlayInBackgroundClick,
                                     onLockControlsClick = {
@@ -543,6 +591,11 @@ fun MediaPlayerScreen(
             else -> onBackClick()
         }
     }
+}
+
+private enum class ScreenshotMode {
+    WITH_SUBTITLES,
+    VIDEO_ONLY,
 }
 
 @Composable

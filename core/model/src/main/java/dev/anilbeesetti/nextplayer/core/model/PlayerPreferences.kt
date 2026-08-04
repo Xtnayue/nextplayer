@@ -38,6 +38,9 @@ data class PlayerPreferences(
     val controlButtonsPosition: ControlButtonsPosition = ControlButtonsPosition.LEFT,
     val hidePlayerButtonsBackground: Boolean = false,
     val useMaterialYouControls: Boolean = false,
+    val showFrameStepControls: Boolean = false,
+    val frameStepCount: Int = DEFAULT_FRAME_STEP_COUNT,
+    val showScreenshotButton: Boolean = false,
 
     // Audio Preferences
     val preferredAudioLanguage: String = "",
@@ -67,5 +70,6 @@ data class PlayerPreferences(
         const val DEFAULT_BRIGHTNESS_GESTURE_SENSITIVITY = 0.50f
         const val DEFAULT_SUBTITLE_TEXT_SIZE = 20
         const val DEFAULT_CONTROLLER_AUTO_HIDE_TIMEOUT = 4
+        const val DEFAULT_FRAME_STEP_COUNT = 1
     }
 }

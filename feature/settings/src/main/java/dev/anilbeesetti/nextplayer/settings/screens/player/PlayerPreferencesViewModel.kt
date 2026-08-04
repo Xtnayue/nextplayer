@@ -50,6 +50,9 @@ class PlayerPreferencesViewModel @Inject constructor(
             is PlayerPreferencesUiEvent.UpdateDefaultPlaybackSpeed -> updateDefaultPlaybackSpeed(event.value)
             is PlayerPreferencesUiEvent.UpdateControlAutoHideTimeout -> updateControlAutoHideTimeout(event.value)
             PlayerPreferencesUiEvent.ToggleUseMaterialYouControls -> toggleUseMaterialYouControls()
+            PlayerPreferencesUiEvent.ToggleFrameStepControls -> toggleFrameStepControls()
+            is PlayerPreferencesUiEvent.UpdateFrameStepCount -> updateFrameStepCount(event.value)
+            PlayerPreferencesUiEvent.ToggleScreenshotButton -> toggleScreenshotButton()
         }
     }
 
@@ -148,6 +151,30 @@ class PlayerPreferencesViewModel @Inject constructor(
             }
         }
     }
+
+    private fun toggleFrameStepControls() {
+        viewModelScope.launch {
+            preferencesRepository.updatePlayerPreferences {
+                it.copy(showFrameStepControls = !it.showFrameStepControls)
+            }
+        }
+    }
+
+    private fun updateFrameStepCount(value: Int) {
+        viewModelScope.launch {
+            preferencesRepository.updatePlayerPreferences {
+                it.copy(frameStepCount = value.coerceIn(1, 60))
+            }
+        }
+    }
+
+    private fun toggleScreenshotButton() {
+        viewModelScope.launch {
+            preferencesRepository.updatePlayerPreferences {
+                it.copy(showScreenshotButton = !it.showScreenshotButton)
+            }
+        }
+    }
 }
 
 @Stable
@@ -175,4 +202,7 @@ sealed interface PlayerPreferencesUiEvent {
     data class UpdateDefaultPlaybackSpeed(val value: Float) : PlayerPreferencesUiEvent
     data class UpdateControlAutoHideTimeout(val value: Int) : PlayerPreferencesUiEvent
     data object ToggleUseMaterialYouControls : PlayerPreferencesUiEvent
+    data object ToggleFrameStepControls : PlayerPreferencesUiEvent
+    data class UpdateFrameStepCount(val value: Int) : PlayerPreferencesUiEvent
+    data object ToggleScreenshotButton : PlayerPreferencesUiEvent
 }

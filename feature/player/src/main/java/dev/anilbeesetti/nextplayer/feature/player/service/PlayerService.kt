@@ -22,6 +22,7 @@ import androidx.media3.common.Tracks
 import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.exoplayer.SeekParameters
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.session.CommandButton
 import androidx.media3.session.CommandButton.ICON_UNDEFINED
@@ -467,6 +468,29 @@ class PlayerService : MediaSessionService() {
                     )
                 }
 
+                CustomCommands.STEP_FRAMES -> {
+                    val frameDelta = args.getInt(CustomCommands.FRAME_STEP_DELTA_KEY)
+                    val player = mediaSession?.player as? ExoPlayer
+                        ?: return@future SessionResult(SessionResult.RESULT_ERROR_INVALID_STATE)
+                    if (frameDelta == 0) {
+                        return@future SessionResult(SessionResult.RESULT_ERROR_BAD_VALUE)
+                    }
+                    val frameRate = player.videoFormat?.frameRate
+                        ?.takeIf { it > 0f }
+                        ?: DEFAULT_FRAME_RATE
+                    player.pause()
+                    player.setSeekParameters(SeekParameters.EXACT)
+                    player.seekTo(
+                        frameStepTargetPosition(
+                            currentPositionMs = player.currentPosition,
+                            durationMs = player.duration,
+                            frameDelta = frameDelta,
+                            frameRate = frameRate,
+                        ),
+                    )
+                    return@future SessionResult(SessionResult.RESULT_SUCCESS)
+                }
+
                 CustomCommands.GET_SUBTITLE_DELAY -> {
                     val subtitleDelay = mediaSession?.player?.playerSpecificSubtitleDelayMilliseconds ?: 0
                     return@future SessionResult(
@@ -724,6 +748,20 @@ class PlayerService : MediaSessionService() {
         )
         .build()
 }
+
+internal fun frameStepTargetPosition(
+    currentPositionMs: Long,
+    durationMs: Long,
+    frameDelta: Int,
+    frameRate: Float,
+): Long {
+    val safeFrameRate = frameRate.takeIf { it > 0f } ?: DEFAULT_FRAME_RATE
+    val deltaMs = (frameDelta * 1000.0 / safeFrameRate).toLong()
+    val maximumPosition = durationMs.takeIf { it != C.TIME_UNSET && it >= 0L } ?: Long.MAX_VALUE
+    return (currentPositionMs + deltaMs).coerceIn(0L, maximumPosition)
+}
+
+private const val DEFAULT_FRAME_RATE = 30f
 
 @get:UnstableApi
 @set:UnstableApi

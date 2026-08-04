@@ -19,6 +19,7 @@ enum class CustomCommands(val customAction: String) {
     IS_LOUDNESS_GAIN_SUPPORTED(customAction = "IS_LOUDNESS_GAIN_SUPPORTED"),
     SET_LOUDNESS_GAIN(customAction = "SET_LOUDNESS_GAIN"),
     GET_LOUDNESS_GAIN(customAction = "GET_LOUDNESS_GAIN"),
+    STEP_FRAMES(customAction = "STEP_FRAMES"),
     ;
 
     val sessionCommand = SessionCommand(customAction, Bundle.EMPTY)
@@ -39,7 +40,15 @@ enum class CustomCommands(val customAction: String) {
         const val SUBTITLE_SPEED_KEY = "subtitle_speed"
         const val LOUDNESS_GAIN_KEY = "loudness_gain"
         const val IS_LOUDNESS_GAIN_SUPPORTED_KEY = "is_loudness_gain_supported"
+        const val FRAME_STEP_DELTA_KEY = "frame_step_delta"
     }
+}
+
+fun MediaController.stepFrames(frameDelta: Int) {
+    val args = Bundle().apply {
+        putInt(CustomCommands.FRAME_STEP_DELTA_KEY, frameDelta)
+    }
+    sendCustomCommand(CustomCommands.STEP_FRAMES.sessionCommand, args)
 }
 
 fun MediaController.addSubtitleTrack(uri: Uri) {

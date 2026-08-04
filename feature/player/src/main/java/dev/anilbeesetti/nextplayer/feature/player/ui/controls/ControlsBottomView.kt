@@ -60,6 +60,7 @@ import dev.anilbeesetti.nextplayer.core.common.extensions.isTelevision
 import dev.anilbeesetti.nextplayer.core.model.VideoContentScale
 import dev.anilbeesetti.nextplayer.core.ui.R
 import dev.anilbeesetti.nextplayer.core.ui.extensions.copy
+import dev.anilbeesetti.nextplayer.core.ui.designsystem.NextIcons
 import dev.anilbeesetti.nextplayer.feature.player.LocalUseMaterialYouControls
 import dev.anilbeesetti.nextplayer.feature.player.buttons.LoopButton
 import dev.anilbeesetti.nextplayer.feature.player.buttons.PlayerButton
@@ -89,6 +90,13 @@ fun ControlsBottomView(
     onPlayInBackgroundClick: () -> Unit,
     onSeek: (Long) -> Unit,
     onSeekEnd: () -> Unit,
+    showFrameStepControls: Boolean,
+    frameStepCount: Int,
+    showScreenshotButton: Boolean,
+    onStepBackward: () -> Unit,
+    onStepForward: () -> Unit,
+    onScreenshotWithSubtitlesClick: () -> Unit,
+    onVideoScreenshotClick: () -> Unit,
 ) {
     val systemBarsPadding = WindowInsets.systemBars.union(WindowInsets.displayCutout).asPaddingValues()
     val context = LocalContext.current
@@ -160,42 +168,82 @@ fun ControlsBottomView(
         )
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .horizontalScroll(rememberScrollState()),
+                .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(8.dp, alignment = controlsAlignment),
         ) {
-            PlayerButton(onClick = onLockControlsClick) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_lock_open),
-                    contentDescription = null,
-                )
-            }
-            PlayerButton(
-                onClick = onVideoContentScaleClick,
-                onLongClick = onVideoContentScaleLongClick,
+            Row(
+                modifier = Modifier
+                    .weight(1f)
+                    .horizontalScroll(rememberScrollState()),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp, alignment = controlsAlignment),
             ) {
-                Icon(
-                    painter = painterResource(videoContentScale.drawableRes()),
-                    contentDescription = null,
-                )
-            }
-            if (isPipSupported) {
-                PlayerButton(onClick = onPictureInPictureClick) {
+                PlayerButton(onClick = onLockControlsClick) {
                     Icon(
-                        painter = painterResource(R.drawable.ic_pip),
+                        painter = painterResource(R.drawable.ic_lock_open),
                         contentDescription = null,
                     )
                 }
+                PlayerButton(
+                    onClick = onVideoContentScaleClick,
+                    onLongClick = onVideoContentScaleLongClick,
+                ) {
+                    Icon(
+                        painter = painterResource(videoContentScale.drawableRes()),
+                        contentDescription = null,
+                    )
+                }
+                if (isPipSupported) {
+                    PlayerButton(onClick = onPictureInPictureClick) {
+                        Icon(
+                            painter = painterResource(R.drawable.ic_pip),
+                            contentDescription = null,
+                        )
+                    }
+                }
+                PlayerButton(onClick = onPlayInBackgroundClick) {
+                    Icon(
+                        painter = painterResource(R.drawable.ic_headset),
+                        contentDescription = null,
+                    )
+                }
+                LoopButton(player = player)
+                ShuffleButton(player = player)
             }
-            PlayerButton(onClick = onPlayInBackgroundClick) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_headset),
-                    contentDescription = null,
-                )
+
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+            ) {
+                if (showFrameStepControls) {
+                    PlayerButton(onClick = onStepBackward) {
+                        Icon(
+                            imageVector = NextIcons.SkipPrevious,
+                            contentDescription = context.getString(R.string.frame_step_backward, frameStepCount),
+                        )
+                    }
+                    PlayerButton(onClick = onStepForward) {
+                        Icon(
+                            imageVector = NextIcons.SkipNext,
+                            contentDescription = context.getString(R.string.frame_step_forward, frameStepCount),
+                        )
+                    }
+                }
+                if (showScreenshotButton) {
+                    PlayerButton(onClick = onScreenshotWithSubtitlesClick) {
+                        Icon(
+                            imageVector = NextIcons.Caption,
+                            contentDescription = context.getString(R.string.take_screenshot),
+                        )
+                    }
+                    PlayerButton(onClick = onVideoScreenshotClick) {
+                        Icon(
+                            imageVector = NextIcons.Image,
+                            contentDescription = context.getString(R.string.take_video_screenshot),
+                        )
+                    }
+                }
             }
-            LoopButton(player = player)
-            ShuffleButton(player = player)
         }
     }
 }
