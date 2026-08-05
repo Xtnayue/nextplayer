@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Bildevis fremføring</string>
+    <string name="frame_step_controls_description">Vis knapper for å gå fremover eller bakover bilde for bilde</string>
+    <string name="frame_step_count">Bilder per trinn</string>
+    <string name="frames">%1$d bilder</string>
+    <string name="reset_frame_step_count">Tilbakestill bilder per trinn</string>
+    <string name="frame_step_forward">Gå %1$d bilder frem</string>
+    <string name="frame_step_backward">Gå %1$d bilder tilbake</string>
+    <string name="screenshot_button">Skjermbilde</string>
+    <string name="screenshot_button_description">Vis skjermbildeknapper med og uten undertekster</string>
+    <string name="take_screenshot">Ta skjermbilde med undertekster</string>
+    <string name="take_video_screenshot">Ta skjermbilde uten undertekster</string>
+    <string name="screenshot_saved">Skjermbildet er lagret</string>
+    <string name="screenshot_failed">Kunne ikke lagre skjermbildet</string>
+</resources>

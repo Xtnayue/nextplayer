@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Képkockánkénti léptetés</string>
+    <string name="frame_step_controls_description">Gombok megjelenítése a képkockánkénti előre- vagy visszalépéshez</string>
+    <string name="frame_step_count">Képkocka lépésenként</string>
+    <string name="frames">%1$d képkocka</string>
+    <string name="reset_frame_step_count">Képkockaszám visszaállítása</string>
+    <string name="frame_step_forward">Előre %1$d képkockával</string>
+    <string name="frame_step_backward">Vissza %1$d képkockával</string>
+    <string name="screenshot_button">Képernyőkép</string>
+    <string name="screenshot_button_description">Feliratos és felirat nélküli képernyőkép gombjainak megjelenítése</string>
+    <string name="take_screenshot">Képernyőkép felirattal</string>
+    <string name="take_video_screenshot">Képernyőkép felirat nélkül</string>
+    <string name="screenshot_saved">Képernyőkép mentve</string>
+    <string name="screenshot_failed">A képernyőkép nem menthető</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Przewijanie klatka po klatce</string>
+    <string name="frame_step_controls_description">Pokaż przyciski przechodzenia do przodu lub do tyłu po klatkach filmu</string>
+    <string name="frame_step_count">Klatek na krok</string>
+    <string name="frames">%1$d klatek</string>
+    <string name="reset_frame_step_count">Resetuj liczbę klatek na krok</string>
+    <string name="frame_step_forward">Do przodu o %1$d klatek</string>
+    <string name="frame_step_backward">Do tyłu o %1$d klatek</string>
+    <string name="screenshot_button">Zrzut ekranu</string>
+    <string name="screenshot_button_description">Pokaż przyciski zrzutu z napisami i bez napisów</string>
+    <string name="take_screenshot">Zrzut z napisami</string>
+    <string name="take_video_screenshot">Zrzut bez napisów</string>
+    <string name="screenshot_saved">Zrzut ekranu zapisany</string>
+    <string name="screenshot_failed">Nie udało się zapisać zrzutu</string>
+</resources>

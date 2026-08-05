@@ -382,4 +382,17 @@
     <string name="add_connection">添加连接</string>
     <string name="network">网络</string>
     <string name="home">主页</string>
+    <string name="frame_step_controls">帧步进</string>
+    <string name="frame_step_controls_description">显示按视频帧向前或向后步进的按钮</string>
+    <string name="frame_step_count">每次步进帧数</string>
+    <string name="frames">%1$d 帧</string>
+    <string name="reset_frame_step_count">重置每次步进帧数</string>
+    <string name="frame_step_forward">向前步进 %1$d 帧</string>
+    <string name="frame_step_backward">向后步进 %1$d 帧</string>
+    <string name="screenshot_button">截屏</string>
+    <string name="screenshot_button_description">显示带字幕截屏和无字幕截屏按钮</string>
+    <string name="take_screenshot">带字幕截屏</string>
+    <string name="take_video_screenshot">无字幕截屏</string>
+    <string name="screenshot_saved">截屏已保存</string>
+    <string name="screenshot_failed">无法保存截屏</string>
 </resources>

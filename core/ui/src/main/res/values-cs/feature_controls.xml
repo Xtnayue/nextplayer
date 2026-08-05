@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Posun po snímcích</string>
+    <string name="frame_step_controls_description">Zobrazit tlačítka pro posun vpřed nebo vzad po snímcích videa</string>
+    <string name="frame_step_count">Snímků na krok</string>
+    <string name="frames">%1$d snímků</string>
+    <string name="reset_frame_step_count">Obnovit počet snímků na krok</string>
+    <string name="frame_step_forward">Vpřed o %1$d snímků</string>
+    <string name="frame_step_backward">Zpět o %1$d snímků</string>
+    <string name="screenshot_button">Snímek obrazovky</string>
+    <string name="screenshot_button_description">Zobrazit tlačítka snímku s titulky a bez titulků</string>
+    <string name="take_screenshot">Snímek s titulky</string>
+    <string name="take_video_screenshot">Snímek bez titulků</string>
+    <string name="screenshot_saved">Snímek obrazovky uložen</string>
+    <string name="screenshot_failed">Snímek obrazovky se nepodařilo uložit</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Tiến theo khung hình</string>
+    <string name="frame_step_controls_description">Hiện nút để tiến hoặc lùi theo từng khung hình video</string>
+    <string name="frame_step_count">Số khung hình mỗi bước</string>
+    <string name="frames">%1$d khung hình</string>
+    <string name="reset_frame_step_count">Đặt lại số khung hình mỗi bước</string>
+    <string name="frame_step_forward">Tiến %1$d khung hình</string>
+    <string name="frame_step_backward">Lùi %1$d khung hình</string>
+    <string name="screenshot_button">Ảnh chụp màn hình</string>
+    <string name="screenshot_button_description">Hiện nút chụp ảnh có và không có phụ đề</string>
+    <string name="take_screenshot">Chụp ảnh có phụ đề</string>
+    <string name="take_video_screenshot">Chụp ảnh không có phụ đề</string>
+    <string name="screenshot_saved">Đã lưu ảnh chụp màn hình</string>
+    <string name="screenshot_failed">Không thể lưu ảnh chụp màn hình</string>
+</resources>

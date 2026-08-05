@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Kuva kuvalta siirtyminen</string>
+    <string name="frame_step_controls_description">Näytä painikkeet videossa eteen- tai taaksepäin kuva kerrallaan siirtymiseen</string>
+    <string name="frame_step_count">Kuvia askelta kohden</string>
+    <string name="frames">%1$d kuvaa</string>
+    <string name="reset_frame_step_count">Palauta kuvat askelta kohden</string>
+    <string name="frame_step_forward">Siirry %1$d kuvaa eteenpäin</string>
+    <string name="frame_step_backward">Siirry %1$d kuvaa taaksepäin</string>
+    <string name="screenshot_button">Kuvakaappaus</string>
+    <string name="screenshot_button_description">Näytä kuvakaappauspainikkeet tekstityksillä ja ilman</string>
+    <string name="take_screenshot">Ota kuvakaappaus tekstityksillä</string>
+    <string name="take_video_screenshot">Ota kuvakaappaus ilman tekstityksiä</string>
+    <string name="screenshot_saved">Kuvakaappaus tallennettu</string>
+    <string name="screenshot_failed">Kuvakaappausta ei voitu tallentaa</string>
+</resources>

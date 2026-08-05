@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Стъпка по кадри</string>
+    <string name="frame_step_controls_description">Показване на бутони за придвижване напред или назад по кадри</string>
+    <string name="frame_step_count">Кадри на стъпка</string>
+    <string name="frames">%1$d кадъра</string>
+    <string name="reset_frame_step_count">Нулиране на кадрите на стъпка</string>
+    <string name="frame_step_forward">Напред с %1$d кадъра</string>
+    <string name="frame_step_backward">Назад с %1$d кадъра</string>
+    <string name="screenshot_button">Екранна снимка</string>
+    <string name="screenshot_button_description">Показване на бутони за снимка със и без субтитри</string>
+    <string name="take_screenshot">Снимка със субтитри</string>
+    <string name="take_video_screenshot">Снимка без субтитри</string>
+    <string name="screenshot_saved">Екранната снимка е запазена</string>
+    <string name="screenshot_failed">Екранната снимка не бе запазена</string>
+</resources>

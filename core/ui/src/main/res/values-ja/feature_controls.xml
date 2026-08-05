@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">コマ送り</string>
+    <string name="frame_step_controls_description">動画をフレーム単位で前後に移動するボタンを表示します</string>
+    <string name="frame_step_count">1回のコマ送り数</string>
+    <string name="frames">%1$d フレーム</string>
+    <string name="reset_frame_step_count">1回のコマ送り数をリセット</string>
+    <string name="frame_step_forward">%1$d フレーム進む</string>
+    <string name="frame_step_backward">%1$d フレーム戻る</string>
+    <string name="screenshot_button">スクリーンショット</string>
+    <string name="screenshot_button_description">字幕ありと字幕なしのスクリーンショットボタンを表示します</string>
+    <string name="take_screenshot">字幕ありで撮影</string>
+    <string name="take_video_screenshot">字幕なしで撮影</string>
+    <string name="screenshot_saved">スクリーンショットを保存しました</string>
+    <string name="screenshot_failed">スクリーンショットを保存できませんでした</string>
+</resources>

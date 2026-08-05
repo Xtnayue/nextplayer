@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Kaaderhaaval liikumine</string>
+    <string name="frame_step_controls_description">Kuva nupud videos kaaderhaaval edasi või tagasi liikumiseks</string>
+    <string name="frame_step_count">Kaadreid sammu kohta</string>
+    <string name="frames">%1$d kaadrit</string>
+    <string name="reset_frame_step_count">Lähtesta kaadrite arv sammu kohta</string>
+    <string name="frame_step_forward">Edasi %1$d kaadrit</string>
+    <string name="frame_step_backward">Tagasi %1$d kaadrit</string>
+    <string name="screenshot_button">Kuvatõmmis</string>
+    <string name="screenshot_button_description">Kuva subtiitritega ja subtiitriteta kuvatõmmise nupud</string>
+    <string name="take_screenshot">Tee kuvatõmmis subtiitritega</string>
+    <string name="take_video_screenshot">Tee kuvatõmmis subtiitriteta</string>
+    <string name="screenshot_saved">Kuvatõmmis salvestatud</string>
+    <string name="screenshot_failed">Kuvatõmmist ei saanud salvestada</string>
+</resources>

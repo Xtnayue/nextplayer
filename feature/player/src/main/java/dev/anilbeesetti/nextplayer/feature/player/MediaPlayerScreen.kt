@@ -1,7 +1,5 @@
 package dev.anilbeesetti.nextplayer.feature.player
 
-import android.graphics.Rect
-import android.os.Build
 import android.widget.Toast
 import androidx.activity.compose.BackHandler
 import androidx.annotation.OptIn
@@ -201,7 +199,6 @@ fun MediaPlayerScreen(
     }
 
     var overlayView by remember { mutableStateOf<OverlayView?>(null) }
-    var playerBounds by remember { mutableStateOf<Rect?>(null) }
     var screenshotMode by remember { mutableStateOf<ScreenshotMode?>(null) }
 
     val context = LocalContext.current
@@ -217,23 +214,21 @@ fun MediaPlayerScreen(
 
     val requestScreenshot: (ScreenshotMode) -> Unit = { mode ->
         if (screenshotMode == null) {
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                Toast.makeText(context, coreUiR.string.screenshot_requires_android_8, Toast.LENGTH_SHORT).show()
-            } else {
-                screenshotMode = mode
-                controlsVisibilityState.hideControls()
-                coroutineScope.launch {
-                    delay(400.milliseconds)
-                    val activity = context as? PlayerActivity
-                    val bounds = playerBounds
-                    val saved = activity != null && bounds != null && captureAndSaveScreenshot(activity.window, bounds)
-                    screenshotMode = null
-                    Toast.makeText(
-                        context,
-                        if (saved) coreUiR.string.screenshot_saved else coreUiR.string.screenshot_failed,
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                }
+            screenshotMode = mode
+            controlsVisibilityState.hideControls()
+            coroutineScope.launch {
+                delay(400.milliseconds)
+                val activity = context as? PlayerActivity
+                val saved = activity != null && captureAndSaveScreenshot(
+                    window = activity.window,
+                    includeSubtitles = mode == ScreenshotMode.WITH_SUBTITLES,
+                )
+                screenshotMode = null
+                Toast.makeText(
+                    context,
+                    if (saved) coreUiR.string.screenshot_saved else coreUiR.string.screenshot_failed,
+                    Toast.LENGTH_SHORT,
+                ).show()
             }
         }
     }
@@ -317,9 +312,6 @@ fun MediaPlayerScreen(
                         textBold = playerPreferences.subtitleTextBold,
                         applyEmbeddedStyles = playerPreferences.applyEmbeddedStyles,
                     ),
-                    enableScreenshotCapture = playerPreferences.showScreenshotButton,
-                    showSubtitles = screenshotMode != ScreenshotMode.VIDEO_ONLY,
-                    onBoundsChanged = { playerBounds = it },
                 )
 
                 AnimatedVisibility(

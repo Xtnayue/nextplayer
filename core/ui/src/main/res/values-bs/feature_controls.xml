@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Pomicanje po kadrovima</string>
+    <string name="frame_step_controls_description">Prikaži dugmad za pomicanje naprijed ili nazad po kadrovima</string>
+    <string name="frame_step_count">Kadrova po koraku</string>
+    <string name="frames">%1$d kadrova</string>
+    <string name="reset_frame_step_count">Vrati broj kadrova po koraku</string>
+    <string name="frame_step_forward">Naprijed %1$d kadrova</string>
+    <string name="frame_step_backward">Nazad %1$d kadrova</string>
+    <string name="screenshot_button">Snimak ekrana</string>
+    <string name="screenshot_button_description">Prikaži dugmad za snimak sa i bez titlova</string>
+    <string name="take_screenshot">Snimi sa titlovima</string>
+    <string name="take_video_screenshot">Snimi bez titlova</string>
+    <string name="screenshot_saved">Snimak ekrana je sačuvan</string>
+    <string name="screenshot_failed">Snimak ekrana nije moguće sačuvati</string>
+</resources>

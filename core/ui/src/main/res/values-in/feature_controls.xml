@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Langkah per bingkai</string>
+    <string name="frame_step_controls_description">Tampilkan tombol untuk maju atau mundur berdasarkan bingkai video</string>
+    <string name="frame_step_count">Bingkai per langkah</string>
+    <string name="frames">%1$d bingkai</string>
+    <string name="reset_frame_step_count">Setel ulang bingkai per langkah</string>
+    <string name="frame_step_forward">Maju %1$d bingkai</string>
+    <string name="frame_step_backward">Mundur %1$d bingkai</string>
+    <string name="screenshot_button">Tangkapan layar</string>
+    <string name="screenshot_button_description">Tampilkan tombol tangkapan dengan dan tanpa subtitel</string>
+    <string name="take_screenshot">Ambil tangkapan dengan subtitel</string>
+    <string name="take_video_screenshot">Ambil tangkapan tanpa subtitel</string>
+    <string name="screenshot_saved">Tangkapan layar disimpan</string>
+    <string name="screenshot_failed">Tangkapan layar tidak dapat disimpan</string>
+</resources>

@@ -25,7 +25,6 @@ fun SubtitleView(
     player: Player,
     isInPictureInPictureMode: Boolean,
     configuration: SubtitleConfiguration,
-    visible: Boolean = true,
 ) {
     val cuesState = rememberCuesState(player)
 
@@ -56,7 +55,6 @@ fun SubtitleView(
             }
         },
         update = { subtitleView ->
-            subtitleView.alpha = if (visible) 1f else 0f
             subtitleView.setCues(cuesState.cues)
             if (isInPictureInPictureMode) {
                 subtitleView.setFractionalTextSize(SubtitleView.DEFAULT_TEXT_SIZE_FRACTION)

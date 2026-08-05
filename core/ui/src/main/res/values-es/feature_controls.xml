@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Avance por fotogramas</string>
+    <string name="frame_step_controls_description">Mostrar botones para avanzar o retroceder fotogramas del vídeo</string>
+    <string name="frame_step_count">Fotogramas por paso</string>
+    <string name="frames">%1$d fotogramas</string>
+    <string name="reset_frame_step_count">Restablecer fotogramas por paso</string>
+    <string name="frame_step_forward">Avanzar %1$d fotogramas</string>
+    <string name="frame_step_backward">Retroceder %1$d fotogramas</string>
+    <string name="screenshot_button">Captura de pantalla</string>
+    <string name="screenshot_button_description">Mostrar botones de captura con subtítulos y sin ellos</string>
+    <string name="take_screenshot">Captura con subtítulos</string>
+    <string name="take_video_screenshot">Captura sin subtítulos</string>
+    <string name="screenshot_saved">Captura guardada</string>
+    <string name="screenshot_failed">No se pudo guardar la captura</string>
+</resources>

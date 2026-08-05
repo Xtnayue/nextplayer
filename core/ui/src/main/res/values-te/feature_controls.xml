@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">ఫ్రేమ్ వారీగా కదలిక</string>
+    <string name="frame_step_controls_description">వీడియో ఫ్రేమ్‌ల వారీగా ముందుకు లేదా వెనుకకు వెళ్లే బటన్‌లను చూపు</string>
+    <string name="frame_step_count">ఒక్కో దశకు ఫ్రేమ్‌లు</string>
+    <string name="frames">%1$d ఫ్రేమ్‌లు</string>
+    <string name="reset_frame_step_count">ఒక్కో దశ ఫ్రేమ్‌లను రీసెట్ చేయి</string>
+    <string name="frame_step_forward">%1$d ఫ్రేమ్‌లు ముందుకు</string>
+    <string name="frame_step_backward">%1$d ఫ్రేమ్‌లు వెనుకకు</string>
+    <string name="screenshot_button">స్క్రీన్‌షాట్</string>
+    <string name="screenshot_button_description">ఉపశీర్షికలతో మరియు లేకుండా స్క్రీన్‌షాట్ బటన్‌లను చూపు</string>
+    <string name="take_screenshot">ఉపశీర్షికలతో స్క్రీన్‌షాట్</string>
+    <string name="take_video_screenshot">ఉపశీర్షికలు లేకుండా స్క్రీన్‌షాట్</string>
+    <string name="screenshot_saved">స్క్రీన్‌షాట్ సేవ్ అయింది</string>
+    <string name="screenshot_failed">స్క్రీన్‌షాట్ సేవ్ చేయలేకపోయింది</string>
+</resources>

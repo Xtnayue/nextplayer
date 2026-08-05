@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Kare kare ilerleme</string>
+    <string name="frame_step_controls_description">Video kareleriyle ileri veya geri gitme düğmelerini göster</string>
+    <string name="frame_step_count">Adım başına kare</string>
+    <string name="frames">%1$d kare</string>
+    <string name="reset_frame_step_count">Adım başına kare sayısını sıfırla</string>
+    <string name="frame_step_forward">%1$d kare ileri</string>
+    <string name="frame_step_backward">%1$d kare geri</string>
+    <string name="screenshot_button">Ekran görüntüsü</string>
+    <string name="screenshot_button_description">Altyazılı ve altyazısız ekran görüntüsü düğmelerini göster</string>
+    <string name="take_screenshot">Altyazılı ekran görüntüsü</string>
+    <string name="take_video_screenshot">Altyazısız ekran görüntüsü</string>
+    <string name="screenshot_saved">Ekran görüntüsü kaydedildi</string>
+    <string name="screenshot_failed">Ekran görüntüsü kaydedilemedi</string>
+</resources>

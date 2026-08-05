@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Einzelbildschritt</string>
+    <string name="frame_step_controls_description">Schaltflächen zum bildweisen Vor- oder Zurückgehen anzeigen</string>
+    <string name="frame_step_count">Bilder pro Schritt</string>
+    <string name="frames">%1$d Bilder</string>
+    <string name="reset_frame_step_count">Bilder pro Schritt zurücksetzen</string>
+    <string name="frame_step_forward">%1$d Bilder vor</string>
+    <string name="frame_step_backward">%1$d Bilder zurück</string>
+    <string name="screenshot_button">Bildschirmfoto</string>
+    <string name="screenshot_button_description">Schaltflächen für Bildschirmfotos mit und ohne Untertitel anzeigen</string>
+    <string name="take_screenshot">Bildschirmfoto mit Untertiteln</string>
+    <string name="take_video_screenshot">Bildschirmfoto ohne Untertitel</string>
+    <string name="screenshot_saved">Bildschirmfoto gespeichert</string>
+    <string name="screenshot_failed">Bildschirmfoto konnte nicht gespeichert werden</string>
+</resources>

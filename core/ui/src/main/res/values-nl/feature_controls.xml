@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Beeld voor beeld</string>
+    <string name="frame_step_controls_description">Knoppen tonen om per videoframe vooruit of achteruit te gaan</string>
+    <string name="frame_step_count">Frames per stap</string>
+    <string name="frames">%1$d frames</string>
+    <string name="reset_frame_step_count">Frames per stap resetten</string>
+    <string name="frame_step_forward">%1$d frames vooruit</string>
+    <string name="frame_step_backward">%1$d frames achteruit</string>
+    <string name="screenshot_button">Schermafbeelding</string>
+    <string name="screenshot_button_description">Knoppen tonen voor schermafbeeldingen met en zonder ondertitels</string>
+    <string name="take_screenshot">Schermafbeelding met ondertitels</string>
+    <string name="take_video_screenshot">Schermafbeelding zonder ondertitels</string>
+    <string name="screenshot_saved">Schermafbeelding opgeslagen</string>
+    <string name="screenshot_failed">Kan schermafbeelding niet opslaan</string>
+</resources>

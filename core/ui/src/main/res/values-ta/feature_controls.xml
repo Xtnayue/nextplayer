@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">ஃபிரேம் படிநிலை</string>
+    <string name="frame_step_controls_description">வீடியோ ஃபிரேம்களாக முன்னோக்கி அல்லது பின்னோக்கி நகரும் பொத்தான்களைக் காட்டு</string>
+    <string name="frame_step_count">ஒரு படிக்கு ஃபிரேம்கள்</string>
+    <string name="frames">%1$d ஃபிரேம்கள்</string>
+    <string name="reset_frame_step_count">ஒரு படிக்கான ஃபிரேம்களை மீட்டமை</string>
+    <string name="frame_step_forward">%1$d ஃபிரேம்கள் முன்னே</string>
+    <string name="frame_step_backward">%1$d ஃபிரேம்கள் பின்னே</string>
+    <string name="screenshot_button">திரைப்பிடிப்பு</string>
+    <string name="screenshot_button_description">வசனங்களுடனும் இல்லாமலும் திரைப்பிடிப்பு பொத்தான்களைக் காட்டு</string>
+    <string name="take_screenshot">வசனங்களுடன் திரைப்பிடி</string>
+    <string name="take_video_screenshot">வசனங்கள் இல்லாமல் திரைப்பிடி</string>
+    <string name="screenshot_saved">திரைப்பிடிப்பு சேமிக்கப்பட்டது</string>
+    <string name="screenshot_failed">திரைப்பிடிப்பைச் சேமிக்க முடியவில்லை</string>
+</resources>

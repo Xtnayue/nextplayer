@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">ফ্রেম ধরে এগোনো</string>
+    <string name="frame_step_controls_description">ভিডিও ফ্রেম ধরে সামনে বা পেছনে যাওয়ার বোতাম দেখান</string>
+    <string name="frame_step_count">প্রতি ধাপে ফ্রেম</string>
+    <string name="frames">%1$d ফ্রেম</string>
+    <string name="reset_frame_step_count">প্রতি ধাপের ফ্রেম রিসেট করুন</string>
+    <string name="frame_step_forward">%1$d ফ্রেম সামনে যান</string>
+    <string name="frame_step_backward">%1$d ফ্রেম পেছনে যান</string>
+    <string name="screenshot_button">স্ক্রিনশট</string>
+    <string name="screenshot_button_description">সাবটাইটেলসহ ও সাবটাইটেল ছাড়া স্ক্রিনশট বোতাম দেখান</string>
+    <string name="take_screenshot">সাবটাইটেলসহ স্ক্রিনশট নিন</string>
+    <string name="take_video_screenshot">সাবটাইটেল ছাড়া স্ক্রিনশট নিন</string>
+    <string name="screenshot_saved">স্ক্রিনশট সংরক্ষিত হয়েছে</string>
+    <string name="screenshot_failed">স্ক্রিনশট সংরক্ষণ করা যায়নি</string>
+</resources>

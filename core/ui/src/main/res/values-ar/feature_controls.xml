@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">التقدم إطارًا بإطار</string>
+    <string name="frame_step_controls_description">إظهار أزرار للتقدم أو الرجوع بإطارات الفيديو</string>
+    <string name="frame_step_count">الإطارات في كل خطوة</string>
+    <string name="frames">%1$d إطار</string>
+    <string name="reset_frame_step_count">إعادة ضبط عدد الإطارات لكل خطوة</string>
+    <string name="frame_step_forward">التقدم %1$d إطار</string>
+    <string name="frame_step_backward">الرجوع %1$d إطار</string>
+    <string name="screenshot_button">لقطة شاشة</string>
+    <string name="screenshot_button_description">إظهار زري لقطة مع الترجمة وبدونها</string>
+    <string name="take_screenshot">التقاط لقطة مع الترجمة</string>
+    <string name="take_video_screenshot">التقاط لقطة بدون ترجمة</string>
+    <string name="screenshot_saved">تم حفظ لقطة الشاشة</string>
+    <string name="screenshot_failed">تعذر حفظ لقطة الشاشة</string>
+</resources>

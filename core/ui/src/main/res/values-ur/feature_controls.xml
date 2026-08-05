@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">فریم بہ فریم پیش رفت</string>
+    <string name="frame_step_controls_description">ویڈیو فریموں کے مطابق آگے یا پیچھے جانے کے بٹن دکھائیں</string>
+    <string name="frame_step_count">فی قدم فریم</string>
+    <string name="frames">%1$d فریم</string>
+    <string name="reset_frame_step_count">فی قدم فریم دوبارہ ترتیب دیں</string>
+    <string name="frame_step_forward">%1$d فریم آگے</string>
+    <string name="frame_step_backward">%1$d فریم پیچھے</string>
+    <string name="screenshot_button">اسکرین شاٹ</string>
+    <string name="screenshot_button_description">سب ٹائٹل کے ساتھ اور بغیر اسکرین شاٹ بٹن دکھائیں</string>
+    <string name="take_screenshot">سب ٹائٹل کے ساتھ اسکرین شاٹ</string>
+    <string name="take_video_screenshot">سب ٹائٹل کے بغیر اسکرین شاٹ</string>
+    <string name="screenshot_saved">اسکرین شاٹ محفوظ ہو گیا</string>
+    <string name="screenshot_failed">اسکرین شاٹ محفوظ نہیں ہو سکا</string>
+</resources>

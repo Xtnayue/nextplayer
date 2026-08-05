@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Avanzamento per fotogrammi</string>
+    <string name="frame_step_controls_description">Mostra i pulsanti per avanzare o tornare indietro per fotogrammi</string>
+    <string name="frame_step_count">Fotogrammi per passo</string>
+    <string name="frames">%1$d fotogrammi</string>
+    <string name="reset_frame_step_count">Reimposta fotogrammi per passo</string>
+    <string name="frame_step_forward">Avanti di %1$d fotogrammi</string>
+    <string name="frame_step_backward">Indietro di %1$d fotogrammi</string>
+    <string name="screenshot_button">Schermata</string>
+    <string name="screenshot_button_description">Mostra i pulsanti per schermate con e senza sottotitoli</string>
+    <string name="take_screenshot">Schermata con sottotitoli</string>
+    <string name="take_video_screenshot">Schermata senza sottotitoli</string>
+    <string name="screenshot_saved">Schermata salvata</string>
+    <string name="screenshot_failed">Impossibile salvare la schermata</string>
+</resources>

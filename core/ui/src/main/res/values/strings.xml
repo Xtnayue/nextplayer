@@ -44,12 +44,10 @@
     <string name="frame_step_backward">Step backward %1$d frames</string>
     <string name="screenshot_button">Screenshot</string>
     <string name="screenshot_button_description">Show a player button for screenshots with subtitles or video-only screenshots</string>
-    <string name="screenshot_type">Screenshot type</string>
     <string name="take_screenshot">Take screenshot with subtitles</string>
     <string name="take_video_screenshot">Take screenshot without subtitles</string>
     <string name="screenshot_saved">Screenshot saved</string>
     <string name="screenshot_failed">Could not save screenshot</string>
-    <string name="screenshot_requires_android_8">Screenshots require Android 8.0 or later</string>
     <string name="gestures_name">Gestures</string>
     <string name="gestures_description">Configure player touch gestures</string>
     <string name="quick_settings">Quick Settings</string>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Avansare cadru cu cadru</string>
+    <string name="frame_step_controls_description">Afișează butoane pentru deplasarea înainte sau înapoi după cadre</string>
+    <string name="frame_step_count">Cadre pe pas</string>
+    <string name="frames">%1$d cadre</string>
+    <string name="reset_frame_step_count">Resetează cadrele pe pas</string>
+    <string name="frame_step_forward">Înainte cu %1$d cadre</string>
+    <string name="frame_step_backward">Înapoi cu %1$d cadre</string>
+    <string name="screenshot_button">Captură de ecran</string>
+    <string name="screenshot_button_description">Afișează butoane de captură cu și fără subtitrări</string>
+    <string name="take_screenshot">Captură cu subtitrări</string>
+    <string name="take_video_screenshot">Captură fără subtitrări</string>
+    <string name="screenshot_saved">Captură de ecran salvată</string>
+    <string name="screenshot_failed">Captura nu a putut fi salvată</string>
+</resources>

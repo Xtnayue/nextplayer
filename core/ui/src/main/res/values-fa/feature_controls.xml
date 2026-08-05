@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">پیش‌روی فریم‌به‌فریم</string>
+    <string name="frame_step_controls_description">نمایش دکمه‌های حرکت رو به جلو یا عقب بر اساس فریم</string>
+    <string name="frame_step_count">فریم در هر گام</string>
+    <string name="frames">%1$d فریم</string>
+    <string name="reset_frame_step_count">بازنشانی فریم‌های هر گام</string>
+    <string name="frame_step_forward">%1$d فریم به جلو</string>
+    <string name="frame_step_backward">%1$d فریم به عقب</string>
+    <string name="screenshot_button">نماگرفت</string>
+    <string name="screenshot_button_description">نمایش دکمه‌های نماگرفت با و بدون زیرنویس</string>
+    <string name="take_screenshot">نماگرفت با زیرنویس</string>
+    <string name="take_video_screenshot">نماگرفت بدون زیرنویس</string>
+    <string name="screenshot_saved">نماگرفت ذخیره شد</string>
+    <string name="screenshot_failed">ذخیره نماگرفت ممکن نشد</string>
+</resources>

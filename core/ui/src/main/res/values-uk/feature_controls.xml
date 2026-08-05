@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Покадрове переміщення</string>
+    <string name="frame_step_controls_description">Показувати кнопки переміщення вперед або назад за кадрами відео</string>
+    <string name="frame_step_count">Кадрів за крок</string>
+    <string name="frames">%1$d кадрів</string>
+    <string name="reset_frame_step_count">Скинути кількість кадрів за крок</string>
+    <string name="frame_step_forward">Уперед на %1$d кадрів</string>
+    <string name="frame_step_backward">Назад на %1$d кадрів</string>
+    <string name="screenshot_button">Знімок екрана</string>
+    <string name="screenshot_button_description">Показувати кнопки знімка із субтитрами та без них</string>
+    <string name="take_screenshot">Знімок із субтитрами</string>
+    <string name="take_video_screenshot">Знімок без субтитрів</string>
+    <string name="screenshot_saved">Знімок екрана збережено</string>
+    <string name="screenshot_failed">Не вдалося зберегти знімок</string>
+</resources>

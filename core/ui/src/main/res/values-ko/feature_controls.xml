@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">프레임 이동</string>
+    <string name="frame_step_controls_description">동영상 프레임 단위로 앞뒤로 이동하는 버튼 표시</string>
+    <string name="frame_step_count">한 번에 이동할 프레임</string>
+    <string name="frames">%1$d프레임</string>
+    <string name="reset_frame_step_count">이동 프레임 수 재설정</string>
+    <string name="frame_step_forward">%1$d프레임 앞으로</string>
+    <string name="frame_step_backward">%1$d프레임 뒤로</string>
+    <string name="screenshot_button">스크린샷</string>
+    <string name="screenshot_button_description">자막 포함 및 미포함 스크린샷 버튼 표시</string>
+    <string name="take_screenshot">자막 포함 스크린샷</string>
+    <string name="take_video_screenshot">자막 미포함 스크린샷</string>
+    <string name="screenshot_saved">스크린샷을 저장했습니다</string>
+    <string name="screenshot_failed">스크린샷을 저장하지 못했습니다</string>
+</resources>

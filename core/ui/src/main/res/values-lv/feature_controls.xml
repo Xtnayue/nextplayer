@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Pārvietošanās pa kadriem</string>
+    <string name="frame_step_controls_description">Rādīt pogas pārvietošanai uz priekšu vai atpakaļ pa video kadriem</string>
+    <string name="frame_step_count">Kadri vienā solī</string>
+    <string name="frames">%1$d kadri</string>
+    <string name="reset_frame_step_count">Atiestatīt kadrus vienā solī</string>
+    <string name="frame_step_forward">Uz priekšu par %1$d kadriem</string>
+    <string name="frame_step_backward">Atpakaļ par %1$d kadriem</string>
+    <string name="screenshot_button">Ekrānuzņēmums</string>
+    <string name="screenshot_button_description">Rādīt ekrānuzņēmuma pogas ar subtitriem un bez tiem</string>
+    <string name="take_screenshot">Ekrānuzņēmums ar subtitriem</string>
+    <string name="take_video_screenshot">Ekrānuzņēmums bez subtitriem</string>
+    <string name="screenshot_saved">Ekrānuzņēmums saglabāts</string>
+    <string name="screenshot_failed">Neizdevās saglabāt ekrānuzņēmumu</string>
+</resources>

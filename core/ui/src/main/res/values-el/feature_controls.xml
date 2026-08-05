@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Μετακίνηση ανά καρέ</string>
+    <string name="frame_step_controls_description">Εμφάνιση κουμπιών για μετακίνηση εμπρός ή πίσω ανά καρέ</string>
+    <string name="frame_step_count">Καρέ ανά βήμα</string>
+    <string name="frames">%1$d καρέ</string>
+    <string name="reset_frame_step_count">Επαναφορά καρέ ανά βήμα</string>
+    <string name="frame_step_forward">Εμπρός κατά %1$d καρέ</string>
+    <string name="frame_step_backward">Πίσω κατά %1$d καρέ</string>
+    <string name="screenshot_button">Στιγμιότυπο οθόνης</string>
+    <string name="screenshot_button_description">Εμφάνιση κουμπιών στιγμιότυπου με και χωρίς υπότιτλους</string>
+    <string name="take_screenshot">Στιγμιότυπο με υπότιτλους</string>
+    <string name="take_video_screenshot">Στιγμιότυπο χωρίς υπότιτλους</string>
+    <string name="screenshot_saved">Το στιγμιότυπο αποθηκεύτηκε</string>
+    <string name="screenshot_failed">Δεν ήταν δυνατή η αποθήκευση</string>
+</resources>

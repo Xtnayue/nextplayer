@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Avanço por quadros</string>
+    <string name="frame_step_controls_description">Mostrar botões para avançar ou retroceder pelos quadros do vídeo</string>
+    <string name="frame_step_count">Quadros por passo</string>
+    <string name="frames">%1$d quadros</string>
+    <string name="reset_frame_step_count">Redefinir quadros por passo</string>
+    <string name="frame_step_forward">Avançar %1$d quadros</string>
+    <string name="frame_step_backward">Retroceder %1$d quadros</string>
+    <string name="screenshot_button">Captura de tela</string>
+    <string name="screenshot_button_description">Mostrar botões de captura com e sem legendas</string>
+    <string name="take_screenshot">Captura com legendas</string>
+    <string name="take_video_screenshot">Captura sem legendas</string>
+    <string name="screenshot_saved">Captura de tela salva</string>
+    <string name="screenshot_failed">Não foi possível salvar a captura</string>
+</resources>

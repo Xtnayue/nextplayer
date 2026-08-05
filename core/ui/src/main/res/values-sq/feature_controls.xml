@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Lëvizja kornizë pas kornize</string>
+    <string name="frame_step_controls_description">Shfaq butonat për të lëvizur përpara ose prapa sipas kornizave</string>
+    <string name="frame_step_count">Korniza për hap</string>
+    <string name="frames">%1$d korniza</string>
+    <string name="reset_frame_step_count">Rivendos kornizat për hap</string>
+    <string name="frame_step_forward">Përpara %1$d korniza</string>
+    <string name="frame_step_backward">Prapa %1$d korniza</string>
+    <string name="screenshot_button">Pamje ekrani</string>
+    <string name="screenshot_button_description">Shfaq butonat e pamjes me dhe pa titra</string>
+    <string name="take_screenshot">Pamje me titra</string>
+    <string name="take_video_screenshot">Pamje pa titra</string>
+    <string name="screenshot_saved">Pamja e ekranit u ruajt</string>
+    <string name="screenshot_failed">Pamja e ekranit nuk u ruajt</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Avançament fotograma a fotograma</string>
+    <string name="frame_step_controls_description">Mostra botons per avançar o retrocedir fotogrames del vídeo</string>
+    <string name="frame_step_count">Fotogrames per pas</string>
+    <string name="frames">%1$d fotogrames</string>
+    <string name="reset_frame_step_count">Restableix els fotogrames per pas</string>
+    <string name="frame_step_forward">Avança %1$d fotogrames</string>
+    <string name="frame_step_backward">Retrocedeix %1$d fotogrames</string>
+    <string name="screenshot_button">Captura de pantalla</string>
+    <string name="screenshot_button_description">Mostra botons de captura amb subtítols i sense</string>
+    <string name="take_screenshot">Captura amb subtítols</string>
+    <string name="take_video_screenshot">Captura sense subtítols</string>
+    <string name="screenshot_saved">S\'ha desat la captura</string>
+    <string name="screenshot_failed">No s\'ha pogut desar la captura</string>
+</resources>

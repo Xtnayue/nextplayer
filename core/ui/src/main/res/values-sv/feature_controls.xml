@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">Bildrutestegning</string>
+    <string name="frame_step_controls_description">Visa knappar för att gå framåt eller bakåt bildruta för bildruta</string>
+    <string name="frame_step_count">Bildrutor per steg</string>
+    <string name="frames">%1$d bildrutor</string>
+    <string name="reset_frame_step_count">Återställ bildrutor per steg</string>
+    <string name="frame_step_forward">Gå %1$d bildrutor framåt</string>
+    <string name="frame_step_backward">Gå %1$d bildrutor bakåt</string>
+    <string name="screenshot_button">Skärmbild</string>
+    <string name="screenshot_button_description">Visa skärmbildsknappar med och utan undertexter</string>
+    <string name="take_screenshot">Ta skärmbild med undertexter</string>
+    <string name="take_video_screenshot">Ta skärmbild utan undertexter</string>
+    <string name="screenshot_saved">Skärmbilden har sparats</string>
+    <string name="screenshot_failed">Det gick inte att spara skärmbilden</string>
+</resources>

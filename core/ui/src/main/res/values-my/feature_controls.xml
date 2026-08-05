@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">ဖရိမ်အလိုက် ရွှေ့ခြင်း</string>
+    <string name="frame_step_controls_description">ဗီဒီယိုဖရိမ်အလိုက် ရှေ့ သို့မဟုတ် နောက်သို့ရွှေ့ရန် ခလုတ်များပြပါ</string>
+    <string name="frame_step_count">တစ်ဆင့်လျှင် ဖရိမ်</string>
+    <string name="frames">%1$d ဖရိမ်</string>
+    <string name="reset_frame_step_count">တစ်ဆင့်လျှင် ဖရိမ်ကို ပြန်သတ်မှတ်ပါ</string>
+    <string name="frame_step_forward">%1$d ဖရိမ် ရှေ့သို့</string>
+    <string name="frame_step_backward">%1$d ဖရိမ် နောက်သို့</string>
+    <string name="screenshot_button">မျက်နှာပြင်ပုံ</string>
+    <string name="screenshot_button_description">စာတန်းထိုးပါသောနှင့် မပါသော မျက်နှာပြင်ပုံခလုတ်များပြပါ</string>
+    <string name="take_screenshot">စာတန်းထိုးပါသော မျက်နှာပြင်ပုံ</string>
+    <string name="take_video_screenshot">စာတန်းထိုးမပါသော မျက်နှာပြင်ပုံ</string>
+    <string name="screenshot_saved">မျက်နှာပြင်ပုံ သိမ်းပြီးပါပြီ</string>
+    <string name="screenshot_failed">မျက်နှာပြင်ပုံ မသိမ်းနိုင်ပါ</string>
+</resources>

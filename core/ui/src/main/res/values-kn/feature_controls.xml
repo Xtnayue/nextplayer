@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">ಫ್ರೇಮ್ ಹಂತ</string>
+    <string name="frame_step_controls_description">ವೀಡಿಯೊ ಫ್ರೇಮ್‌ಗಳ ಮೂಲಕ ಮುಂದೆ ಅಥವಾ ಹಿಂದೆ ಹೋಗುವ ಗುಂಡಿಗಳನ್ನು ತೋರಿಸಿ</string>
+    <string name="frame_step_count">ಪ್ರತಿ ಹಂತಕ್ಕೆ ಫ್ರೇಮ್‌ಗಳು</string>
+    <string name="frames">%1$d ಫ್ರೇಮ್‌ಗಳು</string>
+    <string name="reset_frame_step_count">ಪ್ರತಿ ಹಂತದ ಫ್ರೇಮ್‌ಗಳನ್ನು ಮರುಹೊಂದಿಸಿ</string>
+    <string name="frame_step_forward">%1$d ಫ್ರೇಮ್‌ಗಳು ಮುಂದೆ</string>
+    <string name="frame_step_backward">%1$d ಫ್ರೇಮ್‌ಗಳು ಹಿಂದೆ</string>
+    <string name="screenshot_button">ಸ್ಕ್ರೀನ್‌ಶಾಟ್</string>
+    <string name="screenshot_button_description">ಉಪಶೀರ್ಷಿಕೆಗಳೊಂದಿಗೆ ಮತ್ತು ಇಲ್ಲದೆ ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಗುಂಡಿಗಳನ್ನು ತೋರಿಸಿ</string>
+    <string name="take_screenshot">ಉಪಶೀರ್ಷಿಕೆಗಳೊಂದಿಗೆ ಸ್ಕ್ರೀನ್‌ಶಾಟ್</string>
+    <string name="take_video_screenshot">ಉಪಶೀರ್ಷಿಕೆಗಳಿಲ್ಲದೆ ಸ್ಕ್ರೀನ್‌ಶಾಟ್</string>
+    <string name="screenshot_saved">ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಉಳಿಸಲಾಗಿದೆ</string>
+    <string name="screenshot_failed">ಸ್ಕ್ರೀನ್‌ಶಾಟ್ ಉಳಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ</string>
+</resources>

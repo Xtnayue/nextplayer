@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">फ़्रेम के अनुसार आगे बढ़ना</string>
+    <string name="frame_step_controls_description">वीडियो फ़्रेम के अनुसार आगे या पीछे जाने के बटन दिखाएँ</string>
+    <string name="frame_step_count">प्रति चरण फ़्रेम</string>
+    <string name="frames">%1$d फ़्रेम</string>
+    <string name="reset_frame_step_count">प्रति चरण फ़्रेम रीसेट करें</string>
+    <string name="frame_step_forward">%1$d फ़्रेम आगे जाएँ</string>
+    <string name="frame_step_backward">%1$d फ़्रेम पीछे जाएँ</string>
+    <string name="screenshot_button">स्क्रीनशॉट</string>
+    <string name="screenshot_button_description">उपशीर्षक के साथ और बिना स्क्रीनशॉट बटन दिखाएँ</string>
+    <string name="take_screenshot">उपशीर्षक के साथ स्क्रीनशॉट लें</string>
+    <string name="take_video_screenshot">उपशीर्षक के बिना स्क्रीनशॉट लें</string>
+    <string name="screenshot_saved">स्क्रीनशॉट सेव हो गया</string>
+    <string name="screenshot_failed">स्क्रीनशॉट सेव नहीं हो सका</string>
+</resources>

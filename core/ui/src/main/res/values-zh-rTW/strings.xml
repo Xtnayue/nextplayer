@@ -382,4 +382,17 @@
     <string name="failed_to_load_folder">無法載入這個檔案位置</string>
     <string name="retry">重試</string>
     <string name="edit">編輯</string>
+    <string name="frame_step_controls">影格步進</string>
+    <string name="frame_step_controls_description">顯示按影片影格向前或向後步進的按鈕</string>
+    <string name="frame_step_count">每次步進影格數</string>
+    <string name="frames">%1$d 格</string>
+    <string name="reset_frame_step_count">重設每次步進影格數</string>
+    <string name="frame_step_forward">向前步進 %1$d 格</string>
+    <string name="frame_step_backward">向後步進 %1$d 格</string>
+    <string name="screenshot_button">螢幕截圖</string>
+    <string name="screenshot_button_description">顯示包含字幕與不含字幕的截圖按鈕</string>
+    <string name="take_screenshot">包含字幕的截圖</string>
+    <string name="take_video_screenshot">不含字幕的截圖</string>
+    <string name="screenshot_saved">截圖已儲存</string>
+    <string name="screenshot_failed">無法儲存截圖</string>
 </resources>

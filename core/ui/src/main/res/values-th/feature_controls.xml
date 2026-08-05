@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">เลื่อนทีละเฟรม</string>
+    <string name="frame_step_controls_description">แสดงปุ่มสำหรับเลื่อนไปข้างหน้าหรือย้อนกลับตามเฟรมวิดีโอ</string>
+    <string name="frame_step_count">เฟรมต่อครั้ง</string>
+    <string name="frames">%1$d เฟรม</string>
+    <string name="reset_frame_step_count">รีเซ็ตจำนวนเฟรมต่อครั้ง</string>
+    <string name="frame_step_forward">ไปข้างหน้า %1$d เฟรม</string>
+    <string name="frame_step_backward">ย้อนกลับ %1$d เฟรม</string>
+    <string name="screenshot_button">ภาพหน้าจอ</string>
+    <string name="screenshot_button_description">แสดงปุ่มจับภาพแบบมีและไม่มีคำบรรยาย</string>
+    <string name="take_screenshot">จับภาพพร้อมคำบรรยาย</string>
+    <string name="take_video_screenshot">จับภาพโดยไม่มีคำบรรยาย</string>
+    <string name="screenshot_saved">บันทึกภาพหน้าจอแล้ว</string>
+    <string name="screenshot_failed">ไม่สามารถบันทึกภาพหน้าจอได้</string>
+</resources>

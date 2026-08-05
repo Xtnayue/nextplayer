@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">ഫ്രെയിം ഘട്ടം</string>
+    <string name="frame_step_controls_description">വീഡിയോ ഫ്രെയിമുകളിലൂടെ മുന്നോട്ടോ പിന്നോട്ടോ നീങ്ങാനുള്ള ബട്ടണുകൾ കാണിക്കുക</string>
+    <string name="frame_step_count">ഓരോ ഘട്ടത്തിലുമുള്ള ഫ്രെയിമുകൾ</string>
+    <string name="frames">%1$d ഫ്രെയിമുകൾ</string>
+    <string name="reset_frame_step_count">ഓരോ ഘട്ടത്തിലുമുള്ള ഫ്രെയിമുകൾ പുനഃസജ്ജമാക്കുക</string>
+    <string name="frame_step_forward">%1$d ഫ്രെയിമുകൾ മുന്നോട്ട്</string>
+    <string name="frame_step_backward">%1$d ഫ്രെയിമുകൾ പിന്നോട്ട്</string>
+    <string name="screenshot_button">സ്ക്രീൻഷോട്ട്</string>
+    <string name="screenshot_button_description">സബ്‌ടൈറ്റിലോടെയും അല്ലാതെയും സ്ക്രീൻഷോട്ട് ബട്ടണുകൾ കാണിക്കുക</string>
+    <string name="take_screenshot">സബ്‌ടൈറ്റിലോടെ സ്ക്രീൻഷോട്ട്</string>
+    <string name="take_video_screenshot">സബ്‌ടൈറ്റിലില്ലാതെ സ്ക്രീൻഷോട്ട്</string>
+    <string name="screenshot_saved">സ്ക്രീൻഷോട്ട് സംരക്ഷിച്ചു</string>
+    <string name="screenshot_failed">സ്ക്രീൻഷോട്ട് സംരക്ഷിക്കാനായില്ല</string>
+</resources>

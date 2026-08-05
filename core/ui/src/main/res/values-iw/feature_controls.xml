@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="frame_step_controls">התקדמות לפי פריימים</string>
+    <string name="frame_step_controls_description">הצגת לחצנים להתקדמות או חזרה לפי פריימים</string>
+    <string name="frame_step_count">פריימים לכל צעד</string>
+    <string name="frames">%1$d פריימים</string>
+    <string name="reset_frame_step_count">איפוס פריימים לכל צעד</string>
+    <string name="frame_step_forward">קדימה %1$d פריימים</string>
+    <string name="frame_step_backward">אחורה %1$d פריימים</string>
+    <string name="screenshot_button">צילום מסך</string>
+    <string name="screenshot_button_description">הצגת לחצני צילום עם כתוביות ובלעדיהן</string>
+    <string name="take_screenshot">צילום מסך עם כתוביות</string>
+    <string name="take_video_screenshot">צילום מסך ללא כתוביות</string>
+    <string name="screenshot_saved">צילום המסך נשמר</string>
+    <string name="screenshot_failed">לא ניתן לשמור את צילום המסך</string>
+</resources>
