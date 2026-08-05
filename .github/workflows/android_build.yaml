@@ -4,14 +4,20 @@ on:
   push:
     branches: [ main ]
   pull_request:
+  workflow_dispatch:
+
 concurrency:
   group: build-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
-  build:
-    name: Build apk and run tests
+  verify:
+    name: Test and lint
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
@@ -28,45 +34,54 @@ jobs:
           validate-wrappers: true
           gradle-home-cache-cleanup: true
 
-      - name: Build Project with gradle
-        run: ./gradlew assembleDebug
-
       - name: Run Local Tests
         run: ./gradlew test
 
       - name: Lint Checks
         run: ./gradlew ktlintCheck
 
-        # Upload all build artifacts in separate steps. This can be shortened once https://github.com/actions/upload-artifact/pull/354 is merged.
-      - name: Upload artifact nextplayer-universal-debug.apk
-        uses: actions/upload-artifact@v7
-        with:
-          name: nextplayer-universal-debug.apk
-          path: ./app/build/outputs/apk/debug/app-universal-debug.apk
-      - name: Upload artifact nextplayer-arm64-v8a-debug.apk
-        uses: actions/upload-artifact@v7
-        with:
-          name: nextplayer-arm64-v8a-debug.apk
-          path: ./app/build/outputs/apk/debug/app-arm64-v8a-debug.apk
-      - name: Upload artifact nextplayer-armeabi-v7a-debug.apk
-        uses: actions/upload-artifact@v7
-        with:
-          name: nextplayer-armeabi-v7a-debug.apk
-          path: ./app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk
-      - name: Upload artifact nextplayer-x86_64-debug.apk
-        uses: actions/upload-artifact@v7
-        with:
-          name: nextplayer-x86_64-debug.apk
-          path: ./app/build/outputs/apk/debug/app-x86_64-debug.apk
-      - name: Upload artifact nextplayer-x86-debug.apk
-        uses: actions/upload-artifact@v7
-        with:
-          name: nextplayer-x86-debug.apk
-          path: ./app/build/outputs/apk/debug/app-x86-debug.apk
-
       - name: Upload build reports
         if: always()
         uses: actions/upload-artifact@v7
         with:
           name: build-reports
-          path: app/build/reports
+          path: '**/build/reports/**'
+          if-no-files-found: ignore
+
+  build:
+    name: Build ${{ matrix.abi }} APK
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        abi:
+          - arm64-v8a
+          - armeabi-v7a
+          - x86
+          - x86_64
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set Up JDK 17
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v6
+        with:
+          validate-wrappers: true
+          gradle-home-cache-cleanup: true
+
+      - name: Build ${{ matrix.abi }} APK
+        run: ./gradlew assembleDebug -PtargetAbi=${{ matrix.abi }}
+
+      - name: Upload ${{ matrix.abi }} APK
+        uses: actions/upload-artifact@v7
+        with:
+          name: nextplayer-${{ matrix.abi }}-debug
+          path: app/build/outputs/apk/debug/app-${{ matrix.abi }}-debug.apk
+          if-no-files-found: error
