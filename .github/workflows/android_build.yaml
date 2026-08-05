@@ -5,6 +5,8 @@ on:
     branches:
       - main
       - 'feature/**'
+    tags:
+      - 'v*-libass.*'
   pull_request:
   workflow_dispatch:
 
@@ -87,3 +89,27 @@ jobs:
           name: nextplayer-${{ matrix.abi }}-debug
           path: app/build/outputs/apk/debug/app-${{ matrix.abi }}-debug.apk
           if-no-files-found: error
+
+  release:
+    name: Publish prerelease
+    if: startsWith(github.ref, 'refs/tags/')
+    needs:
+      - verify
+      - build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download ABI APKs
+        uses: actions/download-artifact@v8
+        with:
+          pattern: nextplayer-*-debug
+          path: release-artifacts
+          merge-multiple: true
+
+      - name: Publish GitHub prerelease
+        uses: softprops/action-gh-release@v3
+        with:
+          prerelease: true
+          generate_release_notes: true
+          files: release-artifacts/*.apk
