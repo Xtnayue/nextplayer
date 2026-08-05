@@ -80,14 +80,14 @@ jobs:
           validate-wrappers: true
           gradle-home-cache-cleanup: true
 
-      - name: Build ${{ matrix.abi }} APK
-        run: ./gradlew assembleDebug -PtargetAbi=${{ matrix.abi }}
+      - name: Build optimized ${{ matrix.abi }} APK
+        run: ./gradlew 'assembleRelease-with-debug-signing' -PtargetAbi=${{ matrix.abi }}
 
       - name: Upload ${{ matrix.abi }} APK
         uses: actions/upload-artifact@v7
         with:
-          name: nextplayer-${{ matrix.abi }}-debug
-          path: app/build/outputs/apk/debug/app-${{ matrix.abi }}-debug.apk
+          name: nextplayer-${{ matrix.abi }}-release
+          path: app/build/outputs/apk/release-with-debug-signing/app-${{ matrix.abi }}-release-with-debug-signing.apk
           if-no-files-found: error
 
   release:
@@ -103,7 +103,7 @@ jobs:
       - name: Download ABI APKs
         uses: actions/download-artifact@v8
         with:
-          pattern: nextplayer-*-debug
+          pattern: nextplayer-*-release
           path: release-artifacts
           merge-multiple: true
 
