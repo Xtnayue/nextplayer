@@ -2,25 +2,15 @@
 
 # Next Player
 
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/anilbeesetti/nextplayer.svg?logo=github&label=GitHub&cacheSeconds=3600)](https://github.com/anilbeesetti/nextplayer/releases/latest)
-[![Google Play](https://img.shields.io/endpoint?color=green&logo=google-play&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Ddev.anilbeesetti.nextplayer%26l%3DGoogle%2520Play%26m%3Dv%24version)](https://play.google.com/store/apps/details?id=dev.anilbeesetti.nextplayer)
-[![IzzyOnDroid](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/dev.anilbeesetti.nextplayer)](https://apt.izzysoft.de/fdroid/index/apk/dev.anilbeesetti.nextplayer)
-[![F-Droid](https://img.shields.io/f-droid/v/dev.anilbeesetti.nextplayer?logo=f-droid&label=F-Droid&cacheSeconds=3600)](https://f-droid.org/packages/dev.anilbeesetti.nextplayer)
-[![GitHub all releases](https://img.shields.io/github/downloads/anilbeesetti/nextplayer/total?logo=github&cacheSeconds=3600)](https://github.com/anilbeesetti/nextplayer/releases/latest)
-[![Google Play](https://img.shields.io/endpoint?color=green&logo=google-play&url=https%3A%2F%2Fplay.cuzi.workers.dev%2Fplay%3Fi%3Ddev.anilbeesetti.nextplayer%26l%3Ddownloads%26m%3D%24totalinstalls)](https://play.google.com/store/apps/details?id=dev.anilbeesetti.nextplayer)
-[![Weblate project translated](https://img.shields.io/weblate/progress/next-player?logo=weblate&logoColor=white&cacheSeconds=36000)](https://hosted.weblate.org/engage/next-player/)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/xtnayue/nextplayer.svg?logo=github&label=GitHub&cacheSeconds=3600)](https://github.com/xtnayue/nextplayer/releases/latest)
+[![GitHub all releases](https://img.shields.io/github/downloads/xtnayue/nextplayer/total?logo=github&cacheSeconds=3600)](https://github.com/xtnayue/nextplayer/releases/latest)
 
 Next Player is an Android native video player written in Kotlin. It provides a simple and easy-to-use interface for users to play videos on their
 Android devices
 
 **This project is still in development and is expected to have bugs. Please report any bugs you find in
-the [Issues](https://github.com/anilbeesetti/nextplayer/issues) section.**
+the [Issues](https://github.com/xtnayue/nextplayer/issues) section.**
 
-[<img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="80"/>](https://play.google.com/store/apps/details?id=dev.anilbeesetti.nextplayer)
-[<img src="https://gitlab.com/IzzyOnDroid/repo/-/raw/master/assets/IzzyOnDroid.png" alt="Get it on IzzyOnDroid" height="80">](https://apt.izzysoft.de/fdroid/index/apk/dev.anilbeesetti.nextplayer)
-[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/dev.anilbeesetti.nextplayer/)
-
-> For Github releases, you can verify the app with the SHA-256 fingerprint certificate: `D3:7C:AB:F3:67:6C:F5:82:24:FB:24:2C:8D:D2:09:12:9D:05:88:03:79:29:5F:AA:A6:D0:FB:60:7B:EC:13:1B`
 
 ## Screenshots
 
@@ -95,12 +85,6 @@ the [Issues](https://github.com/anilbeesetti/nextplayer/issues) section.**
 
 Contributions are welcome!
 
-### Translating
-
-You can help translate Next Player on [Hosted Weblate](https://hosted.weblate.org/engage/next-player/).
-
-[![Translate status](https://hosted.weblate.org/widgets/next-player/-/multi-auto.svg)](https://hosted.weblate.org/engage/next-player/)
-
 ## Credits
 
 ### Open Source Projects
@@ -111,12 +95,6 @@ You can help translate Next Player on [Hosted Weblate](https://hosted.weblate.or
 - [ReadYou](https://github.com/Ashinch/ReadYou)
 - [Seal](https://github.com/JunkFood02/Seal)
 - ...
-
-### Special Thanks
-
-[<img src="https://hosted.weblate.org/widgets/next-player/-/287x66-white.png"  width="200"/>](https://hosted.weblate.org/engage/next-player/)
-
-Thanks to **Weblate** for providing free hosting for the project.
 
 ## License
 
