@@ -23,7 +23,10 @@ import androidx.media3.common.util.UnstableApi
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.SeekParameters
+import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
+import androidx.media3.datasource.DefaultDataSource
+import androidx.media3.extractor.DefaultExtractorsFactory
 import androidx.media3.session.CommandButton
 import androidx.media3.session.CommandButton.ICON_UNDEFINED
 import androidx.media3.session.MediaSession
@@ -67,6 +70,11 @@ import dev.anilbeesetti.nextplayer.feature.player.extensions.videoZoom
 import io.github.anilbeesetti.nextlib.media3ext.ffdecoder.NextRenderersFactory
 import io.github.anilbeesetti.nextlib.media3ext.renderer.subtitleDelayMilliseconds
 import io.github.anilbeesetti.nextlib.media3ext.renderer.subtitleSpeed
+import io.github.peerless2012.ass.media.AssHandler
+import io.github.peerless2012.ass.media.kt.withAssMkvSupport
+import io.github.peerless2012.ass.media.kt.withAssSupport
+import io.github.peerless2012.ass.media.parser.AssSubtitleParserFactory
+import io.github.peerless2012.ass.media.type.AssRenderType
 import java.io.File
 import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
@@ -87,6 +95,7 @@ class PlayerService : MediaSessionService() {
 
     private val serviceScope: CoroutineScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
     private var mediaSession: MediaSession? = null
+    private var assHandler: AssHandler? = null
     private var artworkLoadJob: Job? = null
 
     @Inject
@@ -565,8 +574,18 @@ class PlayerService : MediaSessionService() {
             )
         }
 
+        val assHandler = AssHandler(AssRenderType.OVERLAY_CANVAS).also {
+            this.assHandler = it
+        }
+        val assSubtitleParserFactory = AssSubtitleParserFactory(assHandler)
+        val mediaSourceFactory = DefaultMediaSourceFactory(
+            DefaultDataSource.Factory(applicationContext),
+            DefaultExtractorsFactory().withAssMkvSupport(assSubtitleParserFactory, assHandler),
+        ).setSubtitleParserFactory(assSubtitleParserFactory)
+
         val player = ExoPlayer.Builder(applicationContext)
-            .setRenderersFactory(renderersFactory)
+            .setRenderersFactory(renderersFactory.withAssSupport(assHandler))
+            .setMediaSourceFactory(mediaSourceFactory)
             .setTrackSelector(trackSelector)
             .setAudioAttributes(
                 AudioAttributes.Builder()
@@ -578,6 +597,8 @@ class PlayerService : MediaSessionService() {
             .setHandleAudioBecomingNoisy(playerPreferences.pauseOnHeadsetDisconnect)
             .build()
             .also {
+                assHandler.init(it)
+                AssSubtitleState.update(assHandler)
                 it.addListener(playbackStateListener)
                 it.pauseAtEndOfMediaItems = !playerPreferences.autoplay
                 it.repeatMode = when (playerPreferences.loopMode) {
@@ -623,6 +644,7 @@ class PlayerService : MediaSessionService() {
 
     override fun onDestroy() {
         super.onDestroy()
+        AssSubtitleState.update(null)
         artworkLoadJob?.cancel()
         loudnessEnhancer?.release()
         loudnessEnhancer = null
@@ -634,6 +656,8 @@ class PlayerService : MediaSessionService() {
             release()
             mediaSession = null
         }
+        assHandler?.release()
+        assHandler = null
         subtitleCacheDir.deleteFiles()
         serviceScope.cancel()
     }

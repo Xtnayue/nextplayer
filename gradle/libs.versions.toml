@@ -36,6 +36,7 @@ reorderable = "3.1.0"
 room = "2.8.4"
 robolectric = "4.16.1"
 nextlib = "1.10.1-0.13.0"
+libassAndroid = "0.5.0"
 universalChardet = "2.5.0"
 smbj = "0.14.0"
 commonsNet = "3.13.0"
@@ -88,6 +89,7 @@ coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" 
 github-albfernandez-juniversalchardet = { group="com.github.albfernandez", name = "juniversalchardet", version.ref="universalChardet" }
 github-anilbeesetti-nextlib-media3ext = { group = "io.github.anilbeesetti", name = "nextlib-media3ext", version.ref = "nextlib" }
 github-anilbeesetti-nextlib-mediainfo = { group = "io.github.anilbeesetti", name = "nextlib-mediainfo", version.ref = "nextlib" }
+github-peerless2012-ass-media = { group = "io.github.peerless2012", name = "ass-media", version.ref = "libassAndroid" }
 google-android-material = { group = "com.google.android.material", name = "material", version.ref = "androidMaterial" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
