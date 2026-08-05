@@ -50,6 +50,7 @@ data class GeneralPreferencesUiState(
 )
 
 sealed interface GeneralPreferencesDialog {
+    data object AppLanguageDialog : GeneralPreferencesDialog
     data object ClearThumbnailCacheDialog : GeneralPreferencesDialog
     data object ResetSettingsDialog : GeneralPreferencesDialog
 }

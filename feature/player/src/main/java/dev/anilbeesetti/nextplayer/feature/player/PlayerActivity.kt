@@ -8,7 +8,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
-import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -20,6 +19,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.core.util.Consumer
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.compose.LifecycleStartEffect
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
@@ -53,7 +53,7 @@ val LocalUseMaterialYouControls = compositionLocalOf { false }
 
 @SuppressLint("UnsafeOptInUsageError")
 @AndroidEntryPoint
-class PlayerActivity : ComponentActivity() {
+class PlayerActivity : AppCompatActivity() {
 
     private val viewModel: PlayerViewModel by viewModels()
     val playerPreferences get() = viewModel.uiState.value.playerPreferences

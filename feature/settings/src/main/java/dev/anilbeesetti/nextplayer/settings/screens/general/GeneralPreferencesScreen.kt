@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import dev.anilbeesetti.nextplayer.settings.utils.rememberTvListFocusRequester
@@ -21,10 +22,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.anilbeesetti.nextplayer.core.ui.R
 import dev.anilbeesetti.nextplayer.core.ui.components.CancelButton
@@ -32,7 +36,10 @@ import dev.anilbeesetti.nextplayer.core.ui.components.ClickablePreferenceItem
 import dev.anilbeesetti.nextplayer.core.ui.components.ListSectionTitle
 import dev.anilbeesetti.nextplayer.core.ui.components.NextDialog
 import dev.anilbeesetti.nextplayer.core.ui.components.NextTopAppBar
+import dev.anilbeesetti.nextplayer.core.ui.components.RadioTextButton
 import dev.anilbeesetti.nextplayer.core.ui.designsystem.NextIcons
+import dev.anilbeesetti.nextplayer.settings.composables.OptionsDialog
+import dev.anilbeesetti.nextplayer.settings.utils.LocalesHelper
 
 @Composable
 fun GeneralPreferencesScreen(
@@ -56,6 +63,10 @@ private fun GeneralPreferencesContent(
     onNavigateUp: () -> Unit,
 ) {
     val listFocusRequester = rememberTvListFocusRequester()
+    val currentLanguageTag = AppCompatDelegate.getApplicationLocales().toLanguageTags().substringBefore(",")
+    val languages = remember {
+        LocalesHelper.getSupportedAppLocales()
+    }
     Scaffold(
         topBar = {
             NextTopAppBar(
@@ -80,6 +91,18 @@ private fun GeneralPreferencesContent(
                 .padding(innerPadding)
                 .padding(horizontal = 16.dp),
         ) {
+            ListSectionTitle(text = stringResource(id = R.string.interface_name))
+            ClickablePreferenceItem(
+                title = stringResource(R.string.language),
+                description = currentLanguageTag.takeIf(String::isNotEmpty)
+                    ?.let(LocalesHelper::getAppLocaleDisplayName)
+                    ?: stringResource(R.string.system_default),
+                icon = NextIcons.Language,
+                onClick = { onEvent(GeneralPreferencesUiEvent.ShowDialog(GeneralPreferencesDialog.AppLanguageDialog)) },
+                isFirstItem = true,
+                isLastItem = true,
+            )
+
             ListSectionTitle(text = stringResource(id = R.string.user_data))
             Column(
                 verticalArrangement = Arrangement.spacedBy(ListItemDefaults.SegmentedGap),
@@ -103,6 +126,33 @@ private fun GeneralPreferencesContent(
 
         uiState.showDialog?.let { dialog ->
             when (dialog) {
+                GeneralPreferencesDialog.AppLanguageDialog -> {
+                    OptionsDialog(
+                        text = stringResource(R.string.language),
+                        onDismissClick = { onEvent(GeneralPreferencesUiEvent.ShowDialog(null)) },
+                    ) {
+                        item {
+                            RadioTextButton(
+                                text = stringResource(R.string.system_default),
+                                selected = currentLanguageTag.isEmpty(),
+                                onClick = {
+                                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())
+                                    onEvent(GeneralPreferencesUiEvent.ShowDialog(null))
+                                },
+                            )
+                        }
+                        items(languages) { (name, languageTag) ->
+                            RadioTextButton(
+                                text = name,
+                                selected = languageTag == currentLanguageTag,
+                                onClick = {
+                                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageTag))
+                                    onEvent(GeneralPreferencesUiEvent.ShowDialog(null))
+                                },
+                            )
+                        }
+                    }
+                }
                 GeneralPreferencesDialog.ClearThumbnailCacheDialog -> {
                     NextDialog(
                         onDismissRequest = { onEvent(GeneralPreferencesUiEvent.ShowDialog(null)) },
