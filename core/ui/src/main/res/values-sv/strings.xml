@@ -154,4 +154,9 @@
     <string name="high_contrast_dark_theme">Mörkt tema med hög kontrast</string>
     <string name="audio_desc">Inställningar för ljuduppspelning</string>
     <string name="pause_on_headset_disconnect">Pausa vid frånkoppling</string>
+    <string name="history">Historik</string>
+    <string name="history_limit">Antal sparade historikposter</string>
+    <string name="history_limit_value">Behåll de senaste %1$d videorna</string>
+    <string name="default_start_page">Förvald startsida</string>
+    <string name="local">Lokalt</string>
 </resources>

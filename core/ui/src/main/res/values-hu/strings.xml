@@ -45,4 +45,9 @@
     <string name="autoplay_settings_description">Automatikusan lejátssza a következő videót az aktuális mappában</string>
     <string name="remember_selections_description">Emlékezzen az egyes fájlok kiválasztására, mint például hangsáv, feliratsáv, stb</string>
     <string name="remember_selections">Emlékezzen a kiválasztásokra</string>
+    <string name="history">Előzmények</string>
+    <string name="history_limit">Mentett előzménybejegyzések száma</string>
+    <string name="history_limit_value">A legutóbbi %1$d videó megőrzése</string>
+    <string name="default_start_page">Alapértelmezett kezdőoldal</string>
+    <string name="local">Helyi</string>
 </resources>

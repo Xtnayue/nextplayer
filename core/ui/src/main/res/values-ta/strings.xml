@@ -221,4 +221,9 @@
     <string name="media_layout">மீடியா தளவமைப்பு</string>
     <string name="list">பட்டியல்</string>
     <string name="grid">வலைவாய்</string>
+    <string name="history">வரலாறு</string>
+    <string name="history_limit">சேமிக்கப்படும் வரலாற்றுப் பதிவுகளின் எண்ணிக்கை</string>
+    <string name="history_limit_value">சமீபத்திய %1$d காணொளிகளை வைத்திரு</string>
+    <string name="default_start_page">இயல்புநிலை தொடக்கப் பக்கம்</string>
+    <string name="local">உள்ளூர்</string>
 </resources>

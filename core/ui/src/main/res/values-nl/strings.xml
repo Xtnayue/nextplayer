@@ -25,4 +25,9 @@
     <string name="no_videos_found">Geen videos gevonden</string>
     <string name="open_settings">Open instellingen</string>
     <string name="permission_info">The Next Player heeft \"%1$s\" permissie nodig om media te kunnen vinden en afspelen. Zonder deze permissie zal dit niet werken. Geef toestemming om de app volledig te gebruiken.</string>
+    <string name="history">Geschiedenis</string>
+    <string name="history_limit">Aantal opgeslagen geschiedenisitems</string>
+    <string name="history_limit_value">De laatste %1$d video’s bewaren</string>
+    <string name="default_start_page">Standaard startpagina</string>
+    <string name="local">Lokaal</string>
 </resources>

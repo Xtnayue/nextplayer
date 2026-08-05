@@ -31,6 +31,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.anilbeesetti.nextplayer.core.ui.R
+import dev.anilbeesetti.nextplayer.core.model.StartPage
 import dev.anilbeesetti.nextplayer.core.ui.components.CancelButton
 import dev.anilbeesetti.nextplayer.core.ui.components.ClickablePreferenceItem
 import dev.anilbeesetti.nextplayer.core.ui.components.ListSectionTitle
@@ -100,6 +101,13 @@ private fun GeneralPreferencesContent(
                 icon = NextIcons.Language,
                 onClick = { onEvent(GeneralPreferencesUiEvent.ShowDialog(GeneralPreferencesDialog.AppLanguageDialog)) },
                 isFirstItem = true,
+                isLastItem = false,
+            )
+            ClickablePreferenceItem(
+                title = stringResource(R.string.default_start_page),
+                description = uiState.preferences.startPage.displayName(),
+                icon = NextIcons.Home,
+                onClick = { onEvent(GeneralPreferencesUiEvent.ShowDialog(GeneralPreferencesDialog.StartPageDialog)) },
                 isLastItem = true,
             )
 
@@ -147,6 +155,23 @@ private fun GeneralPreferencesContent(
                                 selected = languageTag == currentLanguageTag,
                                 onClick = {
                                     AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(languageTag))
+                                    onEvent(GeneralPreferencesUiEvent.ShowDialog(null))
+                                },
+                            )
+                        }
+                    }
+                }
+                GeneralPreferencesDialog.StartPageDialog -> {
+                    OptionsDialog(
+                        text = stringResource(R.string.default_start_page),
+                        onDismissClick = { onEvent(GeneralPreferencesUiEvent.ShowDialog(null)) },
+                    ) {
+                        items(StartPage.entries.toTypedArray()) { page ->
+                            RadioTextButton(
+                                text = page.displayName(),
+                                selected = page == uiState.preferences.startPage,
+                                onClick = {
+                                    onEvent(GeneralPreferencesUiEvent.UpdateStartPage(page))
                                     onEvent(GeneralPreferencesUiEvent.ShowDialog(null))
                                 },
                             )
@@ -212,4 +237,11 @@ private fun GeneralPreferencesContent(
             }
         }
     }
+}
+
+@Composable
+private fun StartPage.displayName(): String = when (this) {
+    StartPage.MEDIA -> stringResource(R.string.local)
+    StartPage.HISTORY -> stringResource(R.string.history)
+    StartPage.NETWORK -> stringResource(R.string.network)
 }

@@ -376,7 +376,7 @@
     </plurals>
     <string name="cannot_move_to_same_folder">Невозможно переместить в ту же папку</string>
     <string name="folder_duration">Общая длительность</string>
-    <string name="home">Главная</string>
+    <string name="local">Локальные</string>
     <string name="network">Сеть</string>
     <string name="add_connection">Добавить подключение</string>
     <string name="edit_connection">Изменить подключение</string>
@@ -400,4 +400,8 @@
     <string name="failed_to_load_folder">Не удалось загрузить это расположение</string>
     <string name="retry">Повторить</string>
     <string name="edit">Изменить</string>
+    <string name="history">История</string>
+    <string name="history_limit">Количество сохранённых записей истории</string>
+    <string name="history_limit_value">Хранить последние %1$d видео</string>
+    <string name="default_start_page">Стартовая страница по умолчанию</string>
 </resources>

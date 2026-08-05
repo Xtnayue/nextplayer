@@ -364,4 +364,9 @@
         <item quantity="other">U zhvendosën %1$d video, por nuk u hoqën dot origjinalet</item>
     </plurals>
     <string name="cannot_move_to_same_folder">Nuk mund të zhvendoset te e njëjta dosje</string>
+    <string name="history">Historiku</string>
+    <string name="history_limit">Numri i zërave të ruajtur në historik</string>
+    <string name="history_limit_value">Mbaj %1$d videot më të fundit</string>
+    <string name="default_start_page">Faqja fillestare e parazgjedhur</string>
+    <string name="local">Lokale</string>
 </resources>

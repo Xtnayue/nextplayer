@@ -158,4 +158,9 @@
     <string name="extension">Utvidelse</string>
     <string name="path">Sti</string>
     <string name="resolution">Oppløsning</string>
+    <string name="history">Historikk</string>
+    <string name="history_limit">Antall lagrede historikkelementer</string>
+    <string name="history_limit_value">Behold de siste %1$d videoene</string>
+    <string name="default_start_page">Standard startside</string>
+    <string name="local">Lokalt</string>
 </resources>

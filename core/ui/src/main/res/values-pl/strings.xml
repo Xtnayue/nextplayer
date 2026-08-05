@@ -376,7 +376,7 @@
     </plurals>
     <string name="cannot_move_to_same_folder">Nie można przenieść do tego samego katalogu</string>
     <string name="folder_duration">Czas trwania katalogu</string>
-    <string name="home">Domowa</string>
+    <string name="local">Lokalne</string>
     <string name="network">Sieć</string>
     <string name="add_connection">Dodaj połączenie</string>
     <string name="edit_connection">Edytuj połączenie</string>
@@ -400,4 +400,8 @@
     <string name="failed_to_load_folder">Nie udało się załadować tej lokalizacji</string>
     <string name="retry">Ponów</string>
     <string name="edit">Edytuj</string>
+    <string name="history">Historia</string>
+    <string name="history_limit">Liczba zapisanych pozycji historii</string>
+    <string name="history_limit_value">Zachowaj ostatnie %1$d filmów</string>
+    <string name="default_start_page">Domyślna strona startowa</string>
 </resources>

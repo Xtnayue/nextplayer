@@ -369,7 +369,7 @@
     <string name="folder_duration">Délka složky</string>
     <string name="pan_gesture_description">Přibližovat a posouvat obraz ve videu</string>
     <string name="pan_gesture">Gesto přiblížení/posouvání obrazu</string>
-    <string name="home">Domov</string>
+    <string name="local">Místní</string>
     <string name="network">Síť</string>
     <string name="add_connection">Přidat připojení</string>
     <string name="edit_connection">Změnit připojení</string>
@@ -394,4 +394,8 @@
     <string name="retry">Zkusit znovu</string>
     <string name="edit">Upravit</string>
     <string name="zoom_gesture_description">Roztáhněte prsty pro přiblížení ve videu</string>
+    <string name="history">Historie</string>
+    <string name="history_limit">Počet uložených položek historie</string>
+    <string name="history_limit_value">Uchovat posledních %1$d videí</string>
+    <string name="default_start_page">Výchozí úvodní stránka</string>
 </resources>

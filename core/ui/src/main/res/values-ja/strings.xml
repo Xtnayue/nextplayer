@@ -283,7 +283,7 @@
     <string name="frame_position">フレーム位置</string>
     <string name="frame_position_value">動画再生時間の %1$.0f%% 地点のフレーム</string>
     <string name="thumbnail_setting_change_confirmation">この設定を変更すると、サムネイルのキャッシュがクリアされます。メディアリストを開いたときに、サムネイルが再度生成されます。続行しますか？</string>
-    <string name="home">ホーム</string>
+    <string name="local">ローカル</string>
     <string name="network">ネットワーク</string>
     <string name="add_connection">接続を追加</string>
     <string name="edit_connection">接続を編集</string>
@@ -350,4 +350,8 @@
     <string name="incorrect_pin">PIN が間違っています</string>
     <string name="how_to_find_hidden_videos_title">非表示になっている動画を見つける方法</string>
     <string name="how_to_find_hidden_videos_description">非表示になっている動画は保管庫に安全に保管されています。再度開くには、ホーム画面上部の「NextPlayer」タイトルを長押しし、PIN を入力してください。</string>
+    <string name="history">履歴</string>
+    <string name="history_limit">保存する履歴の件数</string>
+    <string name="history_limit_value">最新の動画を%1$d件保持</string>
+    <string name="default_start_page">デフォルトの開始ページ</string>
 </resources>

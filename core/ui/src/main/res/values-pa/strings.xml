@@ -364,7 +364,7 @@
         <item quantity="other">%1$d ਵੀਡੀਓ ਤਬਦੀਲ ਕੀਤੇ ਗਏ, ਪਰ ਅਸਲੀ ਵੀਡੀਓ ਹਟਾਏ ਨਹੀਂ ਜਾ ਸਕੇ</item>
     </plurals>
     <string name="cannot_move_to_same_folder">ਉਸੇ ਫੋਲਡਰ ਵਿੱਚ ਤਬਦੀਲ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ</string>
-    <string name="home">ਘਰ</string>
+    <string name="local">ਸਥਾਨਕ</string>
     <string name="network">ਨੈੱਟਵਰਕ</string>
     <string name="add_connection">ਕੁਨੈਕਸ਼ਨ ਸ਼ਾਮਿਲ ਕਰੋ</string>
     <string name="edit_connection">ਕੁਨੈਕਸਨ ਸੰਪਾਦਿਤ ਕਰੋ</string>
@@ -388,4 +388,8 @@
     <string name="failed_to_load_folder">ਇਸ ਲੋਕੇਸ਼ਨ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ</string>
     <string name="retry">ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ</string>
     <string name="edit">ਸੰਪਾਦਿਤ ਕਰੋ</string>
+    <string name="history">ਇਤਿਹਾਸ</string>
+    <string name="history_limit">ਸੰਭਾਲੀਆਂ ਇਤਿਹਾਸ ਐਂਟਰੀਆਂ ਦੀ ਗਿਣਤੀ</string>
+    <string name="history_limit_value">ਹਾਲੀਆ %1$d ਵੀਡੀਓ ਰੱਖੋ</string>
+    <string name="default_start_page">ਮੂਲ ਸ਼ੁਰੂਆਤੀ ਸਫ਼ਾ</string>
 </resources>

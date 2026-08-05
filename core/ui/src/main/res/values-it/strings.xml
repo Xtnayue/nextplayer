@@ -205,4 +205,9 @@
     <string name="stop_player_session">Stop sessione player</string>
     <string name="background_play">Esecuzione in secondo piano</string>
     <string name="background_play_description">Esegui in secondo piano quando vai a schermata principale o lo schermo è bloccato.</string>
+    <string name="history">Cronologia</string>
+    <string name="history_limit">Numero di elementi salvati nella cronologia</string>
+    <string name="history_limit_value">Conserva gli ultimi %1$d video</string>
+    <string name="default_start_page">Pagina iniziale predefinita</string>
+    <string name="local">Locale</string>
 </resources>

@@ -376,7 +376,7 @@
     </plurals>
     <string name="cannot_move_to_same_folder">Не вдалося перемістити в ту саму теку</string>
     <string name="folder_duration">Тривалість теки</string>
-    <string name="home">Головна</string>
+    <string name="local">Локальні</string>
     <string name="network">Мережа</string>
     <string name="add_connection">Додати з’єднання</string>
     <string name="edit_connection">Змінити з’єднання</string>
@@ -400,4 +400,8 @@
     <string name="failed_to_load_folder">Не вдалося завантажити це місце</string>
     <string name="retry">Повторити</string>
     <string name="edit">Редагувати</string>
+    <string name="history">Історія</string>
+    <string name="history_limit">Кількість збережених записів історії</string>
+    <string name="history_limit_value">Зберігати останні %1$d відео</string>
+    <string name="default_start_page">Початкова сторінка за замовчуванням</string>
 </resources>

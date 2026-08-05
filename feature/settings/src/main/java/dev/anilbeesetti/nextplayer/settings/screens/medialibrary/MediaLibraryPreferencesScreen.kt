@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -37,6 +38,7 @@ import dev.anilbeesetti.nextplayer.core.ui.components.ClickablePreferenceItem
 import dev.anilbeesetti.nextplayer.core.ui.components.ListSectionTitle
 import dev.anilbeesetti.nextplayer.core.ui.components.NextTopAppBar
 import dev.anilbeesetti.nextplayer.core.ui.components.PreferenceSwitch
+import dev.anilbeesetti.nextplayer.core.ui.components.PreferenceSlider
 import dev.anilbeesetti.nextplayer.core.ui.components.requestFocusUntilLanded
 import dev.anilbeesetti.nextplayer.core.ui.components.restorableFocusItem
 import dev.anilbeesetti.nextplayer.core.ui.components.thenIf
@@ -78,6 +80,7 @@ private fun MediaLibraryPreferencesContent(
     val firstItemRequester = remember { FocusRequester() }
     val restoreRequester = remember { FocusRequester() }
     var restoredFocusKey by rememberSaveable { mutableStateOf<String?>(null) }
+    var historyLimit by remember(preferences.historyLimit) { mutableFloatStateOf(preferences.historyLimit.toFloat()) }
 
     if (isTv) {
         LaunchedEffect(Unit) {
@@ -141,6 +144,18 @@ private fun MediaLibraryPreferencesContent(
                     isChecked = preferences.markLastPlayedMedia,
                     onClick = { onEvent(MediaLibraryPreferencesUiEvent.ToggleMarkLastPlayedMedia) },
                     isFirstItem = true,
+                )
+                PreferenceSlider(
+                    modifier = restorableModifier(key = "history_limit", isFirst = false),
+                    title = stringResource(R.string.history_limit),
+                    description = stringResource(R.string.history_limit_value, historyLimit.toInt()),
+                    icon = NextIcons.History,
+                    value = historyLimit,
+                    valueRange = 10f..500f,
+                    onValueChange = { historyLimit = (it / 10f).toInt() * 10f },
+                    onValueChangeFinished = {
+                        onEvent(MediaLibraryPreferencesUiEvent.UpdateHistoryLimit(historyLimit.toInt()))
+                    },
                     isLastItem = true,
                 )
             }

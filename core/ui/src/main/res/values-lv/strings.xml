@@ -141,4 +141,9 @@
     <string name="pip_settings">Attēls attēlā (AA - PiP)</string>
     <string name="remember_brightness_level">Saglabāt spilgtuma līmeni</string>
     <string name="remember_brightness_level_description">Saglabā spilgtuma līmeni starp atskaņošanas sesijām</string>
+    <string name="history">Vēsture</string>
+    <string name="history_limit">Saglabāto vēstures ierakstu skaits</string>
+    <string name="history_limit_value">Saglabāt pēdējos %1$d videoklipus</string>
+    <string name="default_start_page">Noklusējuma sākuma lapa</string>
+    <string name="local">Lokālie</string>
 </resources>

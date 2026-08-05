@@ -370,7 +370,7 @@
         <item quantity="other">Se movieron %1$d vídeos, pero no se pudieron eliminar los originales</item>
     </plurals>
     <string name="cannot_move_to_same_folder">No se puede mover a la misma carpeta</string>
-    <string name="home">Inicio</string>
+    <string name="local">Local</string>
     <string name="network">Red</string>
     <string name="add_connection">Añadir conexión</string>
     <string name="edit_connection">Editar conexión</string>
@@ -394,4 +394,8 @@
     <string name="failed_to_load_folder">No se pudo cargar esta ubicación</string>
     <string name="retry">Reintentar</string>
     <string name="edit">Editar</string>
+    <string name="history">Historial</string>
+    <string name="history_limit">Entradas guardadas en el historial</string>
+    <string name="history_limit_value">Conservar los últimos %1$d vídeos</string>
+    <string name="default_start_page">Página de inicio predeterminada</string>
 </resources>

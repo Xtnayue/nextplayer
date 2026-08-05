@@ -221,4 +221,9 @@
     <string name="list">목록</string>
     <string name="grid">그리드</string>
     <string name="error_opening_link">이 링크를 열 수 있는 앱이 없습니다</string>
+    <string name="history">기록</string>
+    <string name="history_limit">저장할 기록 수</string>
+    <string name="history_limit_value">최근 동영상 %1$d개 유지</string>
+    <string name="default_start_page">기본 시작 페이지</string>
+    <string name="local">로컬</string>
 </resources>

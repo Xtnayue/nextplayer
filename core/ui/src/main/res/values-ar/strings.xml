@@ -388,7 +388,7 @@
     </plurals>
     <string name="cannot_move_to_same_folder">لا يمكن النقل إلى نفس المجلد</string>
     <string name="folder_duration">مدة المجلد</string>
-    <string name="home">الرئيسية</string>
+    <string name="local">محلي</string>
     <string name="network">الشبكة</string>
     <string name="add_connection">أضف اتصال</string>
     <string name="edit_connection">حرِّر الاتصال</string>
@@ -412,4 +412,8 @@
     <string name="failed_to_load_folder">تعذّر تحميل هذا المكان</string>
     <string name="retry">حاول مجددًا</string>
     <string name="edit">حرِّر</string>
+    <string name="history">السجل</string>
+    <string name="history_limit">عدد عناصر السجل المحفوظة</string>
+    <string name="history_limit_value">الاحتفاظ بآخر %1$d من مقاطع الفيديو</string>
+    <string name="default_start_page">صفحة البدء الافتراضية</string>
 </resources>

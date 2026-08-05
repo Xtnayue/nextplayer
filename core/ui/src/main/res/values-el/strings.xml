@@ -364,7 +364,7 @@
         <item quantity="other">Μετακινήθηκαν %1$d βίντεο, αλλά δεν διαγράφηκαν τα πρωτότυπα</item>
     </plurals>
     <string name="cannot_move_to_same_folder">Δεν είναι δυνατή η μετακίνηση στον ίδιο φάκελο</string>
-    <string name="home">Αρχική</string>
+    <string name="local">Τοπικά</string>
     <string name="network">Δίκτυο</string>
     <string name="add_connection">Προσθήκη</string>
     <string name="edit_connection">Τροποποίηση σύνδεσης</string>
@@ -388,4 +388,8 @@
     <string name="failed_to_load_folder">Αδυναμία φόρτωσης αυτής της τοποθεσίας</string>
     <string name="retry">Επανάληψη</string>
     <string name="edit">Τροποποίηση</string>
+    <string name="history">Ιστορικό</string>
+    <string name="history_limit">Αποθηκευμένες καταχωρίσεις ιστορικού</string>
+    <string name="history_limit_value">Διατήρηση των τελευταίων %1$d βίντεο</string>
+    <string name="default_start_page">Προεπιλεγμένη αρχική σελίδα</string>
 </resources>

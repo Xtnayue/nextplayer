@@ -230,4 +230,9 @@
     <string name="delete_videos">Apagar %1$d videos?</string>
     <string name="delete_one_folder">Apagar 1 pasta?</string>
     <string name="delete_folders">Apagar %1$d pastas?</string>
+    <string name="history">Histórico</string>
+    <string name="history_limit">Número de itens guardados no histórico</string>
+    <string name="history_limit_value">Manter os últimos %1$d vídeos</string>
+    <string name="default_start_page">Página inicial predefinida</string>
+    <string name="local">Local</string>
 </resources>

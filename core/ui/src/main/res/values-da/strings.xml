@@ -5,4 +5,9 @@
     <string name="cancel">Annuller</string>
     <string name="about_name">Om</string>
     <string name="appearance_name">Udseende</string>
+    <string name="history">Historik</string>
+    <string name="history_limit">Antal gemte historikposter</string>
+    <string name="history_limit_value">Behold de seneste %1$d videoer</string>
+    <string name="default_start_page">Standardstartside</string>
+    <string name="local">Lokalt</string>
 </resources>

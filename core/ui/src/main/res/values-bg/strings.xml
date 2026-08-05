@@ -298,4 +298,9 @@
     <string name="thumbnail_setting_change_confirmation">Промяната на тази настройка ще изчисти кеша на миниатюрите. Миниатюрите ще бъдат генерирани отново, когато се отвори списъкът с медийни файлове. Искате ли да продължите?</string>
     <string name="material_you_controls">Material You контроли</string>
     <string name="material_you_controls_description">Използвайте material you контроли за стил</string>
+    <string name="history">История</string>
+    <string name="history_limit">Брой запазени записи в историята</string>
+    <string name="history_limit_value">Запазване на последните %1$d видеоклипа</string>
+    <string name="default_start_page">Начална страница по подразбиране</string>
+    <string name="local">Локални</string>
 </resources>

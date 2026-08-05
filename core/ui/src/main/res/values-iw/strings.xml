@@ -104,4 +104,9 @@
     <string name="portrait">אנכי</string>
     <string name="video_orientation">סיבוב וידאו</string>
     <string name="date">תאריך</string>
+    <string name="history">היסטוריה</string>
+    <string name="history_limit">מספר פריטי ההיסטוריה השמורים</string>
+    <string name="history_limit_value">שמירת %1$d הסרטונים האחרונים</string>
+    <string name="default_start_page">דף פתיחה ברירת מחדל</string>
+    <string name="local">מקומי</string>
 </resources>

@@ -358,8 +358,12 @@
     <string name="reset_pin_and_delete_all">Reset PIN &amp; delete all</string>
 
     <!-- Network -->
-    <string name="home">Home</string>
+    <string name="local">Local</string>
+    <string name="history">History</string>
     <string name="network">Network</string>
+    <string name="history_limit">Saved history entries</string>
+    <string name="history_limit_value">Keep the latest %1$d videos</string>
+    <string name="default_start_page">Default start page</string>
     <string name="add_connection">Add connection</string>
     <string name="edit_connection">Edit connection</string>
     <string name="delete_connection">Delete connection</string>

@@ -2,4 +2,9 @@
 <resources>
     <string name="about_description">Versi, sokongan, kredit</string>
     <string name="about_name">Tentang</string>
+    <string name="history">Sejarah</string>
+    <string name="history_limit">Bilangan entri sejarah yang disimpan</string>
+    <string name="history_limit_value">Simpan %1$d video terkini</string>
+    <string name="default_start_page">Halaman mula lalai</string>
+    <string name="local">Setempat</string>
 </resources>

@@ -22,4 +22,9 @@
     <string name="no_videos_found">ဗွီဒီယို မတွေ့ပါ</string>
     <string name="open_settings">စက်တင်ဖွင့်ပါ</string>
     <string name="permission_not_granted">ခွင့်ပြုချက် မပေးထားပါ</string>
+    <string name="history">မှတ်တမ်း</string>
+    <string name="history_limit">သိမ်းထားသော မှတ်တမ်းအရေအတွက်</string>
+    <string name="history_limit_value">နောက်ဆုံး ဗီဒီယို %1$d ခုကို သိမ်းထားရန်</string>
+    <string name="default_start_page">မူလ စတင်စာမျက်နှာ</string>
+    <string name="local">စက်တွင်း</string>
 </resources>

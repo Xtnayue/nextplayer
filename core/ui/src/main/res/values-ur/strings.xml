@@ -34,4 +34,9 @@
     <string name="select_audio_track">آڈیو ٹریک منتخب کریں</string>
     <string name="select_subtitle_track">سب ٹائٹل ٹریک منتخب کریں</string>
     <string name="settings">ترتیبات</string>
+    <string name="history">تاریخ</string>
+    <string name="history_limit">محفوظ کردہ تاریخ کے اندراجات کی تعداد</string>
+    <string name="history_limit_value">حالیہ %1$d ویڈیوز رکھیں</string>
+    <string name="default_start_page">طے شدہ ابتدائی صفحہ</string>
+    <string name="local">مقامی</string>
 </resources>

@@ -221,4 +221,9 @@
     <string name="kofi">Ko-fi</string>
     <string name="paypal">PayPal</string>
     <string name="upi">UPI</string>
+    <string name="history">Lịch sử</string>
+    <string name="history_limit">Số mục lịch sử đã lưu</string>
+    <string name="history_limit_value">Giữ lại %1$d video gần đây</string>
+    <string name="default_start_page">Trang bắt đầu mặc định</string>
+    <string name="local">Cục bộ</string>
 </resources>

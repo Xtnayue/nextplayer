@@ -287,4 +287,9 @@
     <string name="thumbnail_setting_change_confirmation">Changer ce paramètre va vider le cache des miniatures. Elles seront générées de nouveau lorsque les dossiers vidéos seront ouverts. Continuer ?</string>
     <string name="folder_duration">Durée répertoire</string>
     <string name="gestures_name">Gestes</string>
+    <string name="history">Historique</string>
+    <string name="history_limit">Nombre d’éléments d’historique enregistrés</string>
+    <string name="history_limit_value">Conserver les %1$d dernières vidéos</string>
+    <string name="default_start_page">Page de démarrage par défaut</string>
+    <string name="local">Local</string>
 </resources>

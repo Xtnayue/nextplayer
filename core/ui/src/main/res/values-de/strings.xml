@@ -232,4 +232,9 @@
     <string name="m_n_selected">%1$d / %2$d ausgewählt</string>
     <string name="select_all">Alles auswählen</string>
     <string name="deselect_all">Alles abwählen</string>
+    <string name="history">Verlauf</string>
+    <string name="history_limit">Anzahl gespeicherter Verlaufseinträge</string>
+    <string name="history_limit_value">Die letzten %1$d Videos behalten</string>
+    <string name="default_start_page">Standard-Startseite</string>
+    <string name="local">Lokal</string>
 </resources>

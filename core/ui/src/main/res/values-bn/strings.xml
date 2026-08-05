@@ -223,4 +223,9 @@
     <string name="recently_played">সাম্প্রতিক চালুকৃত</string>
     <string name="delete_one_video">১টি ভিডিও মুছে ফেলবেন?</string>
     <string name="delete_videos">%1$dটি ভিডিও মুছে ফেলবেন?</string>
+    <string name="history">ইতিহাস</string>
+    <string name="history_limit">সংরক্ষিত ইতিহাসের সংখ্যা</string>
+    <string name="history_limit_value">সাম্প্রতিক %1$dটি ভিডিও রাখুন</string>
+    <string name="default_start_page">ডিফল্ট শুরুর পৃষ্ঠা</string>
+    <string name="local">স্থানীয়</string>
 </resources>

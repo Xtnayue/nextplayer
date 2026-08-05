@@ -47,7 +47,9 @@ import dev.anilbeesetti.nextplayer.core.ui.R
 import dev.anilbeesetti.nextplayer.core.ui.components.tvFocusRing
 import dev.anilbeesetti.nextplayer.core.ui.designsystem.NextIcons
 import dev.anilbeesetti.nextplayer.feature.network.navigation.NetworkRoute
+import dev.anilbeesetti.nextplayer.feature.videopicker.navigation.HistoryRoute
 import dev.anilbeesetti.nextplayer.feature.videopicker.navigation.MediaPickerRoute
+import dev.anilbeesetti.nextplayer.core.model.StartPage
 
 /**
  * Top-level destinations shown in the bottom bar / nav rail. The first entry is the start (exit)
@@ -58,13 +60,19 @@ enum class TopLevelDestination(
     val icon: ImageVector,
     @StringRes val labelRes: Int,
 ) {
-    MEDIA(MediaPickerRoute(), NextIcons.Home, R.string.home),
+    MEDIA(MediaPickerRoute(), NextIcons.Home, R.string.local),
+    HISTORY(HistoryRoute, NextIcons.History, R.string.history),
     NETWORK(NetworkRoute, NextIcons.Network, R.string.network),
 }
 
 @Composable
-fun rememberTopLevelNavState(): TopLevelNavState {
+fun rememberTopLevelNavState(startPage: StartPage): TopLevelNavState {
     val destinations = TopLevelDestination.entries
+    val startIndex = when (startPage) {
+        StartPage.MEDIA -> TopLevelDestination.MEDIA.ordinal
+        StartPage.HISTORY -> TopLevelDestination.HISTORY.ordinal
+        StartPage.NETWORK -> TopLevelDestination.NETWORK.ordinal
+    }
     // Each tab keeps its own back stack; rememberNavBackStack persists it across config change and
     // process death.
     val backStacks = destinations.associate { dest ->
@@ -72,9 +80,9 @@ fun rememberTopLevelNavState(): TopLevelNavState {
         backStack.ensureRoot(dest.route)
         dest.route to backStack
     }
-    val selectedIndex = rememberSaveable { mutableIntStateOf(0) }
+    val selectedIndex = rememberSaveable { mutableIntStateOf(startIndex) }
     return remember(backStacks, selectedIndex) {
-        TopLevelNavState(destinations, backStacks, selectedIndex)
+        TopLevelNavState(destinations, backStacks, selectedIndex, startIndex)
     }
 }
 
@@ -90,11 +98,12 @@ class TopLevelNavState(
     val destinations: List<TopLevelDestination>,
     val backStacks: Map<NavKey, NavBackStack<NavKey>>,
     private val selectedIndexState: MutableIntState,
+    private val startIndex: Int = 0,
 ) {
     var selectedIndex by selectedIndexState
         private set
 
-    private val startRoute: NavKey get() = destinations.first().route
+    private val startRoute: NavKey get() = destinations[startIndex].route
 
     val topLevelRoute: NavKey get() = destinations[selectedIndex].route
 
@@ -102,7 +111,7 @@ class TopLevelNavState(
     val currentStack: NavBackStack<NavKey> get() = backStacks.getValue(topLevelRoute)
 
     private val stacksInUse: List<NavKey>
-        get() = if (selectedIndex == 0) listOf(startRoute) else listOf(startRoute, topLevelRoute)
+        get() = if (selectedIndex == startIndex) listOf(startRoute) else listOf(startRoute, topLevelRoute)
 
     /**
      * The [androidx.navigation3.runtime.NavEntry.contentKey]s of the top-level destinations. Used to
@@ -120,7 +129,7 @@ class TopLevelNavState(
         val stack = currentStack
         when {
             stack.size > 1 -> stack.removeLastOrNull()
-            selectedIndex != 0 -> selectedIndex = 0
+            selectedIndex != startIndex -> selectedIndex = startIndex
         }
     }
 

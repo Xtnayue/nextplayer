@@ -17,4 +17,9 @@
     <string name="menu">Meni</string>
     <string name="no_videos_found">Videozapisi nisu nađeni</string>
     <string name="open_settings">Otvoriti Postavke</string>
+    <string name="history">Historija</string>
+    <string name="history_limit">Broj sačuvanih stavki historije</string>
+    <string name="history_limit_value">Zadrži posljednjih %1$d videozapisa</string>
+    <string name="default_start_page">Zadana početna stranica</string>
+    <string name="local">Lokalno</string>
 </resources>

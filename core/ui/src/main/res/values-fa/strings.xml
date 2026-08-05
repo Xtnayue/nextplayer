@@ -364,4 +364,9 @@
         <item quantity="other">%1$d ویدیو منتقل شد اما نمیتوان اصل‌ها را برداشت</item>
     </plurals>
     <string name="cannot_move_to_same_folder">نمی‌توان به همان پوشه منتقل کرد</string>
+    <string name="history">تاریخچه</string>
+    <string name="history_limit">تعداد موارد ذخیره‌شده در تاریخچه</string>
+    <string name="history_limit_value">نگهداری %1$d ویدیوی اخیر</string>
+    <string name="default_start_page">صفحه شروع پیش‌فرض</string>
+    <string name="local">محلی</string>
 </resources>

@@ -31,4 +31,9 @@
     <string name="player_controls_play_pause">Toista</string>
     <string name="player_controls_previous">Edellinen</string>
     <string name="player_controls_progress">Etenemispalkki</string>
+    <string name="history">Historia</string>
+    <string name="history_limit">Tallennettujen historiatietojen määrä</string>
+    <string name="history_limit_value">Säilytä viimeisimmät %1$d videota</string>
+    <string name="default_start_page">Oletusaloitussivu</string>
+    <string name="local">Paikallinen</string>
 </resources>

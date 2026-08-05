@@ -13,6 +13,8 @@ data class ApplicationPreferences(
     val excludeFolders: List<String> = emptyList(),
     val mediaViewMode: MediaViewMode = MediaViewMode.FOLDERS,
     val mediaLayoutMode: MediaLayoutMode = MediaLayoutMode.LIST,
+    val historyLimit: Int = DEFAULT_HISTORY_LIMIT,
+    val startPage: StartPage = StartPage.MEDIA,
 
     // Fields
     val showDurationField: Boolean = true,
@@ -31,5 +33,6 @@ data class ApplicationPreferences(
 
     companion object {
         const val DEFAULT_THUMBNAIL_FRAME_POSITION = 0.33f
+        const val DEFAULT_HISTORY_LIMIT = 100
     }
 }

@@ -322,4 +322,9 @@
         <item quantity="other">Video %1$d telah dipindahkan, tetapi video aslinya tidak dapat dihapus</item>
     </plurals>
     <string name="cannot_move_to_same_folder">Tidak dapat memindahkan ke folder yang sama</string>
+    <string name="history">Riwayat</string>
+    <string name="history_limit">Jumlah entri riwayat tersimpan</string>
+    <string name="history_limit_value">Simpan %1$d video terbaru</string>
+    <string name="default_start_page">Halaman awal default</string>
+    <string name="local">Lokal</string>
 </resources>

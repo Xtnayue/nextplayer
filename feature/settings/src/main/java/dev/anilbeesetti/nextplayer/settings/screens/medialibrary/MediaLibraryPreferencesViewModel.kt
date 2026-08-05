@@ -33,6 +33,15 @@ class MediaLibraryPreferencesViewModel @Inject constructor(
     fun onEvent(event: MediaLibraryPreferencesUiEvent) {
         when (event) {
             MediaLibraryPreferencesUiEvent.ToggleMarkLastPlayedMedia -> toggleMarkLastPlayedMedia()
+            is MediaLibraryPreferencesUiEvent.UpdateHistoryLimit -> updateHistoryLimit(event.value)
+        }
+    }
+
+    private fun updateHistoryLimit(value: Int) {
+        viewModelScope.launch {
+            preferencesRepository.updateApplicationPreferences {
+                it.copy(historyLimit = value.coerceIn(10, 500))
+            }
         }
     }
 
@@ -51,4 +60,5 @@ data class MediaLibraryPreferencesUiState(
 
 sealed interface MediaLibraryPreferencesUiEvent {
     data object ToggleMarkLastPlayedMedia : MediaLibraryPreferencesUiEvent
+    data class UpdateHistoryLimit(val value: Int) : MediaLibraryPreferencesUiEvent
 }

@@ -358,7 +358,7 @@
         <item quantity="other">已移動 %1$d 部影片，但無法刪除原始檔案</item>
     </plurals>
     <string name="cannot_move_to_same_folder">無法移至相同資料夾</string>
-    <string name="home">首頁</string>
+    <string name="local">本機</string>
     <string name="network">網路</string>
     <string name="add_connection">建立連線</string>
     <string name="edit_connection">編輯連線</string>
@@ -395,4 +395,8 @@
     <string name="take_video_screenshot">不含字幕的截圖</string>
     <string name="screenshot_saved">截圖已儲存</string>
     <string name="screenshot_failed">無法儲存截圖</string>
+    <string name="history">歷史</string>
+    <string name="history_limit">儲存的歷史記錄數量</string>
+    <string name="history_limit_value">保留最近 %1$d 部影片</string>
+    <string name="default_start_page">進入應用程式後的預設頁面</string>
 </resources>

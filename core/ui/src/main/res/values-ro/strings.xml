@@ -176,4 +176,9 @@
     <string name="crop">Decupați</string>
     <string name="seek_increment">Derulare increment</string>
     <string name="decoder_priority">Proritatea decoderului</string>
+    <string name="history">Istoric</string>
+    <string name="history_limit">Numărul intrărilor salvate în istoric</string>
+    <string name="history_limit_value">Păstrează cele mai recente %1$d videoclipuri</string>
+    <string name="default_start_page">Pagina de pornire implicită</string>
+    <string name="local">Local</string>
 </resources>

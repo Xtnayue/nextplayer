@@ -221,4 +221,9 @@
     <string name="media_layout">Layout de mídia</string>
     <string name="list">Lista</string>
     <string name="grid">Grade</string>
+    <string name="history">Histórico</string>
+    <string name="history_limit">Número de itens salvos no histórico</string>
+    <string name="history_limit_value">Manter os últimos %1$d vídeos</string>
+    <string name="default_start_page">Página inicial padrão</string>
+    <string name="local">Local</string>
 </resources>

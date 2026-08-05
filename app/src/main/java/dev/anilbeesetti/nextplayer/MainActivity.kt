@@ -42,11 +42,14 @@ import dev.anilbeesetti.nextplayer.navigation.NextNavigationBar
 import dev.anilbeesetti.nextplayer.navigation.NextNavigationRail
 import dev.anilbeesetti.nextplayer.navigation.TopLevelDestination
 import dev.anilbeesetti.nextplayer.navigation.isNavigationBetweenTopLevelDestinations
+import dev.anilbeesetti.nextplayer.feature.videopicker.navigation.historyEntry
 import dev.anilbeesetti.nextplayer.navigation.mediaNavGraph
 import dev.anilbeesetti.nextplayer.navigation.networkNavGraph
 import dev.anilbeesetti.nextplayer.navigation.rememberResponsiveNavigationSceneDecoratorStrategy
 import dev.anilbeesetti.nextplayer.navigation.rememberTopLevelNavState
 import dev.anilbeesetti.nextplayer.navigation.settingsNavGraph
+import dev.anilbeesetti.nextplayer.navigation.startPlayback
+import dev.anilbeesetti.nextplayer.settings.navigation.navigateToSettings
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -118,7 +121,9 @@ class MainActivity : AppCompatActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.surfaceContainer,
                 ) {
-                    val navState = rememberTopLevelNavState()
+                    val preferences = (uiState as? MainActivityUiState.Success)?.preferences
+                        ?: return@Surface
+                    val navState = rememberTopLevelNavState(preferences.startPage)
 
                     val sceneDecorator = rememberResponsiveNavigationSceneDecoratorStrategy<NavKey>(
                         isTopLevel = { contentKey -> navState.topLevelContentKeys.contains(contentKey) },
@@ -127,12 +132,17 @@ class MainActivity : AppCompatActivity() {
                     )
 
                     val mediaStack = navState.backStacks.getValue(TopLevelDestination.MEDIA.route)
+                    val historyStack = navState.backStacks.getValue(TopLevelDestination.HISTORY.route)
                     val networkStack = navState.backStacks.getValue(TopLevelDestination.NETWORK.route)
 
                     // Media and network entries navigate within their own tab's stack; settings is
                     // shared, so it navigates within whichever tab it was opened from (the current one).
                     val provider = entryProvider {
                         mediaNavGraph(context = this@MainActivity, backStack = mediaStack)
+                        historyEntry(
+                            onPlayVideo = { uri -> this@MainActivity.startPlayback(uri) },
+                            onSettingsClick = historyStack::navigateToSettings,
+                        )
                         networkNavGraph(context = this@MainActivity, backStack = networkStack)
                         settingsNavGraph(backStack = navState.currentStack)
                     }

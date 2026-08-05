@@ -63,4 +63,9 @@
     <string name="permission_info">Next Player നു \"%1$s\" അനുമതി വീഡിയോകൾ പ്ലേ ചെയ്യാൻ ആവശ്യമാണ്. അതില്ലാതെ, വീഡിയോ കാണുവാൻ പറ്റുന്നതല്ല. ഈ ആപ്പ് പൂർണമായും ഉപയോഗിക്കുന്നതിനായി ഈ അനുമതി നൽകുക.</string>
     <string name="player_controls_exit">മുകളിലേക്ക് പോകുക</string>
     <string name="permission_settings">Next Player നു \"%1$s\" അനുമതി വീഡിയോകൾ പ്ലേ ചെയ്യാൻ ആവശ്യമാണ്. അതില്ലാതെ, വീഡിയോ കാണുവാൻ പറ്റുന്നതല്ല. ഈ ആപ്പ് പൂർണമായും ഉപയോഗിക്കുന്നതിനായി, മുന്നേ ഈ അനുമതി എന്നേക്കുമായി നൽകാഞ്ഞതിനാൽ, സെറ്റിംഗ്സ് വഴി ഈ അനുമതി നൽകുക.</string>
+    <string name="history">ചരിത്രം</string>
+    <string name="history_limit">സംരക്ഷിച്ച ചരിത്ര ഇനങ്ങളുടെ എണ്ണം</string>
+    <string name="history_limit_value">ഏറ്റവും പുതിയ %1$d വീഡിയോകൾ സൂക്ഷിക്കുക</string>
+    <string name="default_start_page">ഡിഫോൾട്ട് ആരംഭ പേജ്</string>
+    <string name="local">പ്രാദേശികം</string>
 </resources>
