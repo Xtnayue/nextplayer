@@ -416,4 +416,6 @@
     <string name="history_limit">عدد عناصر السجل المحفوظة</string>
     <string name="history_limit_value">الاحتفاظ بآخر %1$d من مقاطع الفيديو</string>
     <string name="default_start_page">صفحة البدء الافتراضية</string>
+    <string name="forward_buffer">التخزين المؤقت الأمامي</string>
+    <string name="back_buffer">التخزين المؤقت الخلفي</string>
 </resources>

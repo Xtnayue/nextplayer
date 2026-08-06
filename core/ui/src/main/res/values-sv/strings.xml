@@ -159,4 +159,6 @@
     <string name="history_limit_value">Behåll de senaste %1$d videorna</string>
     <string name="default_start_page">Förvald startsida</string>
     <string name="local">Lokalt</string>
+    <string name="forward_buffer">Framåtbuffert</string>
+    <string name="back_buffer">Bakåtbuffert</string>
 </resources>

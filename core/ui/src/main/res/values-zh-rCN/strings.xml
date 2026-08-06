@@ -386,6 +386,8 @@
     <string name="history_limit">保存的历史记录条数</string>
     <string name="history_limit_value">保留最近 %1$d 个视频</string>
     <string name="default_start_page">进入应用后的默认页面</string>
+    <string name="forward_buffer">前向缓存</string>
+    <string name="back_buffer">后向缓存</string>
     <string name="frame_step_controls">帧步进</string>
     <string name="frame_step_controls_description">显示按视频帧向前或向后步进的按钮</string>
     <string name="frame_step_count">每次步进帧数</string>

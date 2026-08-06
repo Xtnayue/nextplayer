@@ -354,4 +354,6 @@
     <string name="history_limit">保存する履歴の件数</string>
     <string name="history_limit_value">最新の動画を%1$d件保持</string>
     <string name="default_start_page">デフォルトの開始ページ</string>
+    <string name="forward_buffer">前方バッファ</string>
+    <string name="back_buffer">後方バッファ</string>
 </resources>

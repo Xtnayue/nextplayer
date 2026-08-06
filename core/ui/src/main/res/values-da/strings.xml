@@ -10,4 +10,6 @@
     <string name="history_limit_value">Behold de seneste %1$d videoer</string>
     <string name="default_start_page">Standardstartside</string>
     <string name="local">Lokalt</string>
+    <string name="forward_buffer">Fremadrettet buffer</string>
+    <string name="back_buffer">Bagudrettet buffer</string>
 </resources>

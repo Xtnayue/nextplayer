@@ -237,4 +237,6 @@
     <string name="history_limit_value">Die letzten %1$d Videos behalten</string>
     <string name="default_start_page">Standard-Startseite</string>
     <string name="local">Lokal</string>
+    <string name="forward_buffer">Vorwärtspuffer</string>
+    <string name="back_buffer">Rückwärtspuffer</string>
 </resources>

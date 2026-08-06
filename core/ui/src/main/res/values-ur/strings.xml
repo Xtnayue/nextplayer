@@ -39,4 +39,6 @@
     <string name="history_limit_value">حالیہ %1$d ویڈیوز رکھیں</string>
     <string name="default_start_page">طے شدہ ابتدائی صفحہ</string>
     <string name="local">مقامی</string>
+    <string name="forward_buffer">آگے کا بفر</string>
+    <string name="back_buffer">پیچھے کا بفر</string>
 </resources>

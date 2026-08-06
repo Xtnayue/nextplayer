@@ -369,4 +369,6 @@
     <string name="history_limit_value">Säilita viimased %1$d videot</string>
     <string name="default_start_page">Vaikimisi avaleht</string>
     <string name="local">Kohalik</string>
+    <string name="forward_buffer">Edasisuunaline puhver</string>
+    <string name="back_buffer">Tagasisuunaline puhver</string>
 </resources>

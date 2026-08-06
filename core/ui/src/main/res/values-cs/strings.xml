@@ -398,4 +398,6 @@
     <string name="history_limit">Počet uložených položek historie</string>
     <string name="history_limit_value">Uchovat posledních %1$d videí</string>
     <string name="default_start_page">Výchozí úvodní stránka</string>
+    <string name="forward_buffer">Dopředná vyrovnávací paměť</string>
+    <string name="back_buffer">Zpětná vyrovnávací paměť</string>
 </resources>

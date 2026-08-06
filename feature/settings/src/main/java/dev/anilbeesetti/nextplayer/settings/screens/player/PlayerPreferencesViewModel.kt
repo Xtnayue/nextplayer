@@ -49,6 +49,8 @@ class PlayerPreferencesViewModel @Inject constructor(
             is PlayerPreferencesUiEvent.UpdatePreferredControlButtonsPosition -> updatePreferredControlButtonsPosition(event.value)
             is PlayerPreferencesUiEvent.UpdateDefaultPlaybackSpeed -> updateDefaultPlaybackSpeed(event.value)
             is PlayerPreferencesUiEvent.UpdateControlAutoHideTimeout -> updateControlAutoHideTimeout(event.value)
+            is PlayerPreferencesUiEvent.UpdateForwardBuffer -> updateForwardBuffer(event.value)
+            is PlayerPreferencesUiEvent.UpdateBackBuffer -> updateBackBuffer(event.value)
             PlayerPreferencesUiEvent.ToggleUseMaterialYouControls -> toggleUseMaterialYouControls()
             PlayerPreferencesUiEvent.ToggleFrameStepControls -> toggleFrameStepControls()
             is PlayerPreferencesUiEvent.UpdateFrameStepCount -> updateFrameStepCount(event.value)
@@ -144,6 +146,27 @@ class PlayerPreferencesViewModel @Inject constructor(
         }
     }
 
+    private fun updateForwardBuffer(value: Int) {
+        viewModelScope.launch {
+            preferencesRepository.updatePlayerPreferences {
+                it.copy(
+                    forwardBufferSeconds = value.coerceIn(
+                        PlayerPreferences.MIN_FORWARD_BUFFER_SECONDS,
+                        PlayerPreferences.MAX_FORWARD_BUFFER_SECONDS,
+                    ),
+                )
+            }
+        }
+    }
+
+    private fun updateBackBuffer(value: Int) {
+        viewModelScope.launch {
+            preferencesRepository.updatePlayerPreferences {
+                it.copy(backBufferSeconds = value.coerceIn(0, PlayerPreferences.MAX_BACK_BUFFER_SECONDS))
+            }
+        }
+    }
+
     private fun toggleUseMaterialYouControls() {
         viewModelScope.launch {
             preferencesRepository.updatePlayerPreferences {
@@ -201,6 +224,8 @@ sealed interface PlayerPreferencesUiEvent {
     data class UpdatePreferredControlButtonsPosition(val value: ControlButtonsPosition) : PlayerPreferencesUiEvent
     data class UpdateDefaultPlaybackSpeed(val value: Float) : PlayerPreferencesUiEvent
     data class UpdateControlAutoHideTimeout(val value: Int) : PlayerPreferencesUiEvent
+    data class UpdateForwardBuffer(val value: Int) : PlayerPreferencesUiEvent
+    data class UpdateBackBuffer(val value: Int) : PlayerPreferencesUiEvent
     data object ToggleUseMaterialYouControls : PlayerPreferencesUiEvent
     data object ToggleFrameStepControls : PlayerPreferencesUiEvent
     data class UpdateFrameStepCount(val value: Int) : PlayerPreferencesUiEvent

@@ -146,4 +146,6 @@
     <string name="history_limit_value">Saglabāt pēdējos %1$d videoklipus</string>
     <string name="default_start_page">Noklusējuma sākuma lapa</string>
     <string name="local">Lokālie</string>
+    <string name="forward_buffer">Priekšējais buferis</string>
+    <string name="back_buffer">Aizmugures buferis</string>
 </resources>

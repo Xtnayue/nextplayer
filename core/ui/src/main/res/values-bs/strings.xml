@@ -22,4 +22,6 @@
     <string name="history_limit_value">Zadrži posljednjih %1$d videozapisa</string>
     <string name="default_start_page">Zadana početna stranica</string>
     <string name="local">Lokalno</string>
+    <string name="forward_buffer">Predmemorija unaprijed</string>
+    <string name="back_buffer">Predmemorija unazad</string>
 </resources>

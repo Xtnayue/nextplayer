@@ -364,6 +364,8 @@
     <string name="history_limit">Saved history entries</string>
     <string name="history_limit_value">Keep the latest %1$d videos</string>
     <string name="default_start_page">Default start page</string>
+    <string name="forward_buffer">Forward buffer</string>
+    <string name="back_buffer">Back buffer</string>
     <string name="add_connection">Add connection</string>
     <string name="edit_connection">Edit connection</string>
     <string name="delete_connection">Delete connection</string>

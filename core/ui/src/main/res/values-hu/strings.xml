@@ -50,4 +50,6 @@
     <string name="history_limit_value">A legutóbbi %1$d videó megőrzése</string>
     <string name="default_start_page">Alapértelmezett kezdőoldal</string>
     <string name="local">Helyi</string>
+    <string name="forward_buffer">Előre pufferelés</string>
+    <string name="back_buffer">Visszafelé pufferelés</string>
 </resources>

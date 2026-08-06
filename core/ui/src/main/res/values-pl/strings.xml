@@ -404,4 +404,6 @@
     <string name="history_limit">Liczba zapisanych pozycji historii</string>
     <string name="history_limit_value">Zachowaj ostatnie %1$d filmów</string>
     <string name="default_start_page">Domyślna strona startowa</string>
+    <string name="forward_buffer">Bufor do przodu</string>
+    <string name="back_buffer">Bufor wsteczny</string>
 </resources>

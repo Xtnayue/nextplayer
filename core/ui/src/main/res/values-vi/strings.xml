@@ -226,4 +226,6 @@
     <string name="history_limit_value">Giữ lại %1$d video gần đây</string>
     <string name="default_start_page">Trang bắt đầu mặc định</string>
     <string name="local">Cục bộ</string>
+    <string name="forward_buffer">Bộ đệm phía trước</string>
+    <string name="back_buffer">Bộ đệm phía sau</string>
 </resources>

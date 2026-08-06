@@ -404,4 +404,6 @@
     <string name="history_limit">Кількість збережених записів історії</string>
     <string name="history_limit_value">Зберігати останні %1$d відео</string>
     <string name="default_start_page">Початкова сторінка за замовчуванням</string>
+    <string name="forward_buffer">Буфер уперед</string>
+    <string name="back_buffer">Буфер назад</string>
 </resources>

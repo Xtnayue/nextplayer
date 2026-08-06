@@ -226,4 +226,6 @@
     <string name="history_limit_value">최근 동영상 %1$d개 유지</string>
     <string name="default_start_page">기본 시작 페이지</string>
     <string name="local">로컬</string>
+    <string name="forward_buffer">앞쪽 버퍼</string>
+    <string name="back_buffer">뒤쪽 버퍼</string>
 </resources>

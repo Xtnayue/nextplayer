@@ -378,4 +378,6 @@
     <string name="history_limit">सहेजी गई इतिहास प्रविष्टियाँ</string>
     <string name="history_limit_value">हाल के %1$d वीडियो रखें</string>
     <string name="default_start_page">डिफ़ॉल्ट आरंभ पृष्ठ</string>
+    <string name="forward_buffer">आगे का बफ़र</string>
+    <string name="back_buffer">पीछे का बफ़र</string>
 </resources>

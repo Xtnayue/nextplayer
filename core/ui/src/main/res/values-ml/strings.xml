@@ -68,4 +68,6 @@
     <string name="history_limit_value">ഏറ്റവും പുതിയ %1$d വീഡിയോകൾ സൂക്ഷിക്കുക</string>
     <string name="default_start_page">ഡിഫോൾട്ട് ആരംഭ പേജ്</string>
     <string name="local">പ്രാദേശികം</string>
+    <string name="forward_buffer">മുന്നോട്ടുള്ള ബഫർ</string>
+    <string name="back_buffer">പിന്നോട്ടുള്ള ബഫർ</string>
 </resources>

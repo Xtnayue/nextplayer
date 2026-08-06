@@ -5,4 +5,6 @@
     <string name="history_limit_value">ఇటీవలి %1$d వీడియోలను ఉంచు</string>
     <string name="default_start_page">డిఫాల్ట్ ప్రారంభ పేజీ</string>
     <string name="local">స్థానికం</string>
+    <string name="forward_buffer">ముందుకు బఫర్</string>
+    <string name="back_buffer">వెనుకకు బఫర్</string>
 </resources>

@@ -369,4 +369,6 @@
     <string name="history_limit_value">Mbaj %1$d videot më të fundit</string>
     <string name="default_start_page">Faqja fillestare e parazgjedhur</string>
     <string name="local">Lokale</string>
+    <string name="forward_buffer">Buferi përpara</string>
+    <string name="back_buffer">Buferi prapa</string>
 </resources>

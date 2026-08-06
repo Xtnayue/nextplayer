@@ -303,4 +303,6 @@
     <string name="history_limit_value">Запазване на последните %1$d видеоклипа</string>
     <string name="default_start_page">Начална страница по подразбиране</string>
     <string name="local">Локални</string>
+    <string name="forward_buffer">Преден буфер</string>
+    <string name="back_buffer">Заден буфер</string>
 </resources>

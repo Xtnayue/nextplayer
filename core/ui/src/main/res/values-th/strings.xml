@@ -31,4 +31,6 @@
     <string name="history_limit_value">เก็บวิดีโอล่าสุด %1$d รายการ</string>
     <string name="default_start_page">หน้าเริ่มต้นที่กำหนดไว้</string>
     <string name="local">ในเครื่อง</string>
+    <string name="forward_buffer">บัฟเฟอร์ล่วงหน้า</string>
+    <string name="back_buffer">บัฟเฟอร์ย้อนหลัง</string>
 </resources>

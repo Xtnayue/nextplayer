@@ -150,6 +150,37 @@ private fun PlayerPreferencesContent(
                         }
                     },
                 )
+                PreferenceSlider(
+                    title = stringResource(R.string.forward_buffer),
+                    description = stringResource(R.string.seconds, uiState.preferences.forwardBufferSeconds),
+                    icon = NextIcons.Fast,
+                    value = uiState.preferences.forwardBufferSeconds.toFloat(),
+                    valueRange = PlayerPreferences.MIN_FORWARD_BUFFER_SECONDS.toFloat()..
+                        PlayerPreferences.MAX_FORWARD_BUFFER_SECONDS.toFloat(),
+                    onValueChange = { onEvent(PlayerPreferencesUiEvent.UpdateForwardBuffer(it.toInt())) },
+                    onReset = {
+                        onEvent(
+                            PlayerPreferencesUiEvent.UpdateForwardBuffer(
+                                PlayerPreferences.DEFAULT_FORWARD_BUFFER_SECONDS,
+                            ),
+                        )
+                    },
+                )
+                PreferenceSlider(
+                    title = stringResource(R.string.back_buffer),
+                    description = stringResource(R.string.seconds, uiState.preferences.backBufferSeconds),
+                    icon = NextIcons.Replay,
+                    value = uiState.preferences.backBufferSeconds.toFloat(),
+                    valueRange = 0f..PlayerPreferences.MAX_BACK_BUFFER_SECONDS.toFloat(),
+                    onValueChange = { onEvent(PlayerPreferencesUiEvent.UpdateBackBuffer(it.toInt())) },
+                    onReset = {
+                        onEvent(
+                            PlayerPreferencesUiEvent.UpdateBackBuffer(
+                                PlayerPreferences.DEFAULT_BACK_BUFFER_SECONDS,
+                            ),
+                        )
+                    },
+                )
                 PreferenceSwitch(
                     title = stringResource(id = R.string.frame_step_controls),
                     description = stringResource(id = R.string.frame_step_controls_description),

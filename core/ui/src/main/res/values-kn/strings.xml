@@ -123,4 +123,6 @@
     <string name="history_limit_value">ಇತ್ತೀಚಿನ %1$d ವೀಡಿಯೊಗಳನ್ನು ಉಳಿಸಿ</string>
     <string name="default_start_page">ಡೀಫಾಲ್ಟ್ ಆರಂಭ ಪುಟ</string>
     <string name="local">ಸ್ಥಳೀಯ</string>
+    <string name="forward_buffer">ಮುಂದಿನ ಬಫರ್</string>
+    <string name="back_buffer">ಹಿಂದಿನ ಬಫರ್</string>
 </resources>

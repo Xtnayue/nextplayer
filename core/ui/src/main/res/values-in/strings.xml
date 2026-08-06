@@ -327,4 +327,6 @@
     <string name="history_limit_value">Simpan %1$d video terbaru</string>
     <string name="default_start_page">Halaman awal default</string>
     <string name="local">Lokal</string>
+    <string name="forward_buffer">Buffer maju</string>
+    <string name="back_buffer">Buffer mundur</string>
 </resources>

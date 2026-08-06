@@ -20,6 +20,7 @@ import androidx.media3.common.Player.DISCONTINUITY_REASON_SEEK
 import androidx.media3.common.TrackSelectionParameters
 import androidx.media3.common.Tracks
 import androidx.media3.common.util.UnstableApi
+import androidx.media3.exoplayer.DefaultLoadControl
 import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.SeekParameters
@@ -116,6 +117,11 @@ class PlayerService : MediaSessionService() {
 
     private var loudnessEnhancer: LoudnessEnhancer? = null
     private var currentVolumeGain: Int = 0
+
+    private companion object {
+        const val DEFAULT_BUFFER_FOR_PLAYBACK_MS = 1_000
+        const val DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS = 2_000
+    }
 
     private val playbackStateListener = object : Player.Listener {
         override fun onMediaItemTransition(mediaItem: MediaItem?, reason: Int) {
@@ -583,10 +589,22 @@ class PlayerService : MediaSessionService() {
             DefaultExtractorsFactory().withAssMkvSupport(assSubtitleParserFactory, assHandler),
         ).setSubtitleParserFactory(assSubtitleParserFactory)
 
+        val forwardBufferMs = playerPreferences.forwardBufferSeconds * 1_000
+        val loadControl = DefaultLoadControl.Builder()
+            .setBufferDurationsMs(
+                forwardBufferMs,
+                forwardBufferMs,
+                DEFAULT_BUFFER_FOR_PLAYBACK_MS,
+                DEFAULT_BUFFER_FOR_PLAYBACK_AFTER_REBUFFER_MS,
+            )
+            .setBackBuffer(playerPreferences.backBufferSeconds * 1_000, false)
+            .build()
+
         val player = ExoPlayer.Builder(applicationContext)
             .setRenderersFactory(renderersFactory.withAssSupport(assHandler))
             .setMediaSourceFactory(mediaSourceFactory)
             .setTrackSelector(trackSelector)
+            .setLoadControl(loadControl)
             .setAudioAttributes(
                 AudioAttributes.Builder()
                     .setUsage(C.USAGE_MEDIA)

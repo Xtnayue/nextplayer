@@ -83,11 +83,17 @@ jobs:
       - name: Build optimized ${{ matrix.abi }} APK
         run: ./gradlew 'assembleRelease-with-debug-signing' -PtargetAbi=${{ matrix.abi }}
 
+      - name: Prepare release filename
+        run: |
+          cp \
+            app/build/outputs/apk/release-with-debug-signing/app-${{ matrix.abi }}-release-with-debug-signing.apk \
+            app/build/outputs/apk/release-with-debug-signing/app-${{ matrix.abi }}-release.apk
+
       - name: Upload ${{ matrix.abi }} APK
         uses: actions/upload-artifact@v7
         with:
           name: nextplayer-${{ matrix.abi }}-release
-          path: app/build/outputs/apk/release-with-debug-signing/app-${{ matrix.abi }}-release-with-debug-signing.apk
+          path: app/build/outputs/apk/release-with-debug-signing/app-${{ matrix.abi }}-release.apk
           if-no-files-found: error
 
   release:

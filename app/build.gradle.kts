@@ -21,8 +21,8 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         applicationId = "meow.next.player"
-        versionCode = 72
-        versionName = "0.17.5"
+        versionCode = 73
+        versionName = "0.17.6"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 

@@ -392,4 +392,6 @@
     <string name="history_limit">Αποθηκευμένες καταχωρίσεις ιστορικού</string>
     <string name="history_limit_value">Διατήρηση των τελευταίων %1$d βίντεο</string>
     <string name="default_start_page">Προεπιλεγμένη αρχική σελίδα</string>
+    <string name="forward_buffer">Προσωρινή μνήμη προς τα εμπρός</string>
+    <string name="back_buffer">Προσωρινή μνήμη προς τα πίσω</string>
 </resources>

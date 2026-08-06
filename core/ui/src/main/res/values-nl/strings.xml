@@ -30,4 +30,6 @@
     <string name="history_limit_value">De laatste %1$d video’s bewaren</string>
     <string name="default_start_page">Standaard startpagina</string>
     <string name="local">Lokaal</string>
+    <string name="forward_buffer">Voorwaartse buffer</string>
+    <string name="back_buffer">Achterwaartse buffer</string>
 </resources>

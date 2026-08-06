@@ -16,6 +16,8 @@ data class PlayerPreferences(
     val autoPip: Boolean = true,
     val autoBackgroundPlay: Boolean = false,
     val loopMode: LoopMode = LoopMode.OFF,
+    val forwardBufferSeconds: Int = DEFAULT_FORWARD_BUFFER_SECONDS,
+    val backBufferSeconds: Int = DEFAULT_BACK_BUFFER_SECONDS,
 
     // Controls (Gestures)
     @Deprecated(message = "Use individual enableVolumeSwipeGesture and enableBrightnessSwipeGesture instead")
@@ -71,5 +73,10 @@ data class PlayerPreferences(
         const val DEFAULT_SUBTITLE_TEXT_SIZE = 20
         const val DEFAULT_CONTROLLER_AUTO_HIDE_TIMEOUT = 4
         const val DEFAULT_FRAME_STEP_COUNT = 1
+        const val DEFAULT_FORWARD_BUFFER_SECONDS = 50
+        const val DEFAULT_BACK_BUFFER_SECONDS = 0
+        const val MIN_FORWARD_BUFFER_SECONDS = 5
+        const val MAX_FORWARD_BUFFER_SECONDS = 120
+        const val MAX_BACK_BUFFER_SECONDS = 60
     }
 }

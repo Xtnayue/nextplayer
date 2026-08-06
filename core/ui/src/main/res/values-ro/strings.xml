@@ -181,4 +181,6 @@
     <string name="history_limit_value">Păstrează cele mai recente %1$d videoclipuri</string>
     <string name="default_start_page">Pagina de pornire implicită</string>
     <string name="local">Local</string>
+    <string name="forward_buffer">Memorie tampon înainte</string>
+    <string name="back_buffer">Memorie tampon înapoi</string>
 </resources>

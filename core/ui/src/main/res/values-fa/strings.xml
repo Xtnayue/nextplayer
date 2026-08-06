@@ -369,4 +369,6 @@
     <string name="history_limit_value">نگهداری %1$d ویدیوی اخیر</string>
     <string name="default_start_page">صفحه شروع پیش‌فرض</string>
     <string name="local">محلی</string>
+    <string name="forward_buffer">بافر رو به جلو</string>
+    <string name="back_buffer">بافر رو به عقب</string>
 </resources>

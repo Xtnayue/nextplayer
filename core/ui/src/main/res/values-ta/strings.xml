@@ -226,4 +226,6 @@
     <string name="history_limit_value">சமீபத்திய %1$d காணொளிகளை வைத்திரு</string>
     <string name="default_start_page">இயல்புநிலை தொடக்கப் பக்கம்</string>
     <string name="local">உள்ளூர்</string>
+    <string name="forward_buffer">முன்னோக்கு இடையகம்</string>
+    <string name="back_buffer">பின்னோக்கு இடையகம்</string>
 </resources>

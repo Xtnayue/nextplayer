@@ -10,4 +10,6 @@
     <string name="history_limit_value">Conserva els darrers %1$d vídeos</string>
     <string name="default_start_page">Pàgina d’inici predeterminada</string>
     <string name="local">Local</string>
+    <string name="forward_buffer">Memòria intermèdia futura</string>
+    <string name="back_buffer">Memòria intermèdia anterior</string>
 </resources>

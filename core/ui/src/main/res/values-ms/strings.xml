@@ -7,4 +7,6 @@
     <string name="history_limit_value">Simpan %1$d video terkini</string>
     <string name="default_start_page">Halaman mula lalai</string>
     <string name="local">Setempat</string>
+    <string name="forward_buffer">Penimbal hadapan</string>
+    <string name="back_buffer">Penimbal belakang</string>
 </resources>

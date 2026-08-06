@@ -292,4 +292,6 @@
     <string name="history_limit_value">Conserver les %1$d dernières vidéos</string>
     <string name="default_start_page">Page de démarrage par défaut</string>
     <string name="local">Local</string>
+    <string name="forward_buffer">Mémoire tampon avant</string>
+    <string name="back_buffer">Mémoire tampon arrière</string>
 </resources>

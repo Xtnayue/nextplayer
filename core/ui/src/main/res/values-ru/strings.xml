@@ -404,4 +404,6 @@
     <string name="history_limit">Количество сохранённых записей истории</string>
     <string name="history_limit_value">Хранить последние %1$d видео</string>
     <string name="default_start_page">Стартовая страница по умолчанию</string>
+    <string name="forward_buffer">Буфер вперёд</string>
+    <string name="back_buffer">Буфер назад</string>
 </resources>

@@ -163,4 +163,6 @@
     <string name="history_limit_value">Behold de siste %1$d videoene</string>
     <string name="default_start_page">Standard startside</string>
     <string name="local">Lokalt</string>
+    <string name="forward_buffer">Fremoverbuffer</string>
+    <string name="back_buffer">Bakoverbuffer</string>
 </resources>

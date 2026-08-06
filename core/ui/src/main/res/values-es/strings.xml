@@ -398,4 +398,6 @@
     <string name="history_limit">Entradas guardadas en el historial</string>
     <string name="history_limit_value">Conservar los últimos %1$d vídeos</string>
     <string name="default_start_page">Página de inicio predeterminada</string>
+    <string name="forward_buffer">Búfer de avance</string>
+    <string name="back_buffer">Búfer de retroceso</string>
 </resources>

@@ -369,4 +369,6 @@
     <string name="history_limit_value">Son %1$d videoyu sakla</string>
     <string name="default_start_page">Varsayılan başlangıç sayfası</string>
     <string name="local">Yerel</string>
+    <string name="forward_buffer">İleri arabellek</string>
+    <string name="back_buffer">Geri arabellek</string>
 </resources>

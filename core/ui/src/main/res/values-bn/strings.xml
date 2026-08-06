@@ -228,4 +228,6 @@
     <string name="history_limit_value">সাম্প্রতিক %1$dটি ভিডিও রাখুন</string>
     <string name="default_start_page">ডিফল্ট শুরুর পৃষ্ঠা</string>
     <string name="local">স্থানীয়</string>
+    <string name="forward_buffer">অগ্রবর্তী বাফার</string>
+    <string name="back_buffer">পশ্চাৎ বাফার</string>
 </resources>

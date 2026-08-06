@@ -109,4 +109,6 @@
     <string name="history_limit_value">שמירת %1$d הסרטונים האחרונים</string>
     <string name="default_start_page">דף פתיחה ברירת מחדל</string>
     <string name="local">מקומי</string>
+    <string name="forward_buffer">מאגר קדימה</string>
+    <string name="back_buffer">מאגר אחורה</string>
 </resources>

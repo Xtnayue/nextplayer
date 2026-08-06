@@ -210,4 +210,6 @@
     <string name="history_limit_value">Conserva gli ultimi %1$d video</string>
     <string name="default_start_page">Pagina iniziale predefinita</string>
     <string name="local">Locale</string>
+    <string name="forward_buffer">Buffer in avanti</string>
+    <string name="back_buffer">Buffer all’indietro</string>
 </resources>

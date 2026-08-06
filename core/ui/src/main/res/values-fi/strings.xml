@@ -36,4 +36,6 @@
     <string name="history_limit_value">Säilytä viimeisimmät %1$d videota</string>
     <string name="default_start_page">Oletusaloitussivu</string>
     <string name="local">Paikallinen</string>
+    <string name="forward_buffer">Ennakkopuskuri</string>
+    <string name="back_buffer">Taaksepäin puskurointi</string>
 </resources>
