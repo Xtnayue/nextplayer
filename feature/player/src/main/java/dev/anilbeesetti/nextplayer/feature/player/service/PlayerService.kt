@@ -28,6 +28,7 @@ import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
 import androidx.media3.exoplayer.trackselection.DefaultTrackSelector
 import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.extractor.DefaultExtractorsFactory
+import androidx.media3.extractor.mp4.FragmentedMp4Extractor
 import androidx.media3.session.CommandButton
 import androidx.media3.session.CommandButton.ICON_UNDEFINED
 import androidx.media3.session.MediaSession
@@ -586,7 +587,17 @@ class PlayerService : MediaSessionService() {
         val assSubtitleParserFactory = AssSubtitleParserFactory(assHandler)
         val mediaSourceFactory = DefaultMediaSourceFactory(
             DefaultDataSource.Factory(applicationContext),
-            DefaultExtractorsFactory().withAssMkvSupport(assSubtitleParserFactory, assHandler),
+            DefaultExtractorsFactory()
+                // Fall back to an estimated seek map when a supported stream has no usable index.
+                .setConstantBitrateSeekingEnabled(true)
+                .setConstantBitrateSeekingAlwaysEnabled(true)
+                // Some fragmented MP4 encoders write multiple sidx boxes. Merge them into one
+                // seekable timeline instead of exposing an incomplete or unseekable window.
+                .setFragmentedMp4ExtractorFlags(FragmentedMp4Extractor.FLAG_MERGE_FRAGMENTED_SIDX)
+                // Zero keeps seek-for-Cues enabled. FLAG_DISABLE_SEEK_FOR_CUES would make MKV files
+                // whose Cues are stored at the end appear unseekable.
+                .setMatroskaExtractorFlags(0)
+                .withAssMkvSupport(assSubtitleParserFactory, assHandler),
         ).setSubtitleParserFactory(assSubtitleParserFactory)
 
         val forwardBufferMs = playerPreferences.forwardBufferSeconds * 1_000
