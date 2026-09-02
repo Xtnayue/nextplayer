@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.SystemBarStyle
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -77,6 +78,13 @@ class PlayerActivity : AppCompatActivity() {
     private val playbackStateListener: Player.Listener = playbackStateListener()
 
     private val subtitleFileSuspendLauncher = registerForSuspendActivityResult(OpenDocumentAtInitialUri())
+    private val cloudSubtitleLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        val uri = result.data?.data ?: return@registerForActivityResult
+        lifecycleScope.launch {
+            maybeInitControllerFuture()
+            controllerFuture?.await()?.addSubtitleTrack(uri)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,6 +137,24 @@ class PlayerActivity : AppCompatActivity() {
                                 maybeInitControllerFuture()
                                 controllerFuture?.await()?.addSubtitleTrack(uri)
                             }
+                        },
+                        onSelectCloudSubtitleClick = if (intent.hasExtra(PlayerApi.API_NETWORK_CONNECTION_ID)) {
+                            {
+                                val connectionId = intent.getLongExtra(PlayerApi.API_NETWORK_CONNECTION_ID, -1L)
+                                val filePath = intent.getStringExtra(PlayerApi.API_NETWORK_FILE_PATH).orEmpty()
+                                val directory = filePath.trimEnd('/').substringBeforeLast('/', "")
+                                val pickerIntent = Intent().apply {
+                                    setClassName(
+                                        packageName,
+                                        "dev.anilbeesetti.nextplayer.feature.network.CloudSubtitlePickerActivity",
+                                    )
+                                    putExtra("connection_id", connectionId)
+                                    putExtra("directory_path", directory)
+                                }
+                                cloudSubtitleLauncher.launch(pickerIntent)
+                            }
+                        } else {
+                            null
                         },
                         onBackClick = { finishAndStopPlayerSession() },
                         onPlayInBackgroundClick = {

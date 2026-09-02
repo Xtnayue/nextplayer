@@ -7,17 +7,20 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import dev.anilbeesetti.nextplayer.core.database.dao.HiddenVideoDao
 import dev.anilbeesetti.nextplayer.core.database.dao.MediumStateDao
 import dev.anilbeesetti.nextplayer.core.database.dao.NetworkConnectionDao
+import dev.anilbeesetti.nextplayer.core.database.dao.NetworkPlaybackHistoryDao
 import dev.anilbeesetti.nextplayer.core.database.entities.HiddenVideoEntity
 import dev.anilbeesetti.nextplayer.core.database.entities.MediumStateEntity
 import dev.anilbeesetti.nextplayer.core.database.entities.NetworkConnectionEntity
+import dev.anilbeesetti.nextplayer.core.database.entities.NetworkPlaybackHistoryEntity
 
 @Database(
     entities = [
         MediumStateEntity::class,
         HiddenVideoEntity::class,
         NetworkConnectionEntity::class,
+        NetworkPlaybackHistoryEntity::class,
     ],
-    version = 7,
+    version = 8,
     exportSchema = true,
 )
 abstract class MediaDatabase : RoomDatabase() {
@@ -27,6 +30,8 @@ abstract class MediaDatabase : RoomDatabase() {
     abstract fun hiddenVideoDao(): HiddenVideoDao
 
     abstract fun networkConnectionDao(): NetworkConnectionDao
+
+    abstract fun networkPlaybackHistoryDao(): NetworkPlaybackHistoryDao
 
     companion object {
         const val DATABASE_NAME = "media_db"
@@ -231,6 +236,23 @@ abstract class MediaDatabase : RoomDatabase() {
                         `password` TEXT NOT NULL,
                         `use_https` INTEGER NOT NULL,
                         `created_at` INTEGER NOT NULL
+                    )
+                    """,
+                )
+            }
+        }
+
+        val MIGRATION_7_8 = object : Migration(7, 8) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS `network_playback_history` (
+                        `connection_id` INTEGER NOT NULL,
+                        `file_path` TEXT NOT NULL,
+                        `file_name` TEXT NOT NULL,
+                        `file_size` INTEGER NOT NULL,
+                        `played_at` INTEGER NOT NULL,
+                        PRIMARY KEY(`connection_id`, `file_path`)
                     )
                     """,
                 )

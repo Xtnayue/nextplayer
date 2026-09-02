@@ -1,6 +1,5 @@
 package dev.anilbeesetti.nextplayer.feature.network.screens.browse
 
-import android.net.Uri
 import android.text.format.DateFormat
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -44,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.anilbeesetti.nextplayer.core.common.Utils
 import dev.anilbeesetti.nextplayer.core.model.NetworkFile
+import dev.anilbeesetti.nextplayer.core.model.NetworkPlaybackSource
 import dev.anilbeesetti.nextplayer.core.ui.R
 import dev.anilbeesetti.nextplayer.core.ui.components.NextSegmentedListItem
 import dev.anilbeesetti.nextplayer.core.ui.components.NextTopAppBar
@@ -57,13 +57,13 @@ import java.util.Date
 @Composable
 fun NetworkBrowseScreenRoute(
     onNavigateUp: () -> Unit,
-    onPlayVideo: (Uri) -> Unit,
+    onPlayVideo: (NetworkPlaybackSource) -> Unit,
     onNavigateToFolder: (connectionId: Long, path: String) -> Unit,
     viewModel: NetworkBrowseViewModel,
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
-    ObserveAsEvents(viewModel.playEvents) { uri -> onPlayVideo(uri) }
+    ObserveAsEvents(viewModel.playEvents, onPlayVideo)
 
     NetworkBrowseScreen(
         uiState = uiState,

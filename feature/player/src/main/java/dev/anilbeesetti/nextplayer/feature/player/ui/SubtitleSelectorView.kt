@@ -56,6 +56,7 @@ fun BoxScope.SubtitleSelectorView(
     show: Boolean,
     player: Player,
     onSelectSubtitleClick: () -> Unit,
+    onSelectCloudSubtitleClick: (() -> Unit)?,
     onEvent: (SubtitleOptionsEvent) -> Unit = {},
     onDismiss: () -> Unit,
 ) {
@@ -101,6 +102,18 @@ fun BoxScope.SubtitleSelectorView(
                 },
             ) {
                 Text(text = stringResource(R.string.open_subtitle))
+            }
+            if (onSelectCloudSubtitleClick != null) {
+                Spacer(modifier = Modifier.size(8.dp))
+                FilledTonalButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    onClick = {
+                        onSelectCloudSubtitleClick()
+                        onDismiss()
+                    },
+                ) {
+                    Text(text = stringResource(R.string.open_cloud_subtitle))
+                }
             }
             Spacer(modifier = Modifier.size(16.dp))
             DelayInput(

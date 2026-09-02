@@ -122,6 +122,7 @@ fun MediaPlayerScreen(
     playerPreferences: PlayerPreferences,
     modifier: Modifier = Modifier,
     onSelectSubtitleClick: () -> Unit,
+    onSelectCloudSubtitleClick: (() -> Unit)?,
     onBackClick: () -> Unit,
     onPlayInBackgroundClick: () -> Unit,
 ) {
@@ -535,6 +536,7 @@ fun MediaPlayerScreen(
                 videoContentScale = videoZoomAndContentScaleState.videoContentScale,
                 onDismiss = { overlayView = null },
                 onSelectSubtitleClick = onSelectSubtitleClick,
+                onSelectCloudSubtitleClick = onSelectCloudSubtitleClick,
                 onSubtitleOptionEvent = viewModel::onSubtitleOptionEvent,
                 onVideoContentScaleChanged = { videoZoomAndContentScaleState.onVideoContentScaleChanged(it) },
             )

@@ -1,6 +1,7 @@
 package dev.anilbeesetti.nextplayer.navigation
 
 import android.content.Context
+import androidx.core.net.toUri
 import androidx.navigation3.runtime.EntryProviderScope
 import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
@@ -28,7 +29,13 @@ fun EntryProviderScope<NavKey>.networkNavGraph(
 
     networkBrowseEntry(
         onNavigateUp = { backStack.removeLastIfNotRoot() },
-        onPlayVideo = { uri -> context.startPlayback(uri) },
+        onPlayVideo = { source ->
+            context.startPlayback(
+                uri = source.uri.toUri(),
+                networkConnectionId = source.connectionId,
+                networkFilePath = source.filePath,
+            )
+        },
         onNavigateToFolder = { id, path -> backStack.navigateToNetworkBrowse(id, path) },
     )
 }

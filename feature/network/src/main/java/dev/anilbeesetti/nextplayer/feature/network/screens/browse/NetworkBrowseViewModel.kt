@@ -9,12 +9,16 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.anilbeesetti.nextplayer.core.data.repository.NetworkConnectionRepository
+import dev.anilbeesetti.nextplayer.core.data.repository.NetworkPlaybackHistoryRepository
 import dev.anilbeesetti.nextplayer.core.media.network.NetworkClient
 import dev.anilbeesetti.nextplayer.core.media.network.NetworkClientFactory
 import dev.anilbeesetti.nextplayer.core.media.network.isNetworkVideoFile
 import dev.anilbeesetti.nextplayer.core.media.network.proxy.NetworkStreamingProxy
 import dev.anilbeesetti.nextplayer.core.model.NetworkConnection
 import dev.anilbeesetti.nextplayer.core.model.NetworkFile
+import dev.anilbeesetti.nextplayer.core.model.NetworkPlaybackHistory
+import dev.anilbeesetti.nextplayer.core.model.NetworkPlaybackSource
+import dev.anilbeesetti.nextplayer.core.model.NetworkProtocol
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.channels.Channel
@@ -42,6 +46,7 @@ class NetworkBrowseViewModel @AssistedInject constructor(
     /** The folder path to list; `null` means the connection's root. */
     @Assisted private val path: String?,
     private val repository: NetworkConnectionRepository,
+    private val historyRepository: NetworkPlaybackHistoryRepository,
     private val streamingProxy: NetworkStreamingProxy,
 ) : ViewModel() {
 
@@ -57,7 +62,7 @@ class NetworkBrowseViewModel @AssistedInject constructor(
     private val _uiState = MutableStateFlow(NetworkBrowseUiState())
     val uiState: StateFlow<NetworkBrowseUiState> = _uiState.asStateFlow()
 
-    private val _playEvents = Channel<Uri>()
+    private val _playEvents = Channel<NetworkPlaybackSource>()
     val playEvents = _playEvents.receiveAsFlow()
 
     init {
@@ -127,7 +132,18 @@ class NetworkBrowseViewModel @AssistedInject constructor(
         if (file.isDirectory) return
         viewModelScope.launch {
             val url = streamingProxy.registerStream(conn, file.path, file.name)
-            _playEvents.send(url.toUri())
+            if (conn.protocol == NetworkProtocol.FTP || conn.protocol == NetworkProtocol.WEBDAV) {
+                historyRepository.record(
+                    NetworkPlaybackHistory(
+                        connectionId = conn.id,
+                        filePath = file.path,
+                        fileName = file.name,
+                        fileSize = file.size,
+                        playedAt = System.currentTimeMillis(),
+                    ),
+                )
+            }
+            _playEvents.send(NetworkPlaybackSource(url, conn.id, file.path))
         }
     }
 

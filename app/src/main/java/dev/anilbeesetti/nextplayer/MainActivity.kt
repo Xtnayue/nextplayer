@@ -140,7 +140,13 @@ class MainActivity : AppCompatActivity() {
                     val provider = entryProvider {
                         mediaNavGraph(context = this@MainActivity, backStack = mediaStack)
                         historyEntry(
-                            onPlayVideo = { uri -> this@MainActivity.startPlayback(uri) },
+                            onPlayVideo = { playback ->
+                                this@MainActivity.startPlayback(
+                                    uri = playback.uri,
+                                    networkConnectionId = playback.networkConnectionId,
+                                    networkFilePath = playback.networkFilePath,
+                                )
+                            },
                             onSettingsClick = historyStack::navigateToSettings,
                         )
                         networkNavGraph(context = this@MainActivity, backStack = networkStack)

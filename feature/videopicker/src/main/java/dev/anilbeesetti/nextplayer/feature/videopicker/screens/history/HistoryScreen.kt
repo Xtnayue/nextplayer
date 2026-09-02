@@ -8,6 +8,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,12 +24,15 @@ import dev.anilbeesetti.nextplayer.feature.videopicker.composables.NoVideosFound
 
 @Composable
 fun HistoryScreen(
-    onPlayVideo: (Uri) -> Unit,
+    onPlayVideo: (HistoryPlayback) -> Unit,
     onSettingsClick: () -> Unit,
     viewModel: HistoryViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-    HistoryContent(uiState, onPlayVideo, onSettingsClick)
+    LaunchedEffect(viewModel) {
+        viewModel.playEvents.collect(onPlayVideo)
+    }
+    HistoryContent(uiState, viewModel::playVideo, onSettingsClick)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

@@ -182,6 +182,7 @@
     <string name="pip_settings">子母畫面模式</string>
     <string name="pip_settings_description">輕觸主畫面按鈕時自動切換至迷你播放器</string>
     <string name="open_subtitle">開啟本機字幕</string>
+    <string name="open_cloud_subtitle">選擇雲端字幕</string>
     <string name="no_subtitle_tracks_found">該影片的字幕軌道不可用或不受支援。</string>
     <string name="no_audio_tracks_found">這部影片的音軌無法使用或不支援。</string>
     <string name="rename">重新命名</string>

@@ -45,8 +45,13 @@ fun EntryProviderScope<NavKey>.mediaNavGraph(
     )
 }
 
-internal fun Context.startPlayback(uri: Uri, grantReadPermission: Boolean = false) {
-    startPlayback(uri = uri, playlist = null, grantReadPermission = grantReadPermission)
+internal fun Context.startPlayback(
+    uri: Uri,
+    grantReadPermission: Boolean = false,
+    networkConnectionId: Long? = null,
+    networkFilePath: String? = null,
+) {
+    startPlayback(uri, null, grantReadPermission, networkConnectionId, networkFilePath)
 }
 
 internal fun Context.startPlayback(uris: List<Uri>, grantReadPermission: Boolean = false) {
@@ -54,7 +59,13 @@ internal fun Context.startPlayback(uris: List<Uri>, grantReadPermission: Boolean
     startPlayback(uri = uri, playlist = uris, grantReadPermission = grantReadPermission)
 }
 
-private fun Context.startPlayback(uri: Uri, playlist: List<Uri>?, grantReadPermission: Boolean) {
+private fun Context.startPlayback(
+    uri: Uri,
+    playlist: List<Uri>?,
+    grantReadPermission: Boolean,
+    networkConnectionId: Long? = null,
+    networkFilePath: String? = null,
+) {
     if (grantReadPermission) {
         (playlist ?: listOf(uri)).forEach {
             grantUriPermission(packageName, it, Intent.FLAG_GRANT_READ_URI_PERMISSION)
@@ -64,6 +75,8 @@ private fun Context.startPlayback(uri: Uri, playlist: List<Uri>?, grantReadPermi
         action = Intent.ACTION_VIEW
         data = uri
         playlist?.let { putParcelableArrayListExtra(PlayerApi.API_PLAYLIST, ArrayList(it)) }
+        networkConnectionId?.let { putExtra(PlayerApi.API_NETWORK_CONNECTION_ID, it) }
+        networkFilePath?.let { putExtra(PlayerApi.API_NETWORK_FILE_PATH, it) }
         if (grantReadPermission) addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
     startActivity(intent)

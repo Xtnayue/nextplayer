@@ -17,6 +17,7 @@ fun BoxScope.OverlayShowView(
     videoContentScale: VideoContentScale,
     onDismiss: () -> Unit = {},
     onSelectSubtitleClick: () -> Unit = {},
+    onSelectCloudSubtitleClick: (() -> Unit)? = null,
     onSubtitleOptionEvent: (SubtitleOptionsEvent) -> Unit = {},
     onVideoContentScaleChanged: (VideoContentScale) -> Unit = {},
 ) {
@@ -42,6 +43,7 @@ fun BoxScope.OverlayShowView(
         show = overlayView == OverlayView.SUBTITLE_SELECTOR,
         player = player,
         onSelectSubtitleClick = onSelectSubtitleClick,
+        onSelectCloudSubtitleClick = onSelectCloudSubtitleClick,
         onEvent = onSubtitleOptionEvent,
         onDismiss = onDismiss,
     )

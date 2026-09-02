@@ -9,6 +9,11 @@ val networkVideoExtensions = setOf(
 fun isNetworkVideoFile(name: String): Boolean =
     name.substringAfterLast('.', "").lowercase() in networkVideoExtensions
 
+val networkSubtitleExtensions = setOf("ass", "ssa", "srt", "vtt", "ttml", "dfxp", "sub")
+
+fun isNetworkSubtitleFile(name: String): Boolean =
+    name.substringAfterLast('.', "").lowercase() in networkSubtitleExtensions
+
 fun networkVideoMimeType(name: String): String =
     when (name.substringAfterLast('.', "").lowercase()) {
         "mp4", "m4v" -> "video/mp4"
@@ -23,3 +28,11 @@ fun networkVideoMimeType(name: String): String =
         "ts", "m2ts", "mts" -> "video/mp2t"
         else -> "video/*"
     }
+
+fun networkMediaMimeType(name: String): String = when (name.substringAfterLast('.', "").lowercase()) {
+    "ass", "ssa" -> "text/x-ssa"
+    "srt" -> "application/x-subrip"
+    "vtt" -> "text/vtt"
+    "ttml", "dfxp" -> "application/ttml+xml"
+    else -> networkVideoMimeType(name)
+}

@@ -1,6 +1,5 @@
 package dev.anilbeesetti.nextplayer.feature.network.navigation
 
-import android.net.Uri
 import androidx.compose.animation.scaleIn
 import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInVertically
@@ -12,6 +11,7 @@ import androidx.navigation3.runtime.NavBackStack
 import androidx.navigation3.runtime.NavKey
 import androidx.navigation3.runtime.metadata
 import androidx.navigation3.ui.NavDisplay
+import dev.anilbeesetti.nextplayer.core.model.NetworkPlaybackSource
 import dev.anilbeesetti.nextplayer.feature.network.screens.addconnection.AddConnectionScreenRoute
 import dev.anilbeesetti.nextplayer.feature.network.screens.addconnection.AddConnectionViewModel
 import dev.anilbeesetti.nextplayer.feature.network.screens.browse.NetworkBrowseScreenRoute
@@ -79,7 +79,7 @@ fun EntryProviderScope<NavKey>.addConnectionEntry(
 
 fun EntryProviderScope<NavKey>.networkBrowseEntry(
     onNavigateUp: () -> Unit,
-    onPlayVideo: (uri: Uri) -> Unit,
+    onPlayVideo: (NetworkPlaybackSource) -> Unit,
     onNavigateToFolder: (connectionId: Long, path: String) -> Unit,
 ) {
     entry<NetworkBrowseRoute> { key ->

@@ -3,7 +3,7 @@ package dev.anilbeesetti.nextplayer.core.media.network.proxy
 import android.net.Uri
 import dev.anilbeesetti.nextplayer.core.media.network.NetworkClient
 import dev.anilbeesetti.nextplayer.core.media.network.NetworkClientFactory
-import dev.anilbeesetti.nextplayer.core.media.network.networkVideoMimeType
+import dev.anilbeesetti.nextplayer.core.media.network.networkMediaMimeType
 import dev.anilbeesetti.nextplayer.core.model.NetworkConnection
 import fi.iki.elonen.NanoHTTPD
 import java.util.concurrent.ConcurrentHashMap
@@ -53,14 +53,19 @@ class NetworkStreamingProxy @Inject constructor() {
 
     /** Registers [filePath] on [connection] for streaming and returns the local playback URL. */
     @Synchronized
-    fun registerStream(connection: NetworkConnection, filePath: String, fileName: String): String {
+    fun registerStream(
+        connection: NetworkConnection,
+        filePath: String,
+        fileName: String,
+        keepExistingStreams: Boolean = false,
+    ): String {
         val port = ensureStarted()
-        releasePreviousStreams()
+        if (!keepExistingStreams) releasePreviousStreams()
         val id = idCounter.incrementAndGet().toString()
         streams[id] = StreamInfo(
             client = NetworkClientFactory.create(connection),
             filePath = filePath,
-            mimeType = networkVideoMimeType(fileName),
+            mimeType = networkMediaMimeType(fileName),
         )
         // The stream id is the first path segment; the (encoded) file name is appended only so the
         // player can derive a proper title from the URL's last segment instead of the id.
