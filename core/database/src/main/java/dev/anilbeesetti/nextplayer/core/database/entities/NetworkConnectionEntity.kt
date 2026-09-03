@@ -33,6 +33,8 @@ data class NetworkConnectionEntity(
     val privateKeyPassphrase: String = "",
     @ColumnInfo(name = "host_key_fingerprint", defaultValue = "''")
     val hostKeyFingerprint: String = "",
+    @ColumnInfo(name = "directory_password", defaultValue = "''")
+    val directoryPassword: String = "",
     @ColumnInfo(name = "created_at")
     val createdAt: Long = System.currentTimeMillis(),
 )

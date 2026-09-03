@@ -7,6 +7,7 @@ enum class NetworkProtocol(val defaultPort: Int) {
     FTP(21),
     SFTP(22),
     WEBDAV(80),
+    OPENLIST(5244),
 }
 
 enum class NetworkAuthentication {
@@ -35,6 +36,7 @@ data class NetworkConnection(
     val privateKeyFileName: String = "",
     val privateKeyPassphrase: String = "",
     val hostKeyFingerprint: String = "",
+    val directoryPassword: String = "",
 ) : Serializable {
 
     val effectivePort: Int get() = port ?: protocol.defaultPort

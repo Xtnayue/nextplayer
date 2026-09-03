@@ -1,6 +1,7 @@
 package dev.anilbeesetti.nextplayer.core.media.network
 
 import dev.anilbeesetti.nextplayer.core.media.network.clients.FtpClient
+import dev.anilbeesetti.nextplayer.core.media.network.clients.OpenListClient
 import dev.anilbeesetti.nextplayer.core.media.network.clients.SftpClient
 import dev.anilbeesetti.nextplayer.core.media.network.clients.SmbClient
 import dev.anilbeesetti.nextplayer.core.media.network.clients.WebDavClient
@@ -19,5 +20,6 @@ class DefaultNetworkClientFactory @Inject constructor(
         NetworkProtocol.FTP -> FtpClient(connection)
         NetworkProtocol.SFTP -> SftpClient(connection, sshKeyStore)
         NetworkProtocol.WEBDAV -> WebDavClient(connection)
+        NetworkProtocol.OPENLIST -> OpenListClient(connection)
     }
 }

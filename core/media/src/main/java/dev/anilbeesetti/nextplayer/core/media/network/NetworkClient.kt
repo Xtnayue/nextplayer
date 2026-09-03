@@ -4,7 +4,7 @@ import dev.anilbeesetti.nextplayer.core.model.NetworkFile
 import java.io.InputStream
 
 /**
- * Client for browsing and reading files over a network protocol (SMB, FTP, SFTP, WebDAV).
+ * Client for browsing and reading files over a network protocol (SMB, FTP, SFTP, WebDAV, OpenList).
  *
  * Implementations must be able to [openStream] at an arbitrary byte [offset] so the local
  * streaming proxy can satisfy HTTP range requests (seeking) from the media player.

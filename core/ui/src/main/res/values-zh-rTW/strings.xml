@@ -373,6 +373,8 @@
     <string name="path_share">路徑 / 共享名稱</string>
     <string name="username">使用者名稱</string>
     <string name="password">密碼</string>
+    <string name="directory_password">目錄密碼（選填）</string>
+    <string name="openlist_alist">OpenList/AList</string>
     <string name="use_https">使用 HTTPS</string>
     <string name="test_and_save">測試並儲存</string>
     <string name="connecting">正在連線…</string>

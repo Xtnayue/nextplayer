@@ -41,6 +41,7 @@ class LocalNetworkConnectionRepository @Inject constructor(
         privateKeyFileName = privateKeyFileName,
         privateKeyPassphrase = privateKeyPassphrase,
         hostKeyFingerprint = hostKeyFingerprint,
+        directoryPassword = directoryPassword,
     )
 
     private fun NetworkConnection.toEntity() = NetworkConnectionEntity(
@@ -57,5 +58,6 @@ class LocalNetworkConnectionRepository @Inject constructor(
         privateKeyFileName = privateKeyFileName,
         privateKeyPassphrase = privateKeyPassphrase,
         hostKeyFingerprint = hostKeyFingerprint,
+        directoryPassword = directoryPassword,
     )
 }

@@ -132,6 +132,7 @@ internal fun AddConnectionScreen(
     var path by rememberSaveable { mutableStateOf(defaultPathFor(NetworkProtocol.SMB)) }
     var username by rememberSaveable { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var directoryPassword by remember { mutableStateOf("") }
     var useHttps by rememberSaveable { mutableStateOf(false) }
     var authentication by rememberSaveable { mutableStateOf(NetworkAuthentication.PASSWORD) }
     var privateKeyPassphrase by remember { mutableStateOf("") }
@@ -150,6 +151,7 @@ internal fun AddConnectionScreen(
             path = normalizedPathFor(it.protocol, it.path)
             username = it.username
             password = it.password
+            directoryPassword = it.directoryPassword
             useHttps = it.useHttps
             authentication = it.authentication
             privateKeyPassphrase = it.privateKeyPassphrase
@@ -191,7 +193,7 @@ internal fun AddConnectionScreen(
                 } else {
                     password
                 },
-                useHttps = protocol == NetworkProtocol.WEBDAV && useHttps,
+                useHttps = protocol in setOf(NetworkProtocol.WEBDAV, NetworkProtocol.OPENLIST) && useHttps,
                 authentication = if (protocol == NetworkProtocol.SFTP) {
                     authentication
                 } else {
@@ -212,6 +214,7 @@ internal fun AddConnectionScreen(
                     ""
                 },
                 hostKeyFingerprint = if (protocol == NetworkProtocol.SFTP) hostKeyFingerprint else "",
+                directoryPassword = if (protocol == NetworkProtocol.OPENLIST) directoryPassword else "",
             ),
         )
     }
@@ -248,30 +251,41 @@ internal fun AddConnectionScreen(
                 style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
-                val protocols = NetworkProtocol.entries
-                protocols.forEachIndexed { index, entry ->
-                    SegmentedButton(
-                        selected = protocol == entry,
-                        enabled = !isTesting,
-                        onClick = {
-                            onChange {
-                                // Keep the path in sync with the protocol's default unless the user
-                                // has customized it (SMB wants a bare share name, others a "/" root).
-                                if (path == defaultPathFor(protocol)) path = defaultPathFor(entry)
-                                if (protocol == NetworkProtocol.SFTP && entry != NetworkProtocol.SFTP) {
-                                    authentication = NetworkAuthentication.PASSWORD
-                                    privateKeyPassphrase = ""
-                                    hostKeyFingerprint = ""
-                                    if (selectedPrivateKey != null) onRemovePrivateKey()
-                                }
-                                protocol = entry
+            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                NetworkProtocol.entries.chunked(3).forEach { protocols ->
+                    SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
+                        protocols.forEachIndexed { index, entry ->
+                            SegmentedButton(
+                                selected = protocol == entry,
+                                enabled = !isTesting,
+                                onClick = {
+                                    onChange {
+                                        // Keep the path in sync with the protocol's default unless the user
+                                        // has customized it (SMB wants a bare share name, others a "/" root).
+                                        if (path == defaultPathFor(protocol)) path = defaultPathFor(entry)
+                                        if (protocol == NetworkProtocol.SFTP && entry != NetworkProtocol.SFTP) {
+                                            authentication = NetworkAuthentication.PASSWORD
+                                            privateKeyPassphrase = ""
+                                            hostKeyFingerprint = ""
+                                            if (selectedPrivateKey != null) onRemovePrivateKey()
+                                        }
+                                        protocol = entry
+                                    }
+                                },
+                                shape = SegmentedButtonDefaults.itemShape(index, protocols.size),
+                                modifier = Modifier.tvFocusRing(
+                                    shape = SegmentedButtonDefaults.itemShape(index, protocols.size),
+                                ),
+                            ) {
+                                Text(
+                                    if (entry == NetworkProtocol.OPENLIST) {
+                                        stringResource(R.string.openlist_alist)
+                                    } else {
+                                        entry.name
+                                    },
+                                )
                             }
-                        },
-                        shape = SegmentedButtonDefaults.itemShape(index, protocols.size),
-                        modifier = Modifier.tvFocusRing(shape = SegmentedButtonDefaults.itemShape(index, protocols.size)),
-                    ) {
-                        Text(entry.name)
+                        }
                     }
                 }
             }
@@ -399,7 +413,10 @@ internal fun AddConnectionScreen(
                     label = { Text(stringResource(R.string.password)) },
                     singleLine = true,
                     visualTransformation = PasswordVisualTransformation(),
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
+                    keyboardOptions = KeyboardOptions(
+                        keyboardType = KeyboardType.Password,
+                        imeAction = if (protocol == NetworkProtocol.OPENLIST) ImeAction.Next else ImeAction.Done,
+                    ),
                     keyboardActions = KeyboardActions(
                         onDone = {
                             focusManager.clearFocus()
@@ -470,7 +487,25 @@ internal fun AddConnectionScreen(
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
-            if (protocol == NetworkProtocol.WEBDAV) {
+            if (protocol == NetworkProtocol.OPENLIST) {
+                OutlinedTextField(
+                    value = directoryPassword,
+                    enabled = !isTesting,
+                    onValueChange = { onChange { directoryPassword = it } },
+                    label = { Text(stringResource(R.string.directory_password)) },
+                    singleLine = true,
+                    visualTransformation = PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
+                    keyboardActions = KeyboardActions(
+                        onDone = {
+                            focusManager.clearFocus()
+                            if (canSave) submit()
+                        },
+                    ),
+                    modifier = Modifier.fillMaxWidth(),
+                )
+            }
+            if (protocol == NetworkProtocol.WEBDAV || protocol == NetworkProtocol.OPENLIST) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,

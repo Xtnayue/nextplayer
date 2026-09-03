@@ -370,6 +370,8 @@
     <string name="test_and_save">测试并保存</string>
     <string name="use_https">使用 HTTPS</string>
     <string name="password">密码</string>
+    <string name="directory_password">目录密码（可选）</string>
+    <string name="openlist_alist">OpenList/AList</string>
     <string name="username">用户名</string>
     <string name="path_share">路径/分享名</string>
     <string name="port_hint">端口（默认为 %1$d）</string>

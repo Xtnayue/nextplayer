@@ -380,6 +380,8 @@
     <string name="username">Username</string>
     <string name="authentication">Authentication</string>
     <string name="password">Password</string>
+    <string name="directory_password">Directory password (optional)</string>
+    <string name="openlist_alist">OpenList/AList</string>
     <string name="ssh_key">SSH key</string>
     <string name="choose_private_key">Choose private key</string>
     <string name="replace_private_key">Replace private key</string>

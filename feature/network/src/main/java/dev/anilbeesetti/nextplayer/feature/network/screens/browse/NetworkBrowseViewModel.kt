@@ -147,7 +147,10 @@ class NetworkBrowseViewModel @AssistedInject constructor(
         if (file.isDirectory) return
         viewModelScope.launch {
             val url = streamingProxy.registerStream(conn, file.path, file.name)
-            if (conn.protocol == NetworkProtocol.FTP || conn.protocol == NetworkProtocol.WEBDAV) {
+            if (conn.protocol == NetworkProtocol.FTP ||
+                conn.protocol == NetworkProtocol.WEBDAV ||
+                conn.protocol == NetworkProtocol.OPENLIST
+            ) {
                 historyRepository.record(
                     NetworkPlaybackHistory(
                         connectionId = conn.id,

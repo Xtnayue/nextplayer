@@ -2,6 +2,7 @@ package dev.anilbeesetti.nextplayer.core.media.network
 
 import android.net.Uri
 import dev.anilbeesetti.nextplayer.core.media.network.clients.FtpClient
+import dev.anilbeesetti.nextplayer.core.media.network.clients.OpenListClient
 import dev.anilbeesetti.nextplayer.core.media.network.clients.SftpClient
 import dev.anilbeesetti.nextplayer.core.media.network.clients.SmbClient
 import dev.anilbeesetti.nextplayer.core.media.network.clients.WebDavClient
@@ -20,6 +21,11 @@ class NetworkClientFactoryTest {
     @Test
     fun `factory creates SFTP client`() {
         assertTrue(factory.create(connection(NetworkProtocol.SFTP)) is SftpClient)
+    }
+
+    @Test
+    fun `factory creates OpenList client`() {
+        assertTrue(factory.create(connection(NetworkProtocol.OPENLIST)) is OpenListClient)
     }
 
     @Test

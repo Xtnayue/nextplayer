@@ -5,8 +5,9 @@ import org.junit.Test
 
 class NetworkConnectionTest {
     @Test
-    fun `SFTP defaults to port 22`() {
+    fun `protocols use their expected default ports`() {
         assertEquals(22, NetworkProtocol.SFTP.defaultPort)
+        assertEquals(5244, NetworkProtocol.OPENLIST.defaultPort)
     }
 
     @Test

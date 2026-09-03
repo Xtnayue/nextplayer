@@ -34,6 +34,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.coil.compose)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.serialization.json)
 
     // Network protocols + local streaming proxy
     implementation(libs.smbj)
@@ -57,6 +58,7 @@ dependencies {
 
     testImplementation(libs.junit4)
     testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.okhttp.mockwebserver)
     androidTestImplementation(libs.androidx.test.ext)
     androidTestImplementation(libs.androidx.test.espresso.core)
 }

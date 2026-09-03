@@ -16,7 +16,7 @@ class LocalNetworkConnectionRepositoryTest {
     private val repository = LocalNetworkConnectionRepository(dao)
 
     @Test
-    fun `upsert and get connection preserves authentication settings`() = runTest {
+    fun `upsert and get connection preserves protocol settings`() = runTest {
         val connection = NetworkConnection(
             name = "SFTP",
             protocol = NetworkProtocol.SFTP,
@@ -26,6 +26,7 @@ class LocalNetworkConnectionRepositoryTest {
             privateKeyFileName = "123.key",
             privateKeyPassphrase = "passphrase",
             hostKeyFingerprint = "SHA256:abc",
+            directoryPassword = "protected-folder",
         )
 
         assertEquals(1L, repository.upsert(connection))

@@ -25,7 +25,7 @@ import dev.anilbeesetti.nextplayer.core.database.entities.PlaylistItemEntity
         PlaylistEntity::class,
         PlaylistItemEntity::class,
     ],
-    version = 11,
+    version = 12,
     exportSchema = true,
 )
 abstract class MediaDatabase : RoomDatabase() {
@@ -326,6 +326,12 @@ abstract class MediaDatabase : RoomDatabase() {
         val MIGRATION_10_11 = object : Migration(10, 11) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 createNetworkPlaybackHistoryTable(db)
+            }
+        }
+
+        val MIGRATION_11_12 = object : Migration(11, 12) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                addColumnIfMissing(db, "network_connection", "directory_password", "TEXT NOT NULL DEFAULT ''")
             }
         }
 

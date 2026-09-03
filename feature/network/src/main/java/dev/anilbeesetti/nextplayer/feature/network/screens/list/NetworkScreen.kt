@@ -237,7 +237,8 @@ private fun ConnectionItem(
         },
         supportingContent = {
             Text(
-                text = "${connection.protocol.name} · ${connection.host}",
+                text = "${if (connection.protocol == NetworkProtocol.OPENLIST) "OpenList/AList" else connection.protocol.name} · " +
+                    connection.host,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 maxLines = 1,
@@ -306,6 +307,7 @@ internal fun NetworkProtocol.icon(): ImageVector = when (this) {
     NetworkProtocol.FTP -> NextIcons.Dns
     NetworkProtocol.SFTP -> NextIcons.Dns
     NetworkProtocol.WEBDAV -> NextIcons.Cloud
+    NetworkProtocol.OPENLIST -> NextIcons.Cloud
 }
 
 @PreviewLightDark
