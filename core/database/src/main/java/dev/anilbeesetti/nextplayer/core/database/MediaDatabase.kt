@@ -313,15 +313,13 @@ abstract class MediaDatabase : RoomDatabase() {
 
         val MIGRATION_9_10 = object : Migration(9, 10) {
             override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("ALTER TABLE `playlist` ADD COLUMN `type` TEXT NOT NULL DEFAULT 'LOCAL'")
-                db.execSQL("ALTER TABLE `playlist` ADD COLUMN `source` TEXT")
-                db.execSQL("ALTER TABLE `playlist` ADD COLUMN `last_refreshed_at` INTEGER")
-                db.execSQL("ALTER TABLE `playlist_item` ADD COLUMN `title` TEXT")
-                db.execSQL("ALTER TABLE `playlist_item` ADD COLUMN `tvg_logo` TEXT")
-                db.execSQL(
-                    "ALTER TABLE `playlist_item` ADD COLUMN `duration` INTEGER NOT NULL DEFAULT -1",
-                )
-                db.execSQL("ALTER TABLE `playlist_item` ADD COLUMN `group_title` TEXT")
+                addColumnIfMissing(db, "playlist", "type", "TEXT NOT NULL DEFAULT 'LOCAL'")
+                addColumnIfMissing(db, "playlist", "source", "TEXT")
+                addColumnIfMissing(db, "playlist", "last_refreshed_at", "INTEGER")
+                addColumnIfMissing(db, "playlist_item", "title", "TEXT")
+                addColumnIfMissing(db, "playlist_item", "tvg_logo", "TEXT")
+                addColumnIfMissing(db, "playlist_item", "duration", "INTEGER NOT NULL DEFAULT -1")
+                addColumnIfMissing(db, "playlist_item", "group_title", "TEXT")
             }
         }
 
@@ -374,6 +372,22 @@ abstract class MediaDatabase : RoomDatabase() {
                 )
                 """,
             )
+        }
+
+        private fun addColumnIfMissing(
+            db: SupportSQLiteDatabase,
+            table: String,
+            column: String,
+            definition: String,
+        ) {
+            val columnExists = db.query("PRAGMA table_info(`$table`)").use { cursor ->
+                val nameIndex = cursor.getColumnIndexOrThrow("name")
+                generateSequence { cursor.takeIf { it.moveToNext() } }
+                    .any { it.getString(nameIndex) == column }
+            }
+            if (!columnExists) {
+                db.execSQL("ALTER TABLE `$table` ADD COLUMN `$column` $definition")
+            }
         }
     }
 }

@@ -69,7 +69,29 @@ class Migration9To10Test {
         migrated.close()
     }
 
+    @Test
+    fun migrationAcceptsForkSchemaThatAlreadyContainsPlaylistColumns() {
+        helper.createDatabase(FORK_DATABASE, 9).apply {
+            execSQL("ALTER TABLE playlist ADD COLUMN type TEXT NOT NULL DEFAULT 'LOCAL'")
+            execSQL("ALTER TABLE playlist ADD COLUMN source TEXT")
+            execSQL("ALTER TABLE playlist ADD COLUMN last_refreshed_at INTEGER")
+            execSQL("ALTER TABLE playlist_item ADD COLUMN title TEXT")
+            execSQL("ALTER TABLE playlist_item ADD COLUMN tvg_logo TEXT")
+            execSQL("ALTER TABLE playlist_item ADD COLUMN duration INTEGER NOT NULL DEFAULT -1")
+            execSQL("ALTER TABLE playlist_item ADD COLUMN group_title TEXT")
+            close()
+        }
+
+        helper.runMigrationsAndValidate(
+            FORK_DATABASE,
+            10,
+            true,
+            MediaDatabase.MIGRATION_9_10,
+        ).close()
+    }
+
     private companion object {
         const val TEST_DATABASE = "migration-9-10"
+        const val FORK_DATABASE = "migration-9-10-fork"
     }
 }
