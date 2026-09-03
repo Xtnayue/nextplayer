@@ -48,6 +48,7 @@ import dev.anilbeesetti.nextplayer.core.ui.components.tvFocusRing
 import dev.anilbeesetti.nextplayer.core.ui.designsystem.NextIcons
 import dev.anilbeesetti.nextplayer.feature.network.navigation.NetworkRoute
 import dev.anilbeesetti.nextplayer.feature.videopicker.navigation.HistoryRoute
+import dev.anilbeesetti.nextplayer.feature.playlist.navigation.PlaylistListRoute
 import dev.anilbeesetti.nextplayer.feature.videopicker.navigation.MediaPickerRoute
 import dev.anilbeesetti.nextplayer.core.model.StartPage
 
@@ -62,6 +63,7 @@ enum class TopLevelDestination(
 ) {
     MEDIA(MediaPickerRoute(), NextIcons.Home, R.string.local),
     HISTORY(HistoryRoute, NextIcons.History, R.string.history),
+    PLAYLISTS(PlaylistListRoute, NextIcons.Playlist, R.string.playlists),
     NETWORK(NetworkRoute, NextIcons.Network, R.string.network),
 }
 
@@ -116,9 +118,11 @@ class TopLevelNavState(
     /**
      * The [androidx.navigation3.runtime.NavEntry.contentKey]s of the top-level destinations. Used to
      * decide whether a rendered scene should show the nav bar/rail. `contentKey` defaults to the
-     * route's `toString()`, matching how the entries are created.
+     * Navigation3's default content key, matching how the entries are created.
      */
-    val topLevelContentKeys: Set<Any> = destinations.map { it.route.toString() }.toSet()
+    val topLevelContentKeys: Set<Any> = destinations
+        .map { navigation3DefaultContentKey(it.route) }
+        .toSet()
 
     fun switchTo(route: NavKey) {
         val index = destinations.indexOfFirst { it.route == route }
@@ -149,6 +153,9 @@ class TopLevelNavState(
         return stacksInUse.flatMap { decoratedByRoute.getValue(it) }.toMutableStateList()
     }
 }
+
+internal fun navigation3DefaultContentKey(route: NavKey): Any =
+    route.toString() to route::class.toString()
 
 fun TopLevelNavState.isNavigationBetweenTopLevelDestinations(initialState: Scene<NavKey>, targetState: Scene<NavKey>): Boolean =
     topLevelContentKeys.run { contains(initialState.entries.lastOrNull()?.contentKey) && contains(targetState.entries.lastOrNull()?.contentKey) }

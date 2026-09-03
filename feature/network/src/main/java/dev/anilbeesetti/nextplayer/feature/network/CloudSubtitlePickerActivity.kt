@@ -43,6 +43,7 @@ import kotlinx.coroutines.launch
 class CloudSubtitlePickerActivity : ComponentActivity() {
     @Inject lateinit var connectionRepository: NetworkConnectionRepository
     @Inject lateinit var streamingProxy: NetworkStreamingProxy
+    @Inject lateinit var clientFactory: NetworkClientFactory
 
     private var client: NetworkClient? = null
     private var files by mutableStateOf<List<NetworkFile>>(emptyList())
@@ -70,7 +71,7 @@ class CloudSubtitlePickerActivity : ComponentActivity() {
                 finish()
                 return@launch
             }
-            client = NetworkClientFactory.create(connection)
+            client = clientFactory.create(connection)
             load(currentPath.ifBlank { client?.rootPath.orEmpty() })
         }
     }

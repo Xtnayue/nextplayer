@@ -19,4 +19,7 @@ object DaoModule {
 
     @Provides
     fun provideNetworkPlaybackHistoryDao(db: MediaDatabase) = db.networkPlaybackHistoryDao()
+
+    @Provides
+    fun providePlaylistDao(db: MediaDatabase) = db.playlistDao()
 }

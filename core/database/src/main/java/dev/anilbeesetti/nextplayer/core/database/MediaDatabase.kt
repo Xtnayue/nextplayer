@@ -8,10 +8,13 @@ import dev.anilbeesetti.nextplayer.core.database.dao.HiddenVideoDao
 import dev.anilbeesetti.nextplayer.core.database.dao.MediumStateDao
 import dev.anilbeesetti.nextplayer.core.database.dao.NetworkConnectionDao
 import dev.anilbeesetti.nextplayer.core.database.dao.NetworkPlaybackHistoryDao
+import dev.anilbeesetti.nextplayer.core.database.dao.PlaylistDao
 import dev.anilbeesetti.nextplayer.core.database.entities.HiddenVideoEntity
 import dev.anilbeesetti.nextplayer.core.database.entities.MediumStateEntity
 import dev.anilbeesetti.nextplayer.core.database.entities.NetworkConnectionEntity
 import dev.anilbeesetti.nextplayer.core.database.entities.NetworkPlaybackHistoryEntity
+import dev.anilbeesetti.nextplayer.core.database.entities.PlaylistEntity
+import dev.anilbeesetti.nextplayer.core.database.entities.PlaylistItemEntity
 
 @Database(
     entities = [
@@ -19,8 +22,10 @@ import dev.anilbeesetti.nextplayer.core.database.entities.NetworkPlaybackHistory
         HiddenVideoEntity::class,
         NetworkConnectionEntity::class,
         NetworkPlaybackHistoryEntity::class,
+        PlaylistEntity::class,
+        PlaylistItemEntity::class,
     ],
-    version = 8,
+    version = 11,
     exportSchema = true,
 )
 abstract class MediaDatabase : RoomDatabase() {
@@ -32,6 +37,8 @@ abstract class MediaDatabase : RoomDatabase() {
     abstract fun networkConnectionDao(): NetworkConnectionDao
 
     abstract fun networkPlaybackHistoryDao(): NetworkPlaybackHistoryDao
+
+    abstract fun playlistDao(): PlaylistDao
 
     companion object {
         const val DATABASE_NAME = "media_db"
@@ -246,17 +253,127 @@ abstract class MediaDatabase : RoomDatabase() {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL(
                     """
-                    CREATE TABLE IF NOT EXISTS `network_playback_history` (
-                        `connection_id` INTEGER NOT NULL,
-                        `file_path` TEXT NOT NULL,
-                        `file_name` TEXT NOT NULL,
-                        `file_size` INTEGER NOT NULL,
-                        `played_at` INTEGER NOT NULL,
-                        PRIMARY KEY(`connection_id`, `file_path`)
+                    CREATE TABLE IF NOT EXISTS `playlist` (
+                        `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                        `name` TEXT NOT NULL,
+                        `created_at` INTEGER NOT NULL
                     )
                     """,
                 )
+                db.execSQL(
+                    """
+                    CREATE TABLE IF NOT EXISTS `playlist_item` (
+                        `playlist_id` INTEGER NOT NULL,
+                        `uri` TEXT NOT NULL,
+                        `position` INTEGER NOT NULL,
+                        `last_played_at` INTEGER,
+                        PRIMARY KEY(`playlist_id`, `uri`),
+                        FOREIGN KEY(`playlist_id`) REFERENCES `playlist`(`id`)
+                            ON UPDATE NO ACTION ON DELETE CASCADE
+                    )
+                    """,
+                )
+                db.execSQL(
+                    """
+                    CREATE INDEX IF NOT EXISTS `index_playlist_item_playlist_id`
+                    ON `playlist_item` (`playlist_id`)
+                    """,
+                )
+                db.execSQL(
+                    """
+                    CREATE UNIQUE INDEX IF NOT EXISTS `index_playlist_item_playlist_id_position`
+                    ON `playlist_item` (`playlist_id`, `position`)
+                    """,
+                )
+                createNetworkPlaybackHistoryTable(db)
             }
+        }
+
+        val MIGRATION_8_9 = object : Migration(8, 9) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                createPlaylistTables(db)
+                db.execSQL(
+                    "ALTER TABLE `network_connection` " +
+                        "ADD COLUMN `authentication` TEXT NOT NULL DEFAULT 'PASSWORD'",
+                )
+                db.execSQL(
+                    "ALTER TABLE `network_connection` " +
+                        "ADD COLUMN `private_key_file_name` TEXT NOT NULL DEFAULT ''",
+                )
+                db.execSQL(
+                    "ALTER TABLE `network_connection` " +
+                        "ADD COLUMN `private_key_passphrase` TEXT NOT NULL DEFAULT ''",
+                )
+                db.execSQL(
+                    "ALTER TABLE `network_connection` " +
+                        "ADD COLUMN `host_key_fingerprint` TEXT NOT NULL DEFAULT ''",
+                )
+            }
+        }
+
+        val MIGRATION_9_10 = object : Migration(9, 10) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE `playlist` ADD COLUMN `type` TEXT NOT NULL DEFAULT 'LOCAL'")
+                db.execSQL("ALTER TABLE `playlist` ADD COLUMN `source` TEXT")
+                db.execSQL("ALTER TABLE `playlist` ADD COLUMN `last_refreshed_at` INTEGER")
+                db.execSQL("ALTER TABLE `playlist_item` ADD COLUMN `title` TEXT")
+                db.execSQL("ALTER TABLE `playlist_item` ADD COLUMN `tvg_logo` TEXT")
+                db.execSQL(
+                    "ALTER TABLE `playlist_item` ADD COLUMN `duration` INTEGER NOT NULL DEFAULT -1",
+                )
+                db.execSQL("ALTER TABLE `playlist_item` ADD COLUMN `group_title` TEXT")
+            }
+        }
+
+        val MIGRATION_10_11 = object : Migration(10, 11) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                createNetworkPlaybackHistoryTable(db)
+            }
+        }
+
+        private fun createPlaylistTables(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                """
+                CREATE TABLE IF NOT EXISTS `playlist` (
+                    `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                    `name` TEXT NOT NULL,
+                    `created_at` INTEGER NOT NULL
+                )
+                """,
+            )
+            db.execSQL(
+                """
+                CREATE TABLE IF NOT EXISTS `playlist_item` (
+                    `playlist_id` INTEGER NOT NULL,
+                    `uri` TEXT NOT NULL,
+                    `position` INTEGER NOT NULL,
+                    `last_played_at` INTEGER,
+                    PRIMARY KEY(`playlist_id`, `uri`),
+                    FOREIGN KEY(`playlist_id`) REFERENCES `playlist`(`id`)
+                        ON UPDATE NO ACTION ON DELETE CASCADE
+                )
+                """,
+            )
+            db.execSQL("CREATE INDEX IF NOT EXISTS `index_playlist_item_playlist_id` ON `playlist_item` (`playlist_id`)")
+            db.execSQL(
+                "CREATE UNIQUE INDEX IF NOT EXISTS `index_playlist_item_playlist_id_position` " +
+                    "ON `playlist_item` (`playlist_id`, `position`)",
+            )
+        }
+
+        private fun createNetworkPlaybackHistoryTable(db: SupportSQLiteDatabase) {
+            db.execSQL(
+                """
+                CREATE TABLE IF NOT EXISTS `network_playback_history` (
+                    `connection_id` INTEGER NOT NULL,
+                    `file_path` TEXT NOT NULL,
+                    `file_name` TEXT NOT NULL,
+                    `file_size` INTEGER NOT NULL,
+                    `played_at` INTEGER NOT NULL,
+                    PRIMARY KEY(`connection_id`, `file_path`)
+                )
+                """,
+            )
         }
     }
 }

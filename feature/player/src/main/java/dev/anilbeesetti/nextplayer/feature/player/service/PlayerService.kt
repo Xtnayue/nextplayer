@@ -37,7 +37,6 @@ import androidx.media3.session.SessionCommand
 import androidx.media3.session.SessionError
 import androidx.media3.session.SessionResult
 import coil3.ImageLoader
-import coil3.request.CachePolicy
 import coil3.request.ImageRequest
 import com.google.common.util.concurrent.ListenableFuture
 import dagger.hilt.android.AndroidEntryPoint
@@ -79,6 +78,7 @@ import io.github.peerless2012.ass.media.parser.AssSubtitleParserFactory
 import io.github.peerless2012.ass.media.type.AssRenderType
 import java.io.File
 import javax.inject.Inject
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -697,6 +697,23 @@ class PlayerService : MediaSessionService() {
         mediaItems.map { mediaItem ->
             async {
                 val uri = mediaItem.mediaId.toUri()
+                if (mediaItem.isNetworkMediaItem()) {
+                    return@async mediaItem.buildUpon()
+                        .setMediaMetadata(
+                            mediaItem.mediaMetadata.buildUpon()
+                                .setTitle(
+                                    mediaItem.mediaMetadata.title
+                                        ?: getFilenameFromUri(uri),
+                                )
+                                .setArtworkUri(
+                                    mediaItem.mediaMetadata.artworkUri
+                                        ?: getDefaultArtworkUri(),
+                                )
+                                .build(),
+                        )
+                        .build()
+                }
+
                 val video = mediaRepository.getVideoByUri(uri = mediaItem.mediaId)
                 val videoState = mediaRepository.getVideoState(uri = mediaItem.mediaId)
 
@@ -749,7 +766,7 @@ class PlayerService : MediaSessionService() {
             }
         }.awaitAll()
     }
-    
+
     private fun getDefaultArtworkUri(): Uri = Uri.Builder().apply {
         val defaultArtwork = R.drawable.artwork_default
         scheme(ContentResolver.SCHEME_ANDROID_RESOURCE)
@@ -765,7 +782,8 @@ class PlayerService : MediaSessionService() {
             val currentMediaItem = player.currentMediaItem ?: return@launch
             if (currentMediaItem.mediaMetadata.artworkData != null) return@launch
 
-            val artworkUri = loadArtworkForMediaItem(currentMediaItem) ?: return@launch
+            val artworkUri = loadArtworkForMediaItem(currentMediaItem)
+                ?: getDefaultArtworkUri()
 
             val updatedPlayer = mediaSession?.player ?: return@launch
             val updatedMediaItem = updatedPlayer.currentMediaItem ?: return@launch
@@ -778,7 +796,14 @@ class PlayerService : MediaSessionService() {
         }
     }
     private suspend fun loadArtworkForMediaItem(mediaItem: MediaItem): Uri? = withContext(Dispatchers.IO) {
-        val uri = mediaItem.mediaId.toUri()
+        val defaultArtwork = getDefaultArtworkUri()
+        val uri = mediaItem.mediaMetadata.artworkUri
+            ?.takeUnless { it == defaultArtwork }
+            ?: if (mediaItem.isNetworkMediaItem()) {
+                return@withContext null
+            } else {
+                mediaItem.mediaId.toUri()
+            }
         return@withContext try {
             val request = ImageRequest.Builder(this@PlayerService)
                 .data(uri)
@@ -789,10 +814,20 @@ class PlayerService : MediaSessionService() {
             return@withContext diskCache.openSnapshot(uri.toString())?.use { snapshot ->
                 snapshot.data.toFile().toUri()
             }
-        } catch (_: Throwable) {
+        } catch (cancellation: CancellationException) {
+            throw cancellation
+        } catch (_: Exception) {
             null
         }
     }
+
+    private fun MediaItem.isNetworkMediaItem(): Boolean = when (
+        localConfiguration?.uri?.scheme?.lowercase()
+    ) {
+        "http", "https", "rtsp" -> true
+        else -> false
+    }
+
     private fun MediaItem.withArtwork(uri: Uri): MediaItem = buildUpon()
         .setMediaMetadata(
             mediaMetadata.buildUpon()
