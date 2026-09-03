@@ -1,6 +1,5 @@
 package dev.anilbeesetti.nextplayer.settings.screens.about
 
-import android.content.ClipData
 import android.content.Context
 import android.os.Build
 import android.widget.Toast
@@ -40,7 +39,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,8 +48,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.platform.ClipEntry
-import androidx.compose.ui.platform.LocalClipboard
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.platform.UriHandler
@@ -66,12 +62,9 @@ import dev.anilbeesetti.nextplayer.core.ui.components.ClickablePreferenceItem
 import dev.anilbeesetti.nextplayer.core.ui.components.ListSectionTitle
 import dev.anilbeesetti.nextplayer.core.ui.components.NextTopAppBar
 import dev.anilbeesetti.nextplayer.core.ui.designsystem.NextIcons
-import kotlinx.coroutines.launch
 
-private const val GITHUB_URL = "https://github.com/anilbeesetti/nextplayer"
-private const val KOFI_URL = "https://ko-fi.com/anilbeesetti"
-private const val PAYPAL_URL = "https://paypal.me/AnilBeesetti"
-private const val UPI_ID = "anilbeesetti10@oksbi"
+private const val GITHUB_URL = "https://github.com/Xtnayue/nextplayer"
+private const val KOFI_URL = "https://ko-fi.com/xtnayue"
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -81,8 +74,6 @@ fun AboutPreferencesScreen(
 ) {
     val context = LocalContext.current
     val uriHandler = LocalUriHandler.current
-    val clipboard = LocalClipboard.current
-    val scope = rememberCoroutineScope()
 
     val listFocusRequester = rememberTvListFocusRequester()
     Scaffold(
@@ -133,29 +124,7 @@ fun AboutPreferencesScreen(
                             context = context,
                         )
                     },
-                    isFirstItem = true
-                )
-                ClickablePreferenceItem(
-                    title = stringResource(R.string.paypal),
-                    description = stringResource(R.string.support_the_developer_on, stringResource(R.string.paypal)),
-                    icon = ImageVector.vectorResource(R.drawable.ic_paypal),
-                    onClick = {
-                        uriHandler.openUriOrShowToast(
-                            uri = PAYPAL_URL,
-                            context = context,
-                        )
-                    },
-                )
-                ClickablePreferenceItem(
-                    title = stringResource(R.string.upi),
-                    description = UPI_ID,
-                    icon = ImageVector.vectorResource(R.drawable.ic_upi),
-                    onClick = {
-                        scope.launch {
-                            clipboard.setClipEntry(ClipEntry(ClipData.newPlainText("text", UPI_ID)))
-                            Toast.makeText(context, "copied to clipboard", Toast.LENGTH_SHORT).show()
-                        }
-                    },
+                    isFirstItem = true,
                     isLastItem = true,
                 )
             }
