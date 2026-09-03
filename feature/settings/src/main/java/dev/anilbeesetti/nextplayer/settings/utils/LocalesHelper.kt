@@ -5,7 +5,7 @@ import java.util.Locale
 object LocalesHelper {
 
     private val supportedAppLanguageTags = listOf(
-        "ar", "bg", "bn", "bs", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr",
+        "en", "ar", "bg", "bn", "bs", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr",
         "he", "hi", "hu", "ia", "id", "it", "ja", "kn", "ko", "lv", "ml", "ms", "my", "nb-NO",
         "nl", "pa", "pl", "pt", "pt-BR", "ro", "ru", "sq", "sv", "ta", "te", "th", "tr", "uk",
         "ur", "vi", "zh-CN", "zh-TW",
