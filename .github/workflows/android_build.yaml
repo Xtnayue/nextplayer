@@ -4,11 +4,17 @@ on:
   push:
     branches:
       - main
+      - add-feature
       - 'feature/**'
     tags:
       - 'v*-libass.*'
   pull_request:
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Prerelease tag (leave empty to generate one from the app version)'
+        required: false
+        type: string
 
 concurrency:
   group: build-${{ github.ref }}
@@ -98,7 +104,7 @@ jobs:
 
   release:
     name: Publish prerelease
-    if: startsWith(github.ref, 'refs/tags/')
+    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
     needs:
       - verify
       - build
@@ -106,6 +112,26 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Resolve prerelease tag
+        id: release_tag
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          REQUESTED_TAG: ${{ inputs.release_tag }}
+        run: |
+          if [[ "${EVENT_NAME}" == "push" ]]; then
+            release_tag="${REF_NAME}"
+          elif [[ -n "${REQUESTED_TAG}" ]]; then
+            release_tag="${REQUESTED_TAG}"
+          else
+            app_version=$(sed -n 's/.*versionName = "\([^"]*\)".*/\1/p' app/build.gradle.kts | head -n 1)
+            release_tag="v${app_version}-build.${GITHUB_RUN_NUMBER}"
+          fi
+          echo "value=${release_tag}" >> "${GITHUB_OUTPUT}"
+
       - name: Download ABI APKs
         uses: actions/download-artifact@v8
         with:
@@ -116,12 +142,15 @@ jobs:
       - name: Create draft release and upload APKs
         uses: softprops/action-gh-release@v3
         with:
+          tag_name: ${{ steps.release_tag.outputs.value }}
+          target_commitish: ${{ github.sha }}
           draft: true
           prerelease: true
           generate_release_notes: true
           files: release-artifacts/*.apk
 
       - name: Publish immutable prerelease
-        run: gh release edit "${GITHUB_REF_NAME}" --draft=false --prerelease --repo "${GITHUB_REPOSITORY}"
+        run: gh release edit "${RELEASE_TAG}" --draft=false --prerelease --repo "${GITHUB_REPOSITORY}"
         env:
           GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.release_tag.outputs.value }}
