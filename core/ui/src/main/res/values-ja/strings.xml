@@ -356,4 +356,23 @@
     <string name="default_start_page">デフォルトの開始ページ</string>
     <string name="forward_buffer">前方バッファ</string>
     <string name="back_buffer">後方バッファ</string>
+
+    <string name="home">ホーム</string>
+    <string name="reset_controller_timeout">コントローラーが非表示になるまでの時間をリセット</string>
+    <string name="got_it">わかりました</string>
+    <string name="open_vault">保管庫を開く</string>
+    <string name="vault_empty_title">非表示にした動画はありません</string>
+    <string name="vault_empty_description">非表示にした動画はここに表示されます。動画を長押しして「非表示」をタップすると、動画を保管庫に追加できます。</string>
+    <string name="unhide_one_video_confirmation">この動画の非表示を解除しますか？元の場所に戻されます。</string>
+    <string name="unhide_videos_confirmation">%1$d 本の動画の非表示を解除しますか？元の場所に戻されます。</string>
+    <string name="delete_one_video_from_vault">この動画を完全に削除しますか？</string>
+    <string name="delete_videos_from_vault">%1$d 本の動画を完全に削除しますか？</string>
+    <string name="delete_from_vault_info">この操作は元に戻せません。動画はデバイスから完全に削除されます。</string>
+    <string name="sort_by">並べ替え</string>
+    <string name="name">名前</string>
+    <string name="date_hidden">非表示にした日付</string>
+    <string name="forgot_pin">PIN を忘れましたか？</string>
+    <string name="reset_vault_pin_confirmation">PIN をリセットすると、ロックを解除できなくなるため、保管庫にあるすべての動画が完全に削除されます。続行しますか？</string>
+    <string name="reset_pin_and_delete_all">PIN をリセットしてすべて削除</string>
+    <string name="cannot_move_to_same_folder">同じフォルダーには移動できません</string>
 </resources>

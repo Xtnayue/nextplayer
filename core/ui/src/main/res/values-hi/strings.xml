@@ -380,4 +380,6 @@
     <string name="default_start_page">डिफ़ॉल्ट आरंभ पृष्ठ</string>
     <string name="forward_buffer">आगे का बफ़र</string>
     <string name="back_buffer">पीछे का बफ़र</string>
+
+    <string name="home">घर</string>
 </resources>

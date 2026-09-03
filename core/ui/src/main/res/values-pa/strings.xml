@@ -394,4 +394,6 @@
     <string name="default_start_page">ਮੂਲ ਸ਼ੁਰੂਆਤੀ ਸਫ਼ਾ</string>
     <string name="forward_buffer">ਅੱਗੇ ਵਾਲਾ ਬਫ਼ਰ</string>
     <string name="back_buffer">ਪਿੱਛੇ ਵਾਲਾ ਬਫ਼ਰ</string>
+
+    <string name="home">ਘਰ</string>
 </resources>
