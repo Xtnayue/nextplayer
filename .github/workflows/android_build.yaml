@@ -10,11 +10,6 @@ on:
       - 'v*'
   pull_request:
   workflow_dispatch:
-    inputs:
-      release_tag:
-        description: 'Prerelease tag (leave empty to generate one from the app version)'
-        required: false
-        type: string
 
 concurrency:
   group: build-${{ github.ref }}
@@ -104,7 +99,7 @@ jobs:
 
   release:
     name: Publish prerelease
-    if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
+    if: github.event_name != 'pull_request'
     needs:
       - verify
       - build
@@ -117,19 +112,10 @@ jobs:
 
       - name: Resolve prerelease tag
         id: release_tag
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          REF_NAME: ${{ github.ref_name }}
-          REQUESTED_TAG: ${{ inputs.release_tag }}
         run: |
-          if [[ "${EVENT_NAME}" == "push" ]]; then
-            release_tag="${REF_NAME}"
-          elif [[ -n "${REQUESTED_TAG}" ]]; then
-            release_tag="${REQUESTED_TAG}"
-          else
-            app_version=$(sed -n 's/.*versionName = "\([^"]*\)".*/\1/p' app/build.gradle.kts | head -n 1)
-            release_tag="v${app_version}-build.${GITHUB_RUN_NUMBER}"
-          fi
+          app_version=$(sed -n 's/.*versionName = "\([^"]*\)".*/\1/p' app/build.gradle.kts | head -n 1)
+          test -n "${app_version}"
+          release_tag="v${app_version}-build.${GITHUB_RUN_NUMBER}"
           echo "value=${release_tag}" >> "${GITHUB_OUTPUT}"
 
       - name: Download ABI APKs

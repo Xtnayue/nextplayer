@@ -53,6 +53,8 @@ Next Player 是一款使用 Kotlin 和 Jetpack Compose 编写的 Android 原生�
 ### 下载与构建
 
 可从 [GitHub Releases](https://github.com/xtnayue/nextplayer/releases) 下载适合设备 ABI 的 APK。
+每次非 Pull Request 的 Actions 构建成功后都会发布预发布版本，标签格式为
+`v<应用版本>-build.<构建次数>`；应用版本读取自 `app/build.gradle.kts`，构建次数由 GitHub Actions 自动递增。
 
 本地构建需要 JDK 17 和 Android SDK：
 
@@ -111,6 +113,8 @@ Next Player is a native Android video player written in Kotlin and Jetpack Compo
 ### Download and build
 
 Download an APK for your device ABI from [GitHub Releases](https://github.com/xtnayue/nextplayer/releases).
+Every successful non-pull-request Actions build publishes a prerelease tagged as
+`v<app-version>-build.<build-number>`. The app version comes from `app/build.gradle.kts`, while GitHub Actions increments the build number automatically.
 
 Local builds require JDK 17 and the Android SDK:
 
