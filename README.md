@@ -132,11 +132,11 @@ To build only the 64-bit ARM release APK:
 
 <div style="width:100%; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;">
 
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="19%" alt="Home folders">](fastlane/metadata/android/en-US/images/phoneScreenshots/1.png)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="19%" alt="Folder videos">](fastlane/metadata/android/en-US/images/phoneScreenshots/2.png)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="19%" alt="Quick settings">](fastlane/metadata/android/en-US/images/phoneScreenshots/3.png)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="19%" alt="Grid view">](fastlane/metadata/android/en-US/images/phoneScreenshots/4.png)
-[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/7.png" width="19%" alt="Network connection">](fastlane/metadata/android/en-US/images/phoneScreenshots/7.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width="19%" alt="Local media">](fastlane/metadata/android/en-US/images/phoneScreenshots/1.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width="19%" alt="Playback history">](fastlane/metadata/android/en-US/images/phoneScreenshots/2.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width="19%" alt="Playlists">](fastlane/metadata/android/en-US/images/phoneScreenshots/3.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width="19%" alt="Network storage">](fastlane/metadata/android/en-US/images/phoneScreenshots/4.png)
+[<img src="fastlane/metadata/android/en-US/images/phoneScreenshots/8.png" width="19%" alt="Settings">](fastlane/metadata/android/en-US/images/phoneScreenshots/8.png)
 </div>
 
 ### Player and TV / 播放器与电视
