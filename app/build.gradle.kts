@@ -73,7 +73,6 @@ android {
         create("release-with-debug-signing") {
             initWith(getByName("release"))
             signingConfig = signingConfigs.getByName("debug")
-            applicationIdSuffix = ".release"
             matchingFallbacks.add("release")
         }
     }
